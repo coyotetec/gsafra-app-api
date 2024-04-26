@@ -1,4 +1,3 @@
-import { Injectable } from '@nestjs/common';
 import { Usuario } from 'src/modules/usuarios/entities/usuario.entity';
 
 interface FirebirdUsuario {
@@ -16,7 +15,6 @@ interface FirebirdUsuario {
   DATA_CADASTRO: Date;
 }
 
-@Injectable()
 export class FirebirdUsuariosMapper {
   static toDomain(raw: FirebirdUsuario): Usuario {
     return new Usuario({
