@@ -1,5 +1,4 @@
-import Firebird from 'node-firebird';
-
+import * as Firebird from 'node-firebird';
 import { Injectable } from '@nestjs/common';
 import { env } from 'src/shared/config/env';
 
@@ -25,7 +24,7 @@ export class FirebirdService {
     });
   }
 
-  generateConfig(host: string, code: string): Firebird.Options {
+  private generateConfig(host: string, code: string): Firebird.Options {
     return {
       host,
       port: 3050,
@@ -34,7 +33,6 @@ export class FirebirdService {
       password: env.firebirdPassword,
       lowercase_keys: false,
       pageSize: 4096,
-      encoding: 'WIN1256',
     };
   }
 }
