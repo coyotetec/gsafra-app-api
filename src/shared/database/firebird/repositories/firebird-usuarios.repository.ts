@@ -8,10 +8,10 @@ import { FirebirdUsuariosMapper } from '../mappers/firebird-usuarios.mapper';
 export class FirebirdUsuariosRepository implements UsuariosRepository {
   constructor(private firebird: FirebirdService) {}
 
-  findMany(host: string, string: string) {
+  findMany(host: string, code: string) {
     return this.firebird.query<Usuario>(
       host,
-      string,
+      code,
       'SELECT * FROM usuario',
       FirebirdUsuariosMapper.toDomain,
     );

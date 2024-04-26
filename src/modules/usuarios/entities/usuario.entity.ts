@@ -1,6 +1,6 @@
 enum StatusType {
-  INACTIVE,
-  ACTIVE,
+  INATIVO,
+  ATIVO,
 }
 
 export class Usuario {

@@ -4,8 +4,8 @@ import { env } from 'src/shared/config/env';
 
 @Injectable()
 export class FirebirdService {
-  query<D>(host: string, code: string, query: string, mapper: (raw: any) => D) {
-    return new Promise<D[]>((resolve, reject) => {
+  query<T>(host: string, code: string, query: string, mapper: (raw: any) => T) {
+    return new Promise<T[]>((resolve, reject) => {
       Firebird.attach(this.generateConfig(host, code), (attachError, db) => {
         if (attachError) {
           return reject(attachError);
