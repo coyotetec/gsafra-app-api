@@ -6,6 +6,8 @@ import { FirebirdAbastecimentosRepository } from './firebird/repositories/firebi
 import { AbastecimentosRepository } from 'src/modules/abastecimentos/abastecimentos.repository';
 import { PatrimoniosRepository } from 'src/modules/patrimonios/patrimonios.repository';
 import { FirebirdPatrimoniosRepository } from './firebird/repositories/firebird-patrimonios.repository';
+import { AlmoxarifadosRepository } from 'src/modules/almoxarifados/almoxarifados.repository';
+import { FirebirdAlmoxarifadosRepository } from './firebird/repositories/firebird-almoxarifados.repository';
 
 @Global()
 @Module({
@@ -17,11 +19,16 @@ import { FirebirdPatrimoniosRepository } from './firebird/repositories/firebird-
       useClass: FirebirdAbastecimentosRepository,
     },
     { provide: PatrimoniosRepository, useClass: FirebirdPatrimoniosRepository },
+    {
+      provide: AlmoxarifadosRepository,
+      useClass: FirebirdAlmoxarifadosRepository,
+    },
   ],
   exports: [
     UsuariosRepository,
     AbastecimentosRepository,
     PatrimoniosRepository,
+    AlmoxarifadosRepository,
   ],
 })
 export class DatabaseModule {}

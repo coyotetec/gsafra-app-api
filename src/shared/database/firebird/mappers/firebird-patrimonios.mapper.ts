@@ -1,6 +1,6 @@
 import { Patrimonio } from 'src/modules/patrimonios/entities/patrimonio.entity';
 
-interface IFirebirdPatrimonios {
+interface FirebirdPatrimonios {
   ID: number;
   DESCRICAO: string;
   MARCA: string;
@@ -78,7 +78,7 @@ interface IFirebirdPatrimonios {
 }
 
 export class FirebirdPatrimoniosMapper {
-  static toDomain(raw: IFirebirdPatrimonios): Patrimonio {
+  static toDomain(raw: FirebirdPatrimonios): Patrimonio {
     return new Patrimonio({
       id: raw.ID,
       descricao: raw.DESCRICAO,
