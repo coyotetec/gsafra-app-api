@@ -8,6 +8,8 @@ import { AbastecimentosCiclosRepository } from 'src/modules/abastecimentos-ciclo
 import { FirebirdAbastecimentosCiclosRepository } from './firebird/repositories/firebird-abastecimentos-ciclos.repository';
 import { AbastecimentosCiclosTalhoesSafrasRepository } from 'src/modules/abastecimentos-ciclos-talhoes-safras/abastecimentos-ciclos-talhoes-safras.repository';
 import { FirebirdAbastecimentosCiclosTalhoesSafrasRepository } from './firebird/repositories/firebird-abastecimentos-ciclos-talhoes-safras.repository';
+import { PlanejamentosAtividadesRepository } from 'src/modules/planejamentos-atividades/planejamentos-atividades.repository';
+import { FirebirdPlanejamentosAtividadesRepository } from './firebird/repositories/firebird-planejamentos-atividades.repository';
 
 @Global()
 @Module({
@@ -26,12 +28,17 @@ import { FirebirdAbastecimentosCiclosTalhoesSafrasRepository } from './firebird/
       provide: AbastecimentosCiclosTalhoesSafrasRepository,
       useClass: FirebirdAbastecimentosCiclosTalhoesSafrasRepository,
     },
+    {
+      provide: PlanejamentosAtividadesRepository,
+      useClass: FirebirdPlanejamentosAtividadesRepository,
+    },
   ],
   exports: [
     UsuariosRepository,
     AbastecimentosRepository,
     AbastecimentosCiclosRepository,
     AbastecimentosCiclosTalhoesSafrasRepository,
+    PlanejamentosAtividadesRepository,
   ],
 })
 export class DatabaseModule {}
