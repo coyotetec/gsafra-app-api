@@ -9,6 +9,7 @@ import { AlmoxarifadosModule } from './modules/almoxarifados/almoxarifados.modul
 import { ProdutosAlmoxarifadoModule } from './modules/produtos-almoxarifado/produtos-almoxarifado.module';
 import { UnidadesModule } from './modules/unidades/unidades.module';
 import { CulturasModule } from './modules/culturas/culturas.module';
+import { SafrasModule } from './modules/safras/safras.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { CulturasModule } from './modules/culturas/culturas.module';
     ProdutosAlmoxarifadoModule,
     UnidadesModule,
     CulturasModule,
+    SafrasModule,
   ],
   controllers: [],
   providers: [],

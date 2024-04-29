@@ -18,6 +18,8 @@ import { UnidadesRepository } from 'src/modules/unidades/unidades.repository';
 import { FirebirdUnidadesRepository } from './firebird/repositories/firebird-unidades.repository';
 import { CulturasRepository } from 'src/modules/culturas/culturas.repository';
 import { FirebirdCulturasRepository } from './firebird/repositories/firebird-culturas.repository';
+import { SafrasRepository } from 'src/modules/safras/safras.repository';
+import { FirebirdSafrasRepository } from './firebird/repositories/firebird-safras.repository';
 
 @Global()
 @Module({
@@ -50,6 +52,7 @@ import { FirebirdCulturasRepository } from './firebird/repositories/firebird-cul
       useClass: FirebirdUnidadesRepository,
     },
     { provide: CulturasRepository, useClass: FirebirdCulturasRepository },
+    { provide: SafrasRepository, useClass: FirebirdSafrasRepository },
   ],
   exports: [
     UsuariosRepository,
@@ -61,6 +64,7 @@ import { FirebirdCulturasRepository } from './firebird/repositories/firebird-cul
     ProdutosAlmoxarifadoRepository,
     UnidadesRepository,
     CulturasRepository,
+    SafrasRepository,
   ],
 })
 export class DatabaseModule {}
