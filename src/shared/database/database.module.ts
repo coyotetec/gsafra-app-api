@@ -41,10 +41,6 @@ import { FirebirdAlmoxarifadosRepository } from './firebird/repositories/firebir
     AbastecimentosRepository,
     AbastecimentosCiclosRepository,
     AbastecimentosCiclosTalhoesSafrasRepository,
-  ],
-  exports: [
-    UsuariosRepository,
-    AbastecimentosRepository,
     PatrimoniosRepository,
     AlmoxarifadosRepository,
   ],
