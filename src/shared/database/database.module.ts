@@ -12,6 +12,8 @@ import { PatrimoniosRepository } from 'src/modules/patrimonios/patrimonios.repos
 import { FirebirdPatrimoniosRepository } from './firebird/repositories/firebird-patrimonios.repository';
 import { AlmoxarifadosRepository } from 'src/modules/almoxarifados/almoxarifados.repository';
 import { FirebirdAlmoxarifadosRepository } from './firebird/repositories/firebird-almoxarifados.repository';
+import { ProdutosAlmoxarifadoRepository } from 'src/modules/produtos-almoxarifado/produtos-almoxarifado.repository';
+import { FirebirdProdutosAlmoxarifadoRepository } from './firebird/repositories/firebird-produtos-almoxarifado.repository';
 
 @Global()
 @Module({
@@ -35,6 +37,10 @@ import { FirebirdAlmoxarifadosRepository } from './firebird/repositories/firebir
       provide: AlmoxarifadosRepository,
       useClass: FirebirdAlmoxarifadosRepository,
     },
+    {
+      provide: ProdutosAlmoxarifadoRepository,
+      useClass: FirebirdProdutosAlmoxarifadoRepository,
+    },
   ],
   exports: [
     UsuariosRepository,
@@ -43,6 +49,7 @@ import { FirebirdAlmoxarifadosRepository } from './firebird/repositories/firebir
     AbastecimentosCiclosTalhoesSafrasRepository,
     PatrimoniosRepository,
     AlmoxarifadosRepository,
+    ProdutosAlmoxarifadoRepository,
   ],
 })
 export class DatabaseModule {}
