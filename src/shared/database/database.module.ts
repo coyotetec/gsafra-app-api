@@ -16,6 +16,8 @@ import { ProdutosAlmoxarifadoRepository } from 'src/modules/produtos-almoxarifad
 import { FirebirdProdutosAlmoxarifadoRepository } from './firebird/repositories/firebird-produtos-almoxarifado.repository';
 import { UnidadesRepository } from 'src/modules/unidades/unidades.repository';
 import { FirebirdUnidadesRepository } from './firebird/repositories/firebird-unidades.repository';
+import { CulturasRepository } from 'src/modules/culturas/culturas.repository';
+import { FirebirdCulturasRepository } from './firebird/repositories/firebird-culturas.repository';
 
 @Global()
 @Module({
@@ -47,6 +49,7 @@ import { FirebirdUnidadesRepository } from './firebird/repositories/firebird-uni
       provide: UnidadesRepository,
       useClass: FirebirdUnidadesRepository,
     },
+    { provide: CulturasRepository, useClass: FirebirdCulturasRepository },
   ],
   exports: [
     UsuariosRepository,
@@ -57,6 +60,7 @@ import { FirebirdUnidadesRepository } from './firebird/repositories/firebird-uni
     AlmoxarifadosRepository,
     ProdutosAlmoxarifadoRepository,
     UnidadesRepository,
+    CulturasRepository,
   ],
 })
 export class DatabaseModule {}
