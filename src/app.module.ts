@@ -7,6 +7,7 @@ import { AbastecimentosCiclosTalhoesSafrasModule } from './modules/abastecimento
 import { PatrimoniosModule } from './modules/patrimonios/patrimonios.module';
 import { AlmoxarifadosModule } from './modules/almoxarifados/almoxarifados.module';
 import { ProdutosAlmoxarifadoModule } from './modules/produtos-almoxarifado/produtos-almoxarifado.module';
+import { UnidadesModule } from './modules/unidades/unidades.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { ProdutosAlmoxarifadoModule } from './modules/produtos-almoxarifado/prod
     PatrimoniosModule,
     AlmoxarifadosModule,
     ProdutosAlmoxarifadoModule,
+    UnidadesModule,
   ],
   controllers: [],
   providers: [],
