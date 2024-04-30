@@ -115,6 +115,18 @@ import { FireBirdTalhoesRepository } from './firebird/repositories/firebird-talh
     UnidadesRepository,
     CulturasRepository,
     SafrasRepository,
+    AbastecimentosRepository,
+    AbastecimentosCiclosRepository,
+    AbastecimentosCiclosTalhoesSafrasRepository,
+    PlanejamentosAtividadesRepository,
+    PlanejamentosAtividadesInsumosRepository,
+    PlanejamentosAtividadesMaquinasRepository,
+    PlanejamentosAtividadesTalhoesSafrasRepository,
+    AtividadesAgricolasRepository,
+    AtividadesAgricolasInsumosRepository,
+    AtividadesAgricolasMaquinasRepository,
+    AtividadesAgricolasTalhoesSafrasRepository,
+    TalhoesRepository,
   ],
 })
 export class DatabaseModule {}
