@@ -44,6 +44,8 @@ import { VariedadesRepository } from 'src/modules/variedades/variedades.reposito
 import { FirebirdVariedadesRepository } from './firebird/repositories/firebird-variedades.repository';
 import { TalhoesSafrasRepository } from 'src/modules/talhoes-safras/talhoes-safras.repository';
 import { FirebirdTalhoesSafraRepository } from './firebird/repositories/firebird-talhoes-safras.repository';
+import { TiposAtividadesRepository } from 'src/modules/tipos-atividades/tipos-atividades.repository';
+import { FirebirdTiposAtividadesRepository } from './firebird/repositories/firebird-tipos-atividades.repository';
 
 @Global()
 @Module({
@@ -115,6 +117,10 @@ import { FirebirdTalhoesSafraRepository } from './firebird/repositories/firebird
       provide: TalhoesSafrasRepository,
       useClass: FirebirdTalhoesSafraRepository,
     },
+    {
+      provide: TiposAtividadesRepository,
+      useClass: FirebirdTiposAtividadesRepository,
+    },
   ],
   exports: [
     UsuariosRepository,
@@ -138,6 +144,7 @@ import { FirebirdTalhoesSafraRepository } from './firebird/repositories/firebird
     TalhoesRepository,
     VariedadesRepository,
     TalhoesSafrasRepository,
+    TiposAtividadesRepository,
   ],
 })
 export class DatabaseModule {}

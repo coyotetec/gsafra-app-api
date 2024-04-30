@@ -21,6 +21,7 @@ import { AtividadesAgricolasTalhoesSafrasModule } from './modules/atividades-agr
 import { TalhoesModule } from './modules/talhoes/talhoes.module';
 import { VariedadesModule } from './modules/variedades/variedades.module';
 import { TalhoesSafrasModule } from './modules/talhoes-safras/talhoes-safras.module';
+import { TiposAtividadesModule } from './modules/tipos-atividades/tipos-atividades.module';
 
 @Module({
   imports: [
@@ -46,6 +47,7 @@ import { TalhoesSafrasModule } from './modules/talhoes-safras/talhoes-safras.mod
     TalhoesModule,
     VariedadesModule,
     TalhoesSafrasModule,
+    TiposAtividadesModule,
   ],
   controllers: [],
   providers: [],
