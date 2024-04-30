@@ -19,6 +19,7 @@ import { AtividadesAgricolasInsumosModule } from './modules/atividades-agricolas
 import { AtividadesAgricolasMaquinasModule } from './modules/atividades-agricolas-maquinas/atividades-agricolas-maquinas.module';
 import { AtividadesAgricolasTalhoesSafrasModule } from './modules/atividades-agricolas-talhoes-safras/atividades-agricolas-talhoes-safras.module';
 import { TalhoesModule } from './modules/talhoes/talhoes.module';
+import { VariedadesModule } from './modules/variedades/variedades.module';
 
 @Module({
   imports: [
@@ -42,6 +43,7 @@ import { TalhoesModule } from './modules/talhoes/talhoes.module';
     AtividadesAgricolasMaquinasModule,
     AtividadesAgricolasTalhoesSafrasModule,
     TalhoesModule,
+    VariedadesModule,
   ],
   controllers: [],
   providers: [],
