@@ -33,6 +33,7 @@ export class FirebirdService {
       password: env.firebirdPassword,
       lowercase_keys: false,
       pageSize: 4096,
+      blobAsText: true,
     };
   }
 }
