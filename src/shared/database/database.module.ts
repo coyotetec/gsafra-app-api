@@ -16,6 +16,14 @@ import { PlanejamentosAtividadesMaquinasRepository } from 'src/modules/planejame
 import { FirebirdPlanejamentosAtividadesMaquinasRepository } from './firebird/repositories/firebird-planejamentos-atividades-maquinas.repository';
 import { PlanejamentosAtividadesTalhoesSafrasRepository } from 'src/modules/planejamentos-atividades-talhoes-safras/planejamentos-atividades-talhoes-safras.repository';
 import { FirebirdPlanejamentosAtividadesTalhoesSafrasRepository } from './firebird/repositories/firebird-planejamentos-atividades-talhoes-safras.repository';
+import { AtividadesAgricolasRepository } from 'src/modules/atividades-agricolas/atividades-agricolas.repository';
+import { FirebirdAtividadesAgricolasRepository } from './firebird/repositories/firebird-atividades-agricolas.repository';
+import { AtividadesAgricolasInsumosRepository } from 'src/modules/atividades-agricolas-insumos/atividades-agricolas-insumos.repository';
+import { FirebirdAtividadesAgricolasInsumosRepository } from './firebird/repositories/firebird-atividades-agricolas-insumos.repository';
+import { AtividadesAgricolasMaquinasRepository } from 'src/modules/atividades-agricolas-maquinas/atividades-agricolas-maquinas.repository';
+import { FirebirdAtividadesAgricolasMaquinasRepository } from './firebird/repositories/firebird-atividades-agricolas-maquinas.repository';
+import { AtividadesAgricolasTalhoesSafrasRepository } from 'src/modules/atividades-agricolas-talhoes-safras/atividades-agricolas-talhoes-safras.repository';
+import { FirebirdAtividadesAgricolasTalhoesSafrasRepository } from './firebird/repositories/firebird-atividades-agricolas-talhoes-safras.repository';
 
 @Global()
 @Module({
@@ -50,6 +58,22 @@ import { FirebirdPlanejamentosAtividadesTalhoesSafrasRepository } from './firebi
       provide: PlanejamentosAtividadesTalhoesSafrasRepository,
       useClass: FirebirdPlanejamentosAtividadesTalhoesSafrasRepository,
     },
+    {
+      provide: AtividadesAgricolasRepository,
+      useClass: FirebirdAtividadesAgricolasRepository,
+    },
+    {
+      provide: AtividadesAgricolasInsumosRepository,
+      useClass: FirebirdAtividadesAgricolasInsumosRepository,
+    },
+    {
+      provide: AtividadesAgricolasMaquinasRepository,
+      useClass: FirebirdAtividadesAgricolasMaquinasRepository,
+    },
+    {
+      provide: AtividadesAgricolasTalhoesSafrasRepository,
+      useClass: FirebirdAtividadesAgricolasTalhoesSafrasRepository,
+    },
   ],
   exports: [
     UsuariosRepository,
@@ -60,6 +84,10 @@ import { FirebirdPlanejamentosAtividadesTalhoesSafrasRepository } from './firebi
     PlanejamentosAtividadesInsumosRepository,
     PlanejamentosAtividadesMaquinasRepository,
     PlanejamentosAtividadesTalhoesSafrasRepository,
+    AtividadesAgricolasRepository,
+    AtividadesAgricolasInsumosRepository,
+    AtividadesAgricolasMaquinasRepository,
+    AtividadesAgricolasTalhoesSafrasRepository,
   ],
 })
 export class DatabaseModule {}
