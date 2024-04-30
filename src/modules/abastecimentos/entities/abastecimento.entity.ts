@@ -1,6 +1,6 @@
 enum EstoqueMovimentadoType {
-  NAO,
-  SIM,
+  FALSO,
+  VERDADEIRO,
 }
 
 enum statusProcessamentoType {
