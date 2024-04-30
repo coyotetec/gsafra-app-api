@@ -10,6 +10,8 @@ import { AbastecimentosCiclosRepository } from 'src/modules/abastecimentos-ciclo
 import { FirebirdAbastecimentosCiclosRepository } from './firebird/repositories/firebird-abastecimentos-ciclos.repository';
 import { AbastecimentosCiclosTalhoesSafrasRepository } from 'src/modules/abastecimentos-ciclos-talhoes-safras/abastecimentos-ciclos-talhoes-safras.repository';
 import { FirebirdAbastecimentosCiclosTalhoesSafrasRepository } from './firebird/repositories/firebird-abastecimentos-ciclos-talhoes-safras.repository';
+import { AlmoxarifadosRepository } from 'src/modules/almoxarifados/almoxarifados.repository';
+import { FirebirdAlmoxarifadosRepository } from './firebird/repositories/firebird-almoxarifados.repository';
 import { PlanejamentosAtividadesRepository } from 'src/modules/planejamentos-atividades/planejamentos-atividades.repository';
 import { FirebirdPlanejamentosAtividadesRepository } from './firebird/repositories/firebird-planejamentos-atividades.repository';
 import { PlanejamentosAtividadesInsumosRepository } from 'src/modules/planejamentos-atividades-insumos/planejamentos-atividades-insumos.repository';
@@ -45,6 +47,9 @@ import { FirebirdAtividadesAgricolasTalhoesSafrasRepository } from './firebird/r
       provide: AbastecimentosCiclosTalhoesSafrasRepository,
       useClass: FirebirdAbastecimentosCiclosTalhoesSafrasRepository,
     },
+    {
+      provide: AlmoxarifadosRepository,
+      useClass: FirebirdAlmoxarifadosRepository,
     {
       provide: PlanejamentosAtividadesRepository,
       useClass: FirebirdPlanejamentosAtividadesRepository,
@@ -84,6 +89,7 @@ import { FirebirdAtividadesAgricolasTalhoesSafrasRepository } from './firebird/r
     PatrimoniosRepository,
     AbastecimentosCiclosRepository,
     AbastecimentosCiclosTalhoesSafrasRepository,
+    AlmoxarifadosRepository,
     PlanejamentosAtividadesRepository,
     PlanejamentosAtividadesInsumosRepository,
     PlanejamentosAtividadesMaquinasRepository,
