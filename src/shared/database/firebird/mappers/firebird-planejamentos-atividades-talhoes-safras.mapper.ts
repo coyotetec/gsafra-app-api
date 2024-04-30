@@ -1,4 +1,4 @@
-import { PlanejamentoAtividadeTalhaoSafra } from 'src/modules/planejamentos-atividades-talhoes-safra/entities/planejamento-atividade-talhao-safra.entity';
+import { PlanejamentoAtividadeTalhaoSafra } from 'src/modules/planejamentos-atividades-talhoes-safras/entities/planejamento-atividade-talhao-safra.entity';
 
 interface FirebirdPlanejamentoAtividadeTalhaoSafra {
   ID: number;
