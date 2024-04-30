@@ -12,6 +12,8 @@ import { AbastecimentosCiclosTalhoesSafrasRepository } from 'src/modules/abastec
 import { FirebirdAbastecimentosCiclosTalhoesSafrasRepository } from './firebird/repositories/firebird-abastecimentos-ciclos-talhoes-safras.repository';
 import { AlmoxarifadosRepository } from 'src/modules/almoxarifados/almoxarifados.repository';
 import { FirebirdAlmoxarifadosRepository } from './firebird/repositories/firebird-almoxarifados.repository';
+import { ProdutosAlmoxarifadoRepository } from 'src/modules/produtos-almoxarifado/produtos-almoxarifado.repository';
+import { FirebirdProdutosAlmoxarifadoRepository } from './firebird/repositories/firebird-produtos-almoxarifado.repository';
 import { PlanejamentosAtividadesRepository } from 'src/modules/planejamentos-atividades/planejamentos-atividades.repository';
 import { FirebirdPlanejamentosAtividadesRepository } from './firebird/repositories/firebird-planejamentos-atividades.repository';
 import { PlanejamentosAtividadesInsumosRepository } from 'src/modules/planejamentos-atividades-insumos/planejamentos-atividades-insumos.repository';
@@ -50,6 +52,7 @@ import { FirebirdAtividadesAgricolasTalhoesSafrasRepository } from './firebird/r
     {
       provide: AlmoxarifadosRepository,
       useClass: FirebirdAlmoxarifadosRepository,
+    },
     {
       provide: PlanejamentosAtividadesRepository,
       useClass: FirebirdPlanejamentosAtividadesRepository,
@@ -82,6 +85,10 @@ import { FirebirdAtividadesAgricolasTalhoesSafrasRepository } from './firebird/r
       provide: AtividadesAgricolasTalhoesSafrasRepository,
       useClass: FirebirdAtividadesAgricolasTalhoesSafrasRepository,
     },
+    {
+      provide: ProdutosAlmoxarifadoRepository,
+      useClass: FirebirdProdutosAlmoxarifadoRepository,
+    },
   ],
   exports: [
     UsuariosRepository,
@@ -90,6 +97,7 @@ import { FirebirdAtividadesAgricolasTalhoesSafrasRepository } from './firebird/r
     AbastecimentosCiclosRepository,
     AbastecimentosCiclosTalhoesSafrasRepository,
     AlmoxarifadosRepository,
+    ProdutosAlmoxarifadoRepository,
     PlanejamentosAtividadesRepository,
     PlanejamentosAtividadesInsumosRepository,
     PlanejamentosAtividadesMaquinasRepository,
