@@ -16,6 +16,10 @@ import { ProdutosAlmoxarifadoRepository } from 'src/modules/produtos-almoxarifad
 import { FirebirdProdutosAlmoxarifadoRepository } from './firebird/repositories/firebird-produtos-almoxarifado.repository';
 import { UnidadesRepository } from 'src/modules/unidades/unidades.repository';
 import { FirebirdUnidadesRepository } from './firebird/repositories/firebird-unidades.repository';
+import { CulturasRepository } from 'src/modules/culturas/culturas.repository';
+import { FirebirdCulturasRepository } from './firebird/repositories/firebird-culturas.repository';
+import { SafrasRepository } from 'src/modules/safras/safras.repository';
+import { FirebirdSafrasRepository } from './firebird/repositories/firebird-safras.repository';
 import { PlanejamentosAtividadesRepository } from 'src/modules/planejamentos-atividades/planejamentos-atividades.repository';
 import { FirebirdPlanejamentosAtividadesRepository } from './firebird/repositories/firebird-planejamentos-atividades.repository';
 import { PlanejamentosAtividadesInsumosRepository } from 'src/modules/planejamentos-atividades-insumos/planejamentos-atividades-insumos.repository';
@@ -95,6 +99,8 @@ import { FirebirdAtividadesAgricolasTalhoesSafrasRepository } from './firebird/r
       provide: UnidadesRepository,
       useClass: FirebirdUnidadesRepository,
     },
+    { provide: CulturasRepository, useClass: FirebirdCulturasRepository },
+    { provide: SafrasRepository, useClass: FirebirdSafrasRepository },
   ],
   exports: [
     UsuariosRepository,
@@ -105,6 +111,8 @@ import { FirebirdAtividadesAgricolasTalhoesSafrasRepository } from './firebird/r
     AlmoxarifadosRepository,
     ProdutosAlmoxarifadoRepository,
     UnidadesRepository,
+    CulturasRepository,
+    SafrasRepository,
     PlanejamentosAtividadesRepository,
     PlanejamentosAtividadesInsumosRepository,
     PlanejamentosAtividadesMaquinasRepository,
