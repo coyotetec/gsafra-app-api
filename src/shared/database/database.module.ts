@@ -50,6 +50,8 @@ import { FasesAplicacaoRepository } from 'src/modules/fases-aplicacao/fases-apli
 import { FirebirdFasesAplicacaoRepository } from './firebird/repositories/firebird-fases-aplicacao.repository';
 import { TiposAplicacaoRepository } from 'src/modules/tipos-aplicacao/tipos-aplicacao.repository';
 import { FirebirdTiposAplicacaoRepository } from './firebird/repositories/firebird-tipos-aplicacao.repository';
+import { EstadiosFenologicosRepository } from 'src/modules/estadios-fenologicos/estadios-fenologicos.repository';
+import { FirebirdEstadiosFenologicosRepository } from './firebird/repositories/firebird-estadios-fenologicos.repository';
 
 @Global()
 @Module({
@@ -133,6 +135,10 @@ import { FirebirdTiposAplicacaoRepository } from './firebird/repositories/firebi
       provide: TiposAplicacaoRepository,
       useClass: FirebirdTiposAplicacaoRepository,
     },
+    {
+      provide: EstadiosFenologicosRepository,
+      useClass: FirebirdEstadiosFenologicosRepository,
+    },
   ],
   exports: [
     UsuariosRepository,
@@ -159,6 +165,7 @@ import { FirebirdTiposAplicacaoRepository } from './firebird/repositories/firebi
     TiposAtividadesRepository,
     FasesAplicacaoRepository,
     TiposAplicacaoRepository,
+    EstadiosFenologicosRepository,
   ],
 })
 export class DatabaseModule {}

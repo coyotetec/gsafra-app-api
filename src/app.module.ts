@@ -24,6 +24,7 @@ import { TalhoesSafrasModule } from './modules/talhoes-safras/talhoes-safras.mod
 import { TiposAtividadesModule } from './modules/tipos-atividades/tipos-atividades.module';
 import { FasesAplicacaoModule } from './modules/fases-aplicacao/fases-aplicacao.module';
 import { TiposAplicacaoModule } from './modules/tipos-aplicacao/tipos-aplicacao.module';
+import { EstadiosFenologicosModule } from './modules/estadios-fenologicos/estadios-fenologicos.module';
 
 @Module({
   imports: [
@@ -52,6 +53,7 @@ import { TiposAplicacaoModule } from './modules/tipos-aplicacao/tipos-aplicacao.
     TiposAtividadesModule,
     FasesAplicacaoModule,
     TiposAplicacaoModule,
+    EstadiosFenologicosModule,
   ],
   controllers: [],
   providers: [],
