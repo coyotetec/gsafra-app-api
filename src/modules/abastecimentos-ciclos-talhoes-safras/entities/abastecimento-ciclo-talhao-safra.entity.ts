@@ -1,11 +1,11 @@
 export class AbastecimentoCicloTalhaoSafra {
-  id: number;
+  id?: number;
   idAbastecimentoCiclo: number;
   idTalhaoSafra: number;
   proporcao: number;
   totalHectares: number;
   valor: number;
-  valorCustoAtual: number;
+  valorCustoAtual?: number;
 
   constructor(props: AbastecimentoCicloTalhaoSafra) {
     this.id = props.id;

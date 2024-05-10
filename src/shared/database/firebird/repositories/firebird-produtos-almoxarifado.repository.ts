@@ -22,4 +22,15 @@ export class FirebirdProdutosAlmoxarifadoRepository
       FireBirdProdutosAlmoxarifadoMapper.toDomain,
     );
   }
+
+  async findBydId(host: string, code: string, id: number) {
+    return (
+      await this.fireBirdService.query<ProdutoAlmoxarifado>(
+        host,
+        code,
+        `SELECT * FROM PRODUTO_ALMOXARIFADO pa WHERE pa.ID = ${id}`,
+        FireBirdProdutosAlmoxarifadoMapper.toDomain,
+      )
+    )[0];
+  }
 }

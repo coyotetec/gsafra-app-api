@@ -1,4 +1,5 @@
 import { Abastecimento } from 'src/modules/abastecimentos/entities/abastecimento.entity';
+import { CreatedAbastecimento } from 'src/modules/abastecimentos/entities/created-abastecimento.entity';
 
 interface FirebirdAbastecimento {
   ID: number;
@@ -19,6 +20,10 @@ interface FirebirdAbastecimento {
   STATUS_PROCESSAMENTO: number;
   TOTAL_ATUAL: number;
   TOTAL_MEDIO: number;
+}
+
+interface FirebirdCreateAbastecimento {
+  ID: number;
 }
 
 export class FirebirdAbastecimentosMapper {
@@ -42,6 +47,14 @@ export class FirebirdAbastecimentosMapper {
       statusProcessamento: raw.STATUS_PROCESSAMENTO,
       totalAtual: raw.TOTAL_ATUAL,
       totalMedio: raw.TOTAL_MEDIO,
+    });
+  }
+
+  static toCreateDomain(
+    raw: FirebirdCreateAbastecimento,
+  ): CreatedAbastecimento {
+    return new CreatedAbastecimento({
+      id: raw.ID,
     });
   }
 }

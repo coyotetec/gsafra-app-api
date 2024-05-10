@@ -4,7 +4,12 @@ import { env } from 'src/shared/config/env';
 
 @Injectable()
 export class FirebirdService {
-  query<T>(host: string, code: string, query: string, mapper: (raw: any) => T) {
+  query<T>(
+    host: string,
+    code: string,
+    query: string,
+    mapper?: (raw: any) => T,
+  ) {
     return new Promise<T[]>((resolve, reject) => {
       Firebird.attach(this.generateConfig(host, code), (attachError, db) => {
         if (attachError) {
@@ -18,7 +23,15 @@ export class FirebirdService {
             return reject(queryError);
           }
 
-          resolve(result.map((row) => mapper(row)));
+          if (mapper) {
+            if (!Array.isArray(result)) {
+              result = [result];
+            }
+
+            resolve(result.map((row) => mapper(row)));
+          } else {
+            resolve([]);
+          }
         });
       });
     });

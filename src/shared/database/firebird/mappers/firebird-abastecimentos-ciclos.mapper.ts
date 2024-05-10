@@ -1,4 +1,5 @@
 import { AbastecimentoCiclo } from 'src/modules/abastecimentos-ciclos/entities/abastecimento-ciclo.entity';
+import { CreatedAbastecimentoCiclo } from 'src/modules/abastecimentos-ciclos/entities/created-abasteciment-ciclo.entity';
 
 interface FirebirdAbastecimentoCiclo {
   ID: number;
@@ -7,8 +8,13 @@ interface FirebirdAbastecimentoCiclo {
   PROPORCAO: number;
   QTDE_TALHOES: number;
   TODOS_TALHOES: number;
+  TOTAL_HECTARES: number;
   VALOR: number;
   VALOR_CUSTO_ATUAL: number;
+}
+
+interface FirebirdCreatedAbastecimentoCiclo {
+  ID: number;
 }
 
 export class FirebirdAbastecimentosCiclosMapper {
@@ -20,8 +26,17 @@ export class FirebirdAbastecimentosCiclosMapper {
       proporcao: raw.PROPORCAO,
       qtdeTalhoes: raw.QTDE_TALHOES,
       todosTalhoes: raw.TODOS_TALHOES,
+      totalHectares: raw.TOTAL_HECTARES,
       valor: raw.VALOR,
       valorCustoAtual: raw.VALOR_CUSTO_ATUAL,
+    });
+  }
+
+  static toCreatedDomain(
+    raw: FirebirdCreatedAbastecimentoCiclo,
+  ): CreatedAbastecimentoCiclo {
+    return new CreatedAbastecimentoCiclo({
+      id: raw.ID,
     });
   }
 }

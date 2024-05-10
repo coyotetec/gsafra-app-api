@@ -5,4 +5,10 @@ export abstract class AbastecimentosCiclosTalhoesSafrasRepository {
     host: string,
     code: string,
   ): Promise<AbastecimentoCicloTalhaoSafra[]>;
+
+  abstract create(
+    host: string,
+    code: string,
+    abastecimentoCicloTalhaoSafra: AbastecimentoCicloTalhaoSafra,
+  ): Promise<void>;
 }

@@ -5,5 +5,6 @@ import { AbastecimentosCiclosTalhoesSafrasController } from './abastecimentos-ci
 @Module({
   controllers: [AbastecimentosCiclosTalhoesSafrasController],
   providers: [AbastecimentosCiclosTalhoesSafrasService],
+  exports: [AbastecimentosCiclosTalhoesSafrasService],
 })
 export class AbastecimentosCiclosTalhoesSafrasModule {}

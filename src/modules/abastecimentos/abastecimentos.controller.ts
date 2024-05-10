@@ -1,9 +1,10 @@
-import { Controller, Get } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { AbastecimentosService } from './abastecimentos.service';
 import {
   DBConnectionData,
   DBConnectionDataType,
 } from 'src/shared/decorators/DBConnectionData';
+import { CreateAbastecimentoDto } from './dto/create-abastecimento.dto';
 
 @Controller('abastecimentos')
 export class AbastecimentosController {
@@ -12,5 +13,17 @@ export class AbastecimentosController {
   @Get()
   findAll(@DBConnectionData() { host, code }: DBConnectionDataType) {
     return this.abastecimentosService.findAll(host, code);
+  }
+
+  @Post()
+  create(
+    @DBConnectionData() { host, code }: DBConnectionDataType,
+    @Body() createAbastecimentoDto: CreateAbastecimentoDto,
+  ) {
+    return this.abastecimentosService.create(
+      host,
+      code,
+      createAbastecimentoDto,
+    );
   }
 }

@@ -4,12 +4,13 @@ enum TodosTalhoesType {
 }
 
 export class AbastecimentoCiclo {
-  id: number;
+  id?: number;
   idAbastecimento: number;
   idCicloProducao: number;
   proporcao: number;
   qtdeTalhoes: number;
-  todosTalhoes: TodosTalhoesType;
+  todosTalhoes?: TodosTalhoesType;
+  totalHectares: number;
   valor: number;
   valorCustoAtual: number;
 
@@ -20,6 +21,7 @@ export class AbastecimentoCiclo {
     this.proporcao = props.proporcao;
     this.qtdeTalhoes = props.qtdeTalhoes;
     this.todosTalhoes = props.todosTalhoes;
+    this.totalHectares = props.totalHectares;
     this.valor = props.valor;
     this.valorCustoAtual = props.valorCustoAtual;
   }

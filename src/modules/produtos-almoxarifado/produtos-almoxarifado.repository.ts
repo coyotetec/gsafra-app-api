@@ -6,4 +6,10 @@ export abstract class ProdutosAlmoxarifadoRepository {
     host,
     code,
   }: DBConnectionDataType): Promise<ProdutoAlmoxarifado[]>;
+
+  abstract findBydId(
+    host: string,
+    code: string,
+    id: number,
+  ): Promise<ProdutoAlmoxarifado | undefined>;
 }

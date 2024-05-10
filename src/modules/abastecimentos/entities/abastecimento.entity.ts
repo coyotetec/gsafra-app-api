@@ -1,31 +1,31 @@
-enum EstoqueMovimentadoType {
+export enum EstoqueMovimentadoType {
   FALSO,
   VERDADEIRO,
 }
 
-enum statusProcessamentoType {
+export enum StatusProcessamentoType {
   PENDENTE = 1,
   APROVADO = 2,
   REPROVADO = 3,
 }
 
 export class Abastecimento {
-  id: number;
-  idAgriAtvMaquina: number;
-  idAlmoxarifado: number;
+  id?: number;
+  idAgriAtvMaquina?: number;
+  idAlmoxarifado?: number;
   idPatrimonio: number;
   idProdutoAlmoxarifado: number;
-  idUsuario: number;
+  idUsuario?: number;
   custoAtual: number;
   custoMedio: number;
   data: Date;
-  dispositivo: string;
-  dispositivoInformacoes: string;
+  dispositivo?: string;
+  dispositivoInformacoes?: string;
   estoqueMovimentado: EstoqueMovimentadoType;
-  horimetro: number;
-  numeroRequisicao: string;
+  horimetro?: number;
+  numeroRequisicao?: string;
   quantidade: number;
-  statusProcessamento: statusProcessamentoType;
+  statusProcessamento?: StatusProcessamentoType;
   totalAtual: number;
   totalMedio: number;
 
