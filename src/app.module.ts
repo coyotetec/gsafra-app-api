@@ -23,6 +23,7 @@ import { VariedadesModule } from './modules/variedades/variedades.module';
 import { TalhoesSafrasModule } from './modules/talhoes-safras/talhoes-safras.module';
 import { TiposAtividadesModule } from './modules/tipos-atividades/tipos-atividades.module';
 import { FasesAplicacaoModule } from './modules/fases-aplicacao/fases-aplicacao.module';
+import { TiposAplicacaoModule } from './modules/tipos-aplicacao/tipos-aplicacao.module';
 
 @Module({
   imports: [
@@ -50,6 +51,7 @@ import { FasesAplicacaoModule } from './modules/fases-aplicacao/fases-aplicacao.
     TalhoesSafrasModule,
     TiposAtividadesModule,
     FasesAplicacaoModule,
+    TiposAplicacaoModule,
   ],
   controllers: [],
   providers: [],

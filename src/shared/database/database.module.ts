@@ -48,6 +48,8 @@ import { TiposAtividadesRepository } from 'src/modules/tipos-atividades/tipos-at
 import { FirebirdTiposAtividadesRepository } from './firebird/repositories/firebird-tipos-atividades.repository';
 import { FasesAplicacaoRepository } from 'src/modules/fases-aplicacao/fases-aplicacao.repository';
 import { FirebirdFasesAplicacaoRepository } from './firebird/repositories/firebird-fases-aplicacao.repository';
+import { TiposAplicacaoRepository } from 'src/modules/tipos-aplicacao/tipos-aplicacao.repository';
+import { FirebirdTiposAplicacaoRepository } from './firebird/repositories/firebird-tipos-aplicacao.repository';
 
 @Global()
 @Module({
@@ -127,6 +129,10 @@ import { FirebirdFasesAplicacaoRepository } from './firebird/repositories/firebi
       provide: FasesAplicacaoRepository,
       useClass: FirebirdFasesAplicacaoRepository,
     },
+    {
+      provide: TiposAplicacaoRepository,
+      useClass: FirebirdTiposAplicacaoRepository,
+    },
   ],
   exports: [
     UsuariosRepository,
@@ -152,6 +158,7 @@ import { FirebirdFasesAplicacaoRepository } from './firebird/repositories/firebi
     TalhoesSafrasRepository,
     TiposAtividadesRepository,
     FasesAplicacaoRepository,
+    TiposAplicacaoRepository,
   ],
 })
 export class DatabaseModule {}
