@@ -5,4 +5,10 @@ export abstract class AtividadesAgricolasMaquinasRepository {
     host: string,
     code: string,
   ): Promise<AtividadeAgricolaMaquina[]>;
+
+  abstract create(
+    host: string,
+    code: string,
+    atividadeAgricolaMaquina: AtividadeAgricolaMaquina,
+  ): Promise<void>;
 }

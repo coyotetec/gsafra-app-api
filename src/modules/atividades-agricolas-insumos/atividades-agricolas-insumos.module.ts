@@ -5,5 +5,6 @@ import { AtividadesAgricolasInsumosService } from './atividades-agricolas-insumo
 @Module({
   controllers: [AtividadesAgricolasInsumosController],
   providers: [AtividadesAgricolasInsumosService],
+  exports: [AtividadesAgricolasInsumosService],
 })
 export class AtividadesAgricolasInsumosModule {}

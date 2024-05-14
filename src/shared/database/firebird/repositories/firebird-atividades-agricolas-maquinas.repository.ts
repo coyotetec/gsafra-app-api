@@ -18,4 +18,19 @@ export class FirebirdAtividadesAgricolasMaquinasRepository
       FirebirdAtividadesAgricolasMaquinasMapper.toDomain,
     );
   }
+
+  async create(
+    host: string,
+    code: string,
+    atividadeAgricolaMaquina: AtividadeAgricolaMaquina,
+  ) {
+    const { idAgriAtv, idPatrimonio, hrInicial, hrFinal, horas } =
+      atividadeAgricolaMaquina;
+
+    await this.firebird.query(
+      host,
+      code,
+      `INSERT INTO AGRI_ATV_MAQUINA (ID, ID_AGRI_ATV, ID_PATRIMONIO, HR_INICIAL, HR_FINAL, HORAS) VALUES (GEN_ID(GEN_AGRI_ATV_MAQUINA, 1), ${idAgriAtv}, ${idPatrimonio}, ${hrInicial || null}, ${hrFinal || null}, ${horas})`,
+    );
+  }
 }

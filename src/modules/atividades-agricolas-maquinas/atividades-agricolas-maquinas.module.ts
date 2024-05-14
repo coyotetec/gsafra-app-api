@@ -5,5 +5,6 @@ import { AtividadesAgricolasMaquinasService } from './atividades-agricolas-maqui
 @Module({
   controllers: [AtividadesAgricolasMaquinasController],
   providers: [AtividadesAgricolasMaquinasService],
+  exports: [AtividadesAgricolasMaquinasService],
 })
 export class AtividadesAgricolasMaquinasModule {}

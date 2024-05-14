@@ -1,5 +1,5 @@
 export class AtividadeAgricolaTalhaoSafra {
-  id: number;
+  id?: number;
   idAgriAtv: number;
   idTalhaoSafra: number;
   hectares: number;

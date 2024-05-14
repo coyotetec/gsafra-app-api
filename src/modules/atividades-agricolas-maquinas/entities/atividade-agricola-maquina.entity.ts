@@ -1,9 +1,9 @@
 export class AtividadeAgricolaMaquina {
-  id: number;
+  id?: number;
   idAgriAtv: number;
   idPatrimonio: number;
-  hrInicial: number;
-  hrFinal: number;
+  hrInicial?: number;
+  hrFinal?: number;
   horas: number;
 
   constructor(props: AtividadeAgricolaMaquina) {

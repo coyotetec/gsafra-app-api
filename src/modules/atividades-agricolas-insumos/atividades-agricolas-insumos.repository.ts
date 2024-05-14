@@ -5,4 +5,10 @@ export abstract class AtividadesAgricolasInsumosRepository {
     host: string,
     code: string,
   ): Promise<AtividadeAgricolaInsumo[]>;
+
+  abstract create(
+    host: string,
+    code: string,
+    atividadeAgricolaInsumo: AtividadeAgricolaInsumo,
+  ): Promise<void>;
 }

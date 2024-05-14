@@ -1,14 +1,14 @@
-enum EstoqueMovimentadoType {
+export enum EstoqueMovimentadoType {
   FALSO,
   VERDADEIRO,
 }
 
 export class AtividadeAgricolaInsumo {
-  id: number;
+  id?: number;
   idAgriAtv: number;
   idAlmoxarifado: number;
-  idFichaAplBombaProduto: number;
-  idPlanAtvInsumo: number;
+  idFichaAplBombaProduto?: number;
+  idPlanAtvInsumo?: number;
   idProdutoAlmoxarifado: number;
   idUnidade: number;
   custoAtual: number;

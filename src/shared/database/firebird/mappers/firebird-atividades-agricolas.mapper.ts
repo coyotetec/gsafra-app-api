@@ -1,4 +1,5 @@
 import { AtividadeAgricola } from 'src/modules/atividades-agricolas/entities/atividade-agricola.entity';
+import { CreatedAtividadeAgricola } from 'src/modules/atividades-agricolas/entities/created-atividade-agricola.entity';
 
 interface FirebirdAtividadeAgricola {
   ID: number;
@@ -22,6 +23,10 @@ interface FirebirdAtividadeAgricola {
   STATUS_PROCESSAMENTO: number;
   TOTAL_AREA: number;
   TOTAL_AREA_TRABALHADA: number;
+}
+
+interface FirebirdCreateAtividadeAgricola {
+  ID: number;
 }
 
 export class FirebirdAtividadesAgricolasMapper {
@@ -48,6 +53,14 @@ export class FirebirdAtividadesAgricolasMapper {
       statusProcessamento: raw.STATUS_PROCESSAMENTO,
       totalArea: raw.TOTAL_AREA,
       totalAreaTrabalhada: raw.TOTAL_AREA_TRABALHADA,
+    });
+  }
+
+  static toCreateDomain(
+    raw: FirebirdCreateAtividadeAgricola,
+  ): CreatedAtividadeAgricola {
+    return new CreatedAtividadeAgricola({
+      id: raw.ID,
     });
   }
 }

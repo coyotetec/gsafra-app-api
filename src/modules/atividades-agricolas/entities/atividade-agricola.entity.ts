@@ -5,32 +5,32 @@ enum SituacaoType {
   CONCLUIDA = 4,
 }
 
-enum StatusProcessamentoType {
+export enum StatusProcessamentoType {
   PENDENTE = 1,
   CONFIRMADO = 2,
   RECUSADO = 3,
 }
 
 export class AtividadeAgricola {
-  id: number;
-  idAgriAplicacaoFase: number;
+  id?: number;
+  idAgriAplicacaoFase?: number;
   idAgriFase: number;
-  idAgriTipoAplicacao: number;
+  idAgriTipoAplicacao?: number;
   idCicloProducao: number;
-  idDispositivo: number;
-  idEstacaoFenologico: number;
-  idFichaAplicacaoBomba: number;
-  idPlanAtv: number;
-  idTipoAtividade: number;
-  idUsuario: number;
-  dataInicio: Date;
-  dataTermino: Date;
-  descricao: string;
-  dispositivo: string;
-  dispositivoInformacoes: string;
-  obs: string;
+  idDispositivo?: number;
+  idEstacaoFenologico?: number;
+  idFichaAplicacaoBomba?: number;
+  idPlanAtv?: number;
+  idTipoAtividade?: number;
+  idUsuario?: number;
+  dataInicio?: Date;
+  dataTermino?: Date;
+  descricao?: string;
+  dispositivo?: string;
+  dispositivoInformacoes?: string;
+  obs?: string;
   situacao: SituacaoType;
-  statusProcessamento: StatusProcessamentoType;
+  statusProcessamento?: StatusProcessamentoType;
   totalArea: number;
   totalAreaTrabalhada: number;
 

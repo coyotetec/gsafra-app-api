@@ -18,4 +18,29 @@ export class FirebirdAtividadesAgricolasInsumosRepository
       FirebirdAtividadesAgricolasInsumosMapper.toDomain,
     );
   }
+
+  async create(
+    host: string,
+    code: string,
+    atividadeAgricolaInsumo: AtividadeAgricolaInsumo,
+  ) {
+    const {
+      idAgriAtv,
+      idAlmoxarifado,
+      idFichaAplBombaProduto,
+      idPlanAtvInsumo,
+      idProdutoAlmoxarifado,
+      idUnidade,
+      custoAtual,
+      custoMedio,
+      estoqueMovimentado,
+      qtde,
+    } = atividadeAgricolaInsumo;
+
+    await this.firebird.query(
+      host,
+      code,
+      `INSERT INTO AGRI_ATV_INSUMO (ID, ID_AGRI_ATV, ID_ALMOXARIFADO, ID_FICHA_APL_BOMBA_PRODUTO, ID_PLAN_ATV_INSUMO, ID_PRODUTO_ALMOXARIFADO, ID_UNIDADE, CUSTO_ATUAL, CUSTO_MEDIO, ESTOQUE_MOVIMENTADO, QTDE) VALUES (GEN_ID(GEN_AGRI_ATV_INSUMO, 1), ${idAgriAtv}, ${idAlmoxarifado}, ${idFichaAplBombaProduto || null}, ${idPlanAtvInsumo || null}, ${idProdutoAlmoxarifado}, ${idUnidade}, ${custoAtual}, ${custoMedio}, ${estoqueMovimentado}, ${qtde})`,
+    );
+  }
 }
