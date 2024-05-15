@@ -52,6 +52,10 @@ import { TiposAplicacaoRepository } from 'src/modules/tipos-aplicacao/tipos-apli
 import { FirebirdTiposAplicacaoRepository } from './firebird/repositories/firebird-tipos-aplicacao.repository';
 import { EstadiosFenologicosRepository } from 'src/modules/estadios-fenologicos/estadios-fenologicos.repository';
 import { FirebirdEstadiosFenologicosRepository } from './firebird/repositories/firebird-estadios-fenologicos.repository';
+import { DashboardFinanceiroRepository } from 'src/modules/dashboard-financeiro/dashboard-financeiro.repository';
+import { FirebirdDashboardFinanceiroRepository } from './firebird/repositories/firebird-dashboard-financeiro.repository';
+import { DashboardIndicadoresRepository } from 'src/modules/dashboard-indicadores/dashboard-indicadores.repository';
+import { FirebirdDashboardIndicadoresRepository } from './firebird/repositories/firebird-dashboard-indicadores.repository';
 
 @Global()
 @Module({
@@ -139,6 +143,14 @@ import { FirebirdEstadiosFenologicosRepository } from './firebird/repositories/f
       provide: EstadiosFenologicosRepository,
       useClass: FirebirdEstadiosFenologicosRepository,
     },
+    {
+      provide: DashboardFinanceiroRepository,
+      useClass: FirebirdDashboardFinanceiroRepository,
+    },
+    {
+      provide: DashboardIndicadoresRepository,
+      useClass: FirebirdDashboardIndicadoresRepository,
+    },
   ],
   exports: [
     UsuariosRepository,
@@ -166,6 +178,8 @@ import { FirebirdEstadiosFenologicosRepository } from './firebird/repositories/f
     FasesAplicacaoRepository,
     TiposAplicacaoRepository,
     EstadiosFenologicosRepository,
+    DashboardFinanceiroRepository,
+    DashboardIndicadoresRepository,
   ],
 })
 export class DatabaseModule {}

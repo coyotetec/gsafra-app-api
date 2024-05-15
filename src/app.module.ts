@@ -25,6 +25,8 @@ import { TiposAtividadesModule } from './modules/tipos-atividades/tipos-atividad
 import { FasesAplicacaoModule } from './modules/fases-aplicacao/fases-aplicacao.module';
 import { TiposAplicacaoModule } from './modules/tipos-aplicacao/tipos-aplicacao.module';
 import { EstadiosFenologicosModule } from './modules/estadios-fenologicos/estadios-fenologicos.module';
+import { DashboardFinanceiroModule } from './modules/dashboard-financeiro/dashboard-financeiro.module';
+import { DashboardIndicadoresModule } from './modules/dashboard-indicadores/dashboard-indicadores.module';
 
 @Module({
   imports: [
@@ -54,6 +56,8 @@ import { EstadiosFenologicosModule } from './modules/estadios-fenologicos/estadi
     FasesAplicacaoModule,
     TiposAplicacaoModule,
     EstadiosFenologicosModule,
+    DashboardFinanceiroModule,
+    DashboardIndicadoresModule,
   ],
   controllers: [],
   providers: [],
