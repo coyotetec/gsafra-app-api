@@ -6,4 +6,10 @@ export abstract class TalhoesSafrasRepository {
     code,
     host,
   }: DBConnectionDataType): Promise<TalhaoSafra[]>;
+
+  abstract findArea(
+    host: string,
+    code: string,
+    safraId: number,
+  ): Promise<number>;
 }

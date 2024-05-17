@@ -1,3 +1,4 @@
+import { TalhaoSafraArea } from 'src/modules/talhoes-safras/entities/talhao-safra-area.entity';
 import { TalhaoSafra } from 'src/modules/talhoes-safras/entities/talhao-safra.entity';
 
 interface FirebirdTalhaoSafra {
@@ -10,6 +11,10 @@ interface FirebirdTalhaoSafra {
   STATUS: number;
   ID_VARIEDADE: number;
   ID_ESTOQUE_AGRI_LOCAL: number;
+}
+
+interface FirebirdTalhaoSafraArea {
+  AREA: number;
 }
 
 export class FirebirdTalhoesSafraMapper {
@@ -25,5 +30,11 @@ export class FirebirdTalhoesSafraMapper {
       idVariedade: talhaoSafra.ID_VARIEDADE,
       idEstoqueAgriLocal: talhaoSafra.ID_ESTOQUE_AGRI_LOCAL,
     };
+  }
+
+  static toAreaDomain(raw: FirebirdTalhaoSafraArea): TalhaoSafraArea {
+    return new TalhaoSafraArea({
+      area: raw.AREA,
+    });
   }
 }
