@@ -6,6 +6,7 @@ export class AbastecimentoCicloTalhaoSafra {
   totalHectares: number;
   valor: number;
   valorCustoAtual?: number;
+  dataAtualizacao?: Date;
 
   constructor(props: AbastecimentoCicloTalhaoSafra) {
     this.id = props.id;
@@ -15,5 +16,6 @@ export class AbastecimentoCicloTalhaoSafra {
     this.totalHectares = props.totalHectares;
     this.valor = props.valor;
     this.valorCustoAtual = props.valorCustoAtual;
+    this.dataAtualizacao = props.dataAtualizacao;
   }
 }

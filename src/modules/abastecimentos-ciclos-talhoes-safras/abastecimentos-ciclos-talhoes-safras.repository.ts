@@ -4,6 +4,7 @@ export abstract class AbastecimentosCiclosTalhoesSafrasRepository {
   abstract findMany(
     host: string,
     code: string,
+    lastUpdatedAt?: Date,
   ): Promise<AbastecimentoCicloTalhaoSafra[]>;
 
   abstract create(

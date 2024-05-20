@@ -4,6 +4,7 @@ export class PlanejamentoAtividadeInsumo {
   idProdutoAlmoxarifado: number;
   idUnidade: number;
   qtde: number;
+  dataAtualizacao?: Date;
 
   constructor(props: PlanejamentoAtividadeInsumo) {
     this.id = props.id;
@@ -11,5 +12,6 @@ export class PlanejamentoAtividadeInsumo {
     this.idProdutoAlmoxarifado = props.idProdutoAlmoxarifado;
     this.idUnidade = props.idUnidade;
     this.qtde = props.qtde;
+    this.dataAtualizacao = props.dataAtualizacao;
   }
 }

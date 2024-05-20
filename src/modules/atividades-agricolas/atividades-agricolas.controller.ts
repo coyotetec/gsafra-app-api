@@ -1,10 +1,11 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query } from '@nestjs/common';
 import { AtividadesAgricolasService } from './atividades-agricolas.service';
 import {
   DBConnectionData,
   DBConnectionDataType,
 } from 'src/shared/decorators/DBConnectionData';
 import { CreateAtividadeAgricolaDto } from './dto/create-atividade-agricola.dto';
+import { ParseDatePipe } from 'src/shared/pipes/ParseDatePipe';
 
 @Controller('atividades-agricolas')
 export class AtividadesAgricolasController {
@@ -13,8 +14,11 @@ export class AtividadesAgricolasController {
   ) {}
 
   @Get()
-  findAll(@DBConnectionData() { host, code }: DBConnectionDataType) {
-    return this.atividadesAgricolasService.findAll(host, code);
+  findAll(
+    @DBConnectionData() { host, code }: DBConnectionDataType,
+    @Query('lastUpdatedAt', ParseDatePipe) lastUpdatedAt?: Date,
+  ) {
+    return this.atividadesAgricolasService.findAll(host, code, lastUpdatedAt);
   }
 
   @Post()

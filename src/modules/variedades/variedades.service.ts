@@ -6,7 +6,7 @@ import { VariedadesRepository } from './variedades.repository';
 export class VariedadesService {
   constructor(private readonly variedadesRepository: VariedadesRepository) {}
 
-  findAll({ host, code }: DBConnectionDataType) {
-    return this.variedadesRepository.findMany({ host, code });
+  findAll({ host, code }: DBConnectionDataType, lastUpdatedAt?: Date) {
+    return this.variedadesRepository.findMany({ host, code }, lastUpdatedAt);
   }
 }

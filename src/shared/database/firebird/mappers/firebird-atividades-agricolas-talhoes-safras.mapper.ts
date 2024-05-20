@@ -8,6 +8,7 @@ interface FirebirdAtividadeAgricolaTalhaoSafra {
   PROPORCAO: number;
   HECTARES_PLANEJAMENTO: number;
   PROPORCAO_PLANEJAMENTO: number;
+  DATA_ATUALIZACAO?: Date;
 }
 
 export class FirebirdAtividadesAgricolasTalhoesSafrasMapper {
@@ -22,6 +23,7 @@ export class FirebirdAtividadesAgricolasTalhoesSafrasMapper {
       proporcao: raw.PROPORCAO,
       hectaresPlanejamento: raw.HECTARES_PLANEJAMENTO,
       proporcaoPlanejamento: raw.PROPORCAO_PLANEJAMENTO,
+      dataAtualizacao: raw.DATA_ATUALIZACAO,
     });
   }
 }

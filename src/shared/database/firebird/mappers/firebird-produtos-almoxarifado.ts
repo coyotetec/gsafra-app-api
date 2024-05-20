@@ -23,6 +23,7 @@ interface FirebirdProdutoAlmoxarifado {
   CODIGO_PARALELO: string;
   PRECO_VENDA: number;
   MARGEM: number;
+  DATA_ATUALIZACAO?: Date;
 }
 
 export class FireBirdProdutosAlmoxarifadoMapper {
@@ -50,6 +51,7 @@ export class FireBirdProdutosAlmoxarifadoMapper {
       codigoParalelo: raw.CODIGO_PARALELO,
       precoVenda: raw.PRECO_VENDA,
       margem: raw.MARGEM,
+      dataAtualizacao: raw.DATA_ATUALIZACAO,
     });
   }
 }

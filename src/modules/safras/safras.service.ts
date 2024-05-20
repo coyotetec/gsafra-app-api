@@ -6,7 +6,7 @@ import { SafrasRepository } from './safras.repository';
 export class SafrasService {
   constructor(private readonly safraRepository: SafrasRepository) {}
 
-  findAll({ code, host }: DBConnectionDataType) {
-    return this.safraRepository.findMany({ code, host });
+  findAll({ code, host }: DBConnectionDataType, lastUpdatedAt?: Date) {
+    return this.safraRepository.findMany({ code, host }, lastUpdatedAt);
   }
 }

@@ -4,16 +4,20 @@ import { VariedadesRepository } from 'src/modules/variedades/variedades.reposito
 import { DBConnectionDataType } from 'src/shared/decorators/DBConnectionData';
 import { FirebirdService } from '../firebird.service';
 import { FirebirdVariedadesMapper } from '../mappers/firebird-variedades.mapper';
+import { format } from 'date-fns';
 
 @Injectable()
 export class FirebirdVariedadesRepository implements VariedadesRepository {
   constructor(private readonly firebirdService: FirebirdService) {}
 
-  findMany({ host, code }: DBConnectionDataType): Promise<Variedade[]> {
+  findMany(
+    { host, code }: DBConnectionDataType,
+    lastUpdatedAt?: Date,
+  ): Promise<Variedade[]> {
     return this.firebirdService.query<Variedade>(
       host,
       code,
-      'SELECT * FROM VARIEDADE',
+      `SELECT * FROM VARIEDADE ${lastUpdatedAt ? `WHERE DATA_ATUALIZACAO >= '${format(lastUpdatedAt, 'yyyy-MM-dd HH:mm:ss')}'` : ''}`,
       FirebirdVariedadesMapper.toDomain,
     );
   }

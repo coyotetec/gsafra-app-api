@@ -13,6 +13,7 @@ export class TalhaoSafra {
   status: StatusType;
   idVariedade: number;
   idEstoqueAgriLocal: number;
+  dataAtualizacao?: Date;
 
   constructor(props: TalhaoSafra) {
     this.id = props.id;
@@ -23,5 +24,6 @@ export class TalhaoSafra {
     this.dataFim = props.dataFim;
     this.idVariedade = props.idVariedade;
     this.idEstoqueAgriLocal = props.idEstoqueAgriLocal;
+    this.dataAtualizacao = props.dataAtualizacao;
   }
 }

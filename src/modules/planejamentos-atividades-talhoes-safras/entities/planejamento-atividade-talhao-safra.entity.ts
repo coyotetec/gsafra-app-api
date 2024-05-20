@@ -4,6 +4,7 @@ export class PlanejamentoAtividadeTalhaoSafra {
   idTalhaoSafra: number;
   hectares: number;
   proporcao: number;
+  dataAtualizacao?: Date;
 
   constructor(props: PlanejamentoAtividadeTalhaoSafra) {
     this.id = props.id;
@@ -11,5 +12,6 @@ export class PlanejamentoAtividadeTalhaoSafra {
     this.idTalhaoSafra = props.idTalhaoSafra;
     this.hectares = props.hectares;
     this.proporcao = props.proporcao;
+    this.dataAtualizacao = props.dataAtualizacao;
   }
 }

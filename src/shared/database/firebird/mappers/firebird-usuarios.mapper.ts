@@ -13,6 +13,7 @@ interface FirebirdUsuario {
   WHATSAPP_NOIFICACAO: string;
   STATUS: number;
   DATA_CADASTRO: Date;
+  DATA_ATUALIZACAO?: Date;
 }
 
 export class FirebirdUsuariosMapper {
@@ -30,6 +31,7 @@ export class FirebirdUsuariosMapper {
       whatsappNotificacao: raw.WHATSAPP_NOIFICACAO,
       status: raw.STATUS,
       dataCadastro: raw.DATA_CADASTRO,
+      dataAtualizacao: raw.DATA_ATUALIZACAO,
     });
   }
 }

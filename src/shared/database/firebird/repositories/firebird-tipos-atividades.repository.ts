@@ -3,6 +3,8 @@ import { TiposAtividadesRepository } from 'src/modules/tipos-atividades/tipos-at
 import { FirebirdService } from '../firebird.service';
 import { TipoAtividade } from 'src/modules/tipos-atividades/entities/tipos-atividade.entity';
 import { FirebirdTiposAtividadesMapper } from '../mappers/firebird-tipos-atividades.mapper';
+import { DBConnectionDataType } from 'src/shared/decorators/DBConnectionData';
+import { format } from 'date-fns';
 
 @Injectable()
 export class FirebirdTiposAtividadesRepository
@@ -10,11 +12,11 @@ export class FirebirdTiposAtividadesRepository
 {
   constructor(private readonly firebirdService: FirebirdService) {}
 
-  async findMany({ code, host }) {
+  async findMany({ code, host }: DBConnectionDataType, lastUpdatedAt?: Date) {
     return this.firebirdService.query<TipoAtividade>(
       host,
       code,
-      'SELECT * FROM TIPO_ATIVIDADE',
+      `SELECT * FROM TIPO_ATIVIDADE ${lastUpdatedAt ? `WHERE DATA_ATUALIZACAO >= '${format(lastUpdatedAt, 'yyyy-MM-dd HH:mm:ss')}'` : ''}`,
       FirebirdTiposAtividadesMapper.toDomain,
     );
   }

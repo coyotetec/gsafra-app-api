@@ -11,6 +11,7 @@ interface FirebirdTalhaoSafra {
   STATUS: number;
   ID_VARIEDADE: number;
   ID_ESTOQUE_AGRI_LOCAL: number;
+  DATA_ATUALIZACAO?: Date;
 }
 
 interface FirebirdTalhaoSafraArea {
@@ -18,17 +19,18 @@ interface FirebirdTalhaoSafraArea {
 }
 
 export class FirebirdTalhoesSafraMapper {
-  static toDomain(talhaoSafra: FirebirdTalhaoSafra): TalhaoSafra {
+  static toDomain(raw: FirebirdTalhaoSafra): TalhaoSafra {
     return {
-      id: talhaoSafra.ID,
-      idTalhao: talhaoSafra.ID_TALHAO,
-      idCicloProducao: talhaoSafra.ID_CICLO_PRODUCAO,
-      hectares: talhaoSafra.HECTARES,
-      dataInicio: talhaoSafra.DATA_INICIO,
-      dataFim: talhaoSafra.DATA_FIM,
-      status: talhaoSafra.STATUS,
-      idVariedade: talhaoSafra.ID_VARIEDADE,
-      idEstoqueAgriLocal: talhaoSafra.ID_ESTOQUE_AGRI_LOCAL,
+      id: raw.ID,
+      idTalhao: raw.ID_TALHAO,
+      idCicloProducao: raw.ID_CICLO_PRODUCAO,
+      hectares: raw.HECTARES,
+      dataInicio: raw.DATA_INICIO,
+      dataFim: raw.DATA_FIM,
+      status: raw.STATUS,
+      idVariedade: raw.ID_VARIEDADE,
+      idEstoqueAgriLocal: raw.ID_ESTOQUE_AGRI_LOCAL,
+      dataAtualizacao: raw.DATA_ATUALIZACAO,
     };
   }
 

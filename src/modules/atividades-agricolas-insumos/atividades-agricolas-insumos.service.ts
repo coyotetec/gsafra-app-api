@@ -14,8 +14,12 @@ export class AtividadesAgricolasInsumosService {
     private produtosAlmoxarifadosRepository: ProdutosAlmoxarifadoRepository,
   ) {}
 
-  findAll(host: string, code: string) {
-    return this.atividadesAgricolasInsumosRepository.findMany(host, code);
+  findAll(host: string, code: string, lastUpdatedAt?: Date) {
+    return this.atividadesAgricolasInsumosRepository.findMany(
+      host,
+      code,
+      lastUpdatedAt,
+    );
   }
 
   async create(

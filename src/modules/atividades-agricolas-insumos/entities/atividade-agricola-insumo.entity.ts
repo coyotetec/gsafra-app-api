@@ -15,6 +15,7 @@ export class AtividadeAgricolaInsumo {
   custoMedio: number;
   estoqueMovimentado: EstoqueMovimentadoType;
   qtde: number;
+  dataAtualizacao?: Date;
 
   constructor(props: AtividadeAgricolaInsumo) {
     this.id = props.id;
@@ -28,5 +29,6 @@ export class AtividadeAgricolaInsumo {
     this.custoMedio = props.custoMedio;
     this.estoqueMovimentado = props.estoqueMovimentado;
     this.qtde = props.qtde;
+    this.dataAtualizacao = props.dataAtualizacao;
   }
 }

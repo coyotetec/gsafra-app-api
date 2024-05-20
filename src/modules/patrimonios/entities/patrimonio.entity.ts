@@ -133,6 +133,7 @@ export class Patrimonio {
   possuiAnexo: PossuiAnexoType;
   idEmpresa: number;
   identificador: string;
+  dataAtualizacao?: Date;
 
   constructor(props: Patrimonio) {
     this.id = props.id;
@@ -209,5 +210,6 @@ export class Patrimonio {
     this.possuiAnexo = props.possuiAnexo;
     this.idEmpresa = props.idEmpresa;
     this.identificador = props.identificador;
+    this.dataAtualizacao = props.dataAtualizacao;
   }
 }

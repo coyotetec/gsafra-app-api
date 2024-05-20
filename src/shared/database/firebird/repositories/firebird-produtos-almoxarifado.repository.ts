@@ -4,6 +4,7 @@ import { ProdutosAlmoxarifadoRepository } from 'src/modules/produtos-almoxarifad
 import { DBConnectionDataType } from 'src/shared/decorators/DBConnectionData';
 import { FirebirdService } from '../firebird.service';
 import { FireBirdProdutosAlmoxarifadoMapper } from '../mappers/firebird-produtos-almoxarifado';
+import { format } from 'date-fns';
 
 @Injectable()
 export class FirebirdProdutosAlmoxarifadoRepository
@@ -11,14 +12,14 @@ export class FirebirdProdutosAlmoxarifadoRepository
 {
   constructor(private readonly fireBirdService: FirebirdService) {}
 
-  findMany({
-    host,
-    code,
-  }: DBConnectionDataType): Promise<ProdutoAlmoxarifado[]> {
+  findMany(
+    { host, code }: DBConnectionDataType,
+    lastUpdatedAt?: Date,
+  ): Promise<ProdutoAlmoxarifado[]> {
     return this.fireBirdService.query<ProdutoAlmoxarifado>(
       host,
       code,
-      'SELECT * FROM PRODUTO_ALMOXARIFADO',
+      `SELECT * FROM PRODUTO_ALMOXARIFADO ${lastUpdatedAt ? `WHERE DATA_ATUALIZACAO >= '${format(lastUpdatedAt, 'yyyy-MM-dd HH:mm:ss')}'` : ''}`,
       FireBirdProdutosAlmoxarifadoMapper.toDomain,
     );
   }

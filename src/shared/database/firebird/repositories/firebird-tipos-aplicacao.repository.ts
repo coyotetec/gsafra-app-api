@@ -4,6 +4,7 @@ import { TiposAplicacaoRepository } from 'src/modules/tipos-aplicacao/tipos-apli
 import { DBConnectionDataType } from 'src/shared/decorators/DBConnectionData';
 import { FirebirdService } from '../firebird.service';
 import { FirebirdTiposAplicacaoMapper } from '../mappers/firebird-tipos-aplicacao.mapper';
+import { format } from 'date-fns';
 
 @Injectable()
 export class FirebirdTiposAplicacaoRepository
@@ -11,11 +12,14 @@ export class FirebirdTiposAplicacaoRepository
 {
   constructor(private readonly firebirdService: FirebirdService) {}
 
-  findAll({ code, host }: DBConnectionDataType): Promise<TipoAplicacao[]> {
+  findAll(
+    { code, host }: DBConnectionDataType,
+    lastUpdatedAt?: Date,
+  ): Promise<TipoAplicacao[]> {
     return this.firebirdService.query<TipoAplicacao>(
       host,
       code,
-      'SELECT * FROM AGRI_TIPO_APLICACAO',
+      `SELECT * FROM AGRI_TIPO_APLICACAO ${lastUpdatedAt ? `WHERE DATA_ATUALIZACAO >= '${format(lastUpdatedAt, 'yyyy-MM-dd HH:mm:ss')}'` : ''}`,
       FirebirdTiposAplicacaoMapper.toDomain,
     );
   }

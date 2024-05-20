@@ -6,6 +6,7 @@ export class AtividadeAgricolaTalhaoSafra {
   proporcao: number;
   hectaresPlanejamento: number;
   proporcaoPlanejamento: number;
+  dataAtualizacao?: Date;
 
   constructor(props: AtividadeAgricolaTalhaoSafra) {
     this.id = props.id;
@@ -15,5 +16,6 @@ export class AtividadeAgricolaTalhaoSafra {
     this.proporcao = props.proporcao;
     this.hectaresPlanejamento = props.hectaresPlanejamento;
     this.proporcaoPlanejamento = props.proporcaoPlanejamento;
+    this.dataAtualizacao = props.dataAtualizacao;
   }
 }

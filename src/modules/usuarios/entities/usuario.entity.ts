@@ -16,6 +16,7 @@ export class Usuario {
   whatsappNotificacao: string;
   status: StatusType;
   dataCadastro: Date;
+  dataAtualizacao?: Date;
 
   constructor(props: Usuario) {
     this.id = props.id;
@@ -30,5 +31,6 @@ export class Usuario {
     this.whatsappNotificacao = props.whatsappNotificacao;
     this.status = props.status;
     this.dataCadastro = props.dataCadastro;
+    this.dataAtualizacao = props.dataAtualizacao;
   }
 }

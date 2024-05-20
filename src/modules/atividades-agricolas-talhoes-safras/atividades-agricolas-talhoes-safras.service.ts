@@ -9,8 +9,12 @@ export class AtividadesAgricolasTalhoesSafrasService {
     private atividadesAgricolasTalhoesSafrasRepository: AtividadesAgricolasTalhoesSafrasRepository,
   ) {}
 
-  findAll(host: string, code: string) {
-    return this.atividadesAgricolasTalhoesSafrasRepository.findMany(host, code);
+  findAll(host: string, code: string, lastUpdatedAt?: Date) {
+    return this.atividadesAgricolasTalhoesSafrasRepository.findMany(
+      host,
+      code,
+      lastUpdatedAt,
+    );
   }
 
   async create(

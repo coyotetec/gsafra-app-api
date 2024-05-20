@@ -33,6 +33,7 @@ export class AtividadeAgricola {
   statusProcessamento?: StatusProcessamentoType;
   totalArea: number;
   totalAreaTrabalhada: number;
+  dataAtualizacao?: Date;
 
   constructor(props: AtividadeAgricola) {
     this.id = props.id;
@@ -56,5 +57,6 @@ export class AtividadeAgricola {
     this.statusProcessamento = props.statusProcessamento;
     this.totalArea = props.totalArea;
     this.totalAreaTrabalhada = props.totalAreaTrabalhada;
+    this.dataAtualizacao = props.dataAtualizacao;
   }
 }

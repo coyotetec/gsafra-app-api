@@ -7,7 +7,7 @@ export class TalhoesSafrasService {
   constructor(
     private readonly talhoesSafrasRepository: TalhoesSafrasRepository,
   ) {}
-  findAll({ code, host }: DBConnectionDataType) {
-    return this.talhoesSafrasRepository.findMany({ code, host });
+  findAll({ code, host }: DBConnectionDataType, lastUpdatedAt?: Date) {
+    return this.talhoesSafrasRepository.findMany({ code, host }, lastUpdatedAt);
   }
 }

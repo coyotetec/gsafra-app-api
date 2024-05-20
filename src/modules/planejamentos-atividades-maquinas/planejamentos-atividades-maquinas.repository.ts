@@ -4,5 +4,6 @@ export abstract class PlanejamentosAtividadesMaquinasRepository {
   abstract findMany(
     host: string,
     code: string,
+    lastUpdatedAt?: Date,
   ): Promise<PlanejamentoAtividadeMaquina[]>;
 }

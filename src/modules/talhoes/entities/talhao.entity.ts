@@ -12,6 +12,7 @@ export class Talhao {
   status: StatusType;
   idFazenda: number;
   coordenadas: string;
+  dataAtualizacao?: Date;
 
   constructor(props: Talhao) {
     this.id = props.id;
@@ -22,5 +23,6 @@ export class Talhao {
     this.status = props.status;
     this.idFazenda = props.idFazenda;
     this.coordenadas = props.coordenadas;
+    this.dataAtualizacao = props.dataAtualizacao;
   }
 }

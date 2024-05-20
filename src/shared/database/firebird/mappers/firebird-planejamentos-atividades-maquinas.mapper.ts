@@ -8,6 +8,7 @@ interface FirebirdPlanejamentoAtividadeMaquina {
   HORAS: number;
   OPERADOR: string;
   PREPARADOR_CALDA: string;
+  DATA_ATUALIZACAO?: Date;
 }
 
 export class FirebirdPlanejamentosAtividadesMaquinasMapper {
@@ -22,6 +23,7 @@ export class FirebirdPlanejamentosAtividadesMaquinasMapper {
       horas: raw.HORAS,
       operador: raw.OPERADOR,
       preparadorCalda: raw.PREPARADOR_CALDA,
+      dataAtualizacao: raw.DATA_ATUALIZACAO,
     });
   }
 }

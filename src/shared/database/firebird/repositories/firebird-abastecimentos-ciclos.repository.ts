@@ -4,6 +4,7 @@ import { AbastecimentoCiclo } from 'src/modules/abastecimentos-ciclos/entities/a
 import { FirebirdAbastecimentosCiclosMapper } from '../mappers/firebird-abastecimentos-ciclos.mapper';
 import { Injectable } from '@nestjs/common';
 import { CreatedAbastecimentoCiclo } from 'src/modules/abastecimentos-ciclos/entities/created-abasteciment-ciclo.entity';
+import { format } from 'date-fns';
 
 @Injectable()
 export class FirebirdAbastecimentosCiclosRepository
@@ -11,11 +12,11 @@ export class FirebirdAbastecimentosCiclosRepository
 {
   constructor(private firebird: FirebirdService) {}
 
-  findMany(host: string, code: string) {
+  findMany(host: string, code: string, lastUpdatedAt?: Date) {
     return this.firebird.query<AbastecimentoCiclo>(
       host,
       code,
-      'SELECT * FROM abastecimento_ciclo',
+      `SELECT * FROM ABASTECIMENTO_CICLO ${lastUpdatedAt ? `WHERE DATA_ATUALIZACAO >= '${format(lastUpdatedAt, 'yyyy-MM-dd HH:mm:ss')}'` : ''}`,
       FirebirdAbastecimentosCiclosMapper.toDomain,
     );
   }

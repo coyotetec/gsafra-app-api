@@ -5,7 +5,7 @@ import { UsuariosRepository } from './usuarios.repository';
 export class UsuariosService {
   constructor(private usuariosRepository: UsuariosRepository) {}
 
-  findAll(host: string, code: string) {
-    return this.usuariosRepository.findMany(host, code);
+  findAll(host: string, code: string, lastUpdatedAt?: Date) {
+    return this.usuariosRepository.findMany(host, code, lastUpdatedAt);
   }
 }

@@ -48,6 +48,7 @@ export class ProdutoAlmoxarifado {
   codigoParalelo: string;
   precoVenda: number;
   margem: number;
+  dataAtualizacao?: Date;
 
   constructor(props: ProdutoAlmoxarifado) {
     this.id = props.id;
@@ -72,5 +73,6 @@ export class ProdutoAlmoxarifado {
     this.codigoParalelo = props.codigoParalelo;
     this.precoVenda = props.precoVenda;
     this.margem = props.margem;
+    this.dataAtualizacao = props.dataAtualizacao;
   }
 }

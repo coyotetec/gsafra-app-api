@@ -3,6 +3,7 @@ import { PlanejamentosAtividadesRepository } from 'src/modules/planejamentos-ati
 import { FirebirdService } from '../firebird.service';
 import { PlanejamentoAtividade } from 'src/modules/planejamentos-atividades/entities/planejamento-atividade.entity';
 import { FirebirdPlanejamentosAtividadesMapper } from '../mappers/firebird-planejamentos-atividades.mapper';
+import { format } from 'date-fns';
 
 @Injectable()
 export class FirebirdPlanejamentosAtividadesRepository
@@ -10,11 +11,11 @@ export class FirebirdPlanejamentosAtividadesRepository
 {
   constructor(private firebird: FirebirdService) {}
 
-  findMany(host: string, code: string) {
+  findMany(host: string, code: string, lastUpdatedAt?: Date) {
     return this.firebird.query<PlanejamentoAtividade>(
       host,
       code,
-      'SELECT * FROM plan_atv',
+      `SELECT * FROM PLAN_ATV ${lastUpdatedAt ? `WHERE DATA_ATUALIZACAO >= '${format(lastUpdatedAt, 'yyyy-MM-dd HH:mm:ss')}'` : ''}`,
       FirebirdPlanejamentosAtividadesMapper.toDomain,
     );
   }

@@ -4,14 +4,16 @@ interface FirebirdEstadioFenologico {
   ID: number;
   ID_CULTURA: number;
   NOME: string;
+  DATA_ATUALIZACAO?: Date;
 }
 
 export class FirebirdEstadiosFenologicosMapper {
-  static toDomain(data: FirebirdEstadioFenologico): EstadioFenologico {
+  static toDomain(raw: FirebirdEstadioFenologico): EstadioFenologico {
     return new EstadioFenologico({
-      id: data.ID,
-      idCultura: data.ID_CULTURA,
-      nome: data.NOME,
+      id: raw.ID,
+      idCultura: raw.ID_CULTURA,
+      nome: raw.NOME,
+      dataAtualizacao: raw.DATA_ATUALIZACAO,
     });
   }
 }

@@ -3,6 +3,7 @@ import { FirebirdService } from '../firebird.service';
 import { AtividadesAgricolasTalhoesSafrasRepository } from 'src/modules/atividades-agricolas-talhoes-safras/atividades-agricolas-talhoes-safras.repository';
 import { FirebirdAtividadesAgricolasTalhoesSafrasMapper } from '../mappers/firebird-atividades-agricolas-talhoes-safras.mapper';
 import { AtividadeAgricolaTalhaoSafra } from 'src/modules/atividades-agricolas-talhoes-safras/entities/atividade-agricola-talhao-safra.entity';
+import { format } from 'date-fns';
 
 @Injectable()
 export class FirebirdAtividadesAgricolasTalhoesSafrasRepository
@@ -10,11 +11,11 @@ export class FirebirdAtividadesAgricolasTalhoesSafrasRepository
 {
   constructor(private firebird: FirebirdService) {}
 
-  findMany(host: string, code: string) {
+  findMany(host: string, code: string, lastUpdatedAt?: Date) {
     return this.firebird.query<AtividadeAgricolaTalhaoSafra>(
       host,
       code,
-      'SELECT * FROM agri_atv_talhao_safra',
+      `SELECT * FROM AGRI_ATV_TALHAO_SAFRA ${lastUpdatedAt ? `WHERE DATA_ATUALIZACAO >= '${format(lastUpdatedAt, 'yyyy-MM-dd HH:mm:ss')}'` : ''}`,
       FirebirdAtividadesAgricolasTalhoesSafrasMapper.toDomain,
     );
   }

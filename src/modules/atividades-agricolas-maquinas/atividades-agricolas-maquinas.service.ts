@@ -9,8 +9,12 @@ export class AtividadesAgricolasMaquinasService {
     private atividadesAgricolasMaquinasRepository: AtividadesAgricolasMaquinasRepository,
   ) {}
 
-  findAll(host: string, code: string) {
-    return this.atividadesAgricolasMaquinasRepository.findMany(host, code);
+  findAll(host: string, code: string, lastUpdatedAt?: Date) {
+    return this.atividadesAgricolasMaquinasRepository.findMany(
+      host,
+      code,
+      lastUpdatedAt,
+    );
   }
 
   async create(

@@ -10,6 +10,7 @@ interface FirebirdSafra {
   PRODUCAO_ESTIMADA: number;
   PRODUCAO_MINIMA: number;
   VALOR_MEDIO_VENDA: number;
+  DATA_ATUALIZACAO?: Date;
 }
 
 export class FireBirdSafrasMapper {
@@ -24,6 +25,7 @@ export class FireBirdSafrasMapper {
       producaoEstimada: raw.PRODUCAO_ESTIMADA,
       producaoMinima: raw.PRODUCAO_MINIMA,
       valorMedioVenda: raw.VALOR_MEDIO_VENDA,
+      dataAtualizacao: raw.DATA_ATUALIZACAO,
     });
   }
 }

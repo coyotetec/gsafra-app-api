@@ -9,6 +9,7 @@ export class Variedade {
   idCultura: number;
   ciclo: number;
   status: StatusType;
+  dataAtualizacao?: Date;
 
   constructor(props: Variedade) {
     this.id = props.id;
@@ -16,5 +17,6 @@ export class Variedade {
     this.idCultura = props.idCultura;
     this.ciclo = props.ciclo;
     this.status = props.status;
+    this.dataAtualizacao = props.dataAtualizacao;
   }
 }

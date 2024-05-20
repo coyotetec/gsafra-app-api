@@ -7,10 +7,11 @@ export class PlanejamentosAtividadesTalhoesSafrasService {
     private planejamentosAtividadesTalhoesSafrasRepository: PlanejamentosAtividadesTalhoesSafrasRepository,
   ) {}
 
-  findAll(host: string, code: string) {
+  findAll(host: string, code: string, lastUpdatedAt?: Date) {
     return this.planejamentosAtividadesTalhoesSafrasRepository.findMany(
       host,
       code,
+      lastUpdatedAt,
     );
   }
 }

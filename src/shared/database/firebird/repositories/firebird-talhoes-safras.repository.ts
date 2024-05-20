@@ -5,16 +5,20 @@ import { DBConnectionDataType } from 'src/shared/decorators/DBConnectionData';
 import { FirebirdService } from '../firebird.service';
 import { FirebirdTalhoesSafraMapper } from '../mappers/firebird-talhoes-safras.mapper';
 import { TalhaoSafraArea } from 'src/modules/talhoes-safras/entities/talhao-safra-area.entity';
+import { format } from 'date-fns';
 
 @Injectable()
 export class FirebirdTalhoesSafraRepository implements TalhoesSafrasRepository {
   constructor(private readonly firebird: FirebirdService) {}
 
-  findMany({ code, host }: DBConnectionDataType): Promise<TalhaoSafra[]> {
+  findMany(
+    { code, host }: DBConnectionDataType,
+    lastUpdatedAt?: Date,
+  ): Promise<TalhaoSafra[]> {
     return this.firebird.query<TalhaoSafra>(
       host,
       code,
-      'SELECT * FROM TALHAO_SAFRA',
+      `SELECT * FROM TALHAO_SAFRA ${lastUpdatedAt ? `WHERE DATA_ATUALIZACAO >= '${format(lastUpdatedAt, 'yyyy-MM-dd HH:mm:ss')}'` : ''}`,
       FirebirdTalhoesSafraMapper.toDomain,
     );
   }

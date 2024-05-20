@@ -11,6 +11,7 @@ interface FirebirdAbastecimentoCiclo {
   TOTAL_HECTARES: number;
   VALOR: number;
   VALOR_CUSTO_ATUAL: number;
+  DATA_ATUALIZACAO?: Date;
 }
 
 interface FirebirdCreatedAbastecimentoCiclo {
@@ -29,6 +30,7 @@ export class FirebirdAbastecimentosCiclosMapper {
       totalHectares: raw.TOTAL_HECTARES,
       valor: raw.VALOR,
       valorCustoAtual: raw.VALOR_CUSTO_ATUAL,
+      dataAtualizacao: raw.DATA_ATUALIZACAO,
     });
   }
 

@@ -3,6 +3,7 @@ import { FaseAplicacao } from 'src/modules/fases-aplicacao/entities/fase-aplicac
 interface FirebirdFaseAplicacao {
   ID: number;
   NOME: string;
+  DATA_ATUALIZACAO?: Date;
 }
 
 export class FirebirdFasesAplicacaoMapper {
@@ -10,6 +11,7 @@ export class FirebirdFasesAplicacaoMapper {
     return new FaseAplicacao({
       id: raw.ID,
       nome: raw.NOME,
+      dataAtualizacao: raw.DATA_ATUALIZACAO,
     });
   }
 }

@@ -6,6 +6,7 @@ export class PlanejamentoAtividadeMaquina {
   horas: number;
   operador: string;
   preparadorCalda: string;
+  dataAtualizacao?: Date;
 
   constructor(props: PlanejamentoAtividadeMaquina) {
     this.id = props.id;
@@ -15,5 +16,6 @@ export class PlanejamentoAtividadeMaquina {
     this.horas = props.horas;
     this.operador = props.operador;
     this.preparadorCalda = props.preparadorCalda;
+    this.dataAtualizacao = props.dataAtualizacao;
   }
 }

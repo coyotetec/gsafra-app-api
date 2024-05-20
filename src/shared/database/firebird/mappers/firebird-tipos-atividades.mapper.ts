@@ -9,19 +9,21 @@ interface FirebirdTipoAtividade {
   FERTILIZACAO: number;
   APLICACAO: number;
   COLHEITA: number;
+  DATA_ATUALIZACAO?: Date;
 }
 
 export class FirebirdTiposAtividadesMapper {
-  static toDomain(tipoAtividade: FirebirdTipoAtividade): TipoAtividade {
+  static toDomain(raw: FirebirdTipoAtividade): TipoAtividade {
     return {
-      id: tipoAtividade.ID,
-      nome: tipoAtividade.NOME,
-      preparoSolo: tipoAtividade.PREPARO_SOLO,
-      tratamentoSemente: tipoAtividade.TRATAMENTO_SEMENTE,
-      plantio: tipoAtividade.PLANTIO,
-      fertilizacao: tipoAtividade.FERTILIZACAO,
-      aplicacao: tipoAtividade.APLICACAO,
-      colheita: tipoAtividade.COLHEITA,
+      id: raw.ID,
+      nome: raw.NOME,
+      preparoSolo: raw.PREPARO_SOLO,
+      tratamentoSemente: raw.TRATAMENTO_SEMENTE,
+      plantio: raw.PLANTIO,
+      fertilizacao: raw.FERTILIZACAO,
+      aplicacao: raw.APLICACAO,
+      colheita: raw.COLHEITA,
+      dataAtualizacao: raw.DATA_ATUALIZACAO,
     };
   }
 }
