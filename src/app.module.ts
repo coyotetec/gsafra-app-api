@@ -27,6 +27,7 @@ import { TiposAplicacaoModule } from './modules/tipos-aplicacao/tipos-aplicacao.
 import { EstadiosFenologicosModule } from './modules/estadios-fenologicos/estadios-fenologicos.module';
 import { DashboardFinanceiroModule } from './modules/dashboard-financeiro/dashboard-financeiro.module';
 import { DashboardIndicadoresModule } from './modules/dashboard-indicadores/dashboard-indicadores.module';
+import { DashboardEstoqueGraosModule } from './modules/dashboard-estoque-graos/dashboard-estoque-graos.module';
 
 @Module({
   imports: [
@@ -58,6 +59,7 @@ import { DashboardIndicadoresModule } from './modules/dashboard-indicadores/dash
     EstadiosFenologicosModule,
     DashboardFinanceiroModule,
     DashboardIndicadoresModule,
+    DashboardEstoqueGraosModule,
   ],
   controllers: [],
   providers: [],
