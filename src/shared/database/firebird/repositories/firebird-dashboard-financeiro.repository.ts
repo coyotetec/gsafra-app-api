@@ -5,6 +5,7 @@ import { FirebirdDashboardFinanceiroMapper } from '../mappers/firebird-dashboard
 import { DashboardFinanceiroTotal } from 'src/modules/dashboard-financeiro/entities/dashboard-financeiro-total.entity';
 import { TotallizersFiltersDto } from 'src/modules/dashboard-financeiro/dto/totalizers-filters.dto';
 import { format } from 'date-fns';
+import { DashboardFinanceiroCardLimit } from 'src/modules/dashboard-financeiro/entities/dashboard-financeiro-card-limit.entity';
 
 @Injectable()
 export class FirebirdDashboardFinanceiroRepository
@@ -134,6 +135,70 @@ export class FirebirdDashboardFinanceiroRepository
         ${startDate ? `AND c.DATA_VENCIMENTO >= '${format(startDate, 'MM/dd/yyyy')}'` : ''}
         ${endDate ? `AND c.DATA_VENCIMENTO <= '${format(endDate, 'MM/dd/yyyy')}'` : ''}`,
         FirebirdDashboardFinanceiroMapper.toTotalDomain,
+      )
+    )[0];
+  }
+
+  async creditCardTotal(
+    host: string,
+    code: string,
+    filters: TotallizersFiltersDto,
+  ) {
+    const { startDate, endDate } = filters;
+
+    return (
+      await this.firebird.query<DashboardFinanceiroTotal>(
+        host,
+        code,
+        `SELECT 
+          COUNT(cpd.ID) AS QUANTIDADE,
+          COALESCE(SUM(cpd.VALOR), 0) AS TOTAL
+        FROM CARTAO_PAGAR_D cpd 
+        WHERE cpd.SITUACAO = 0
+        ${startDate ? `AND cpd.VENCIMENTO >= '${format(startDate, 'MM/dd/yyyy')}'` : ''}
+        ${endDate ? `AND cpd.VENCIMENTO <= '${format(endDate, 'MM/dd/yyyy')}'` : ''}`,
+        FirebirdDashboardFinanceiroMapper.toTotalDomain,
+      )
+    )[0];
+  }
+
+  async creditCardHarvestTotal(
+    host: string,
+    code: string,
+    filters: TotallizersFiltersDto,
+  ) {
+    const { startDate, endDate, harvestId } = filters;
+
+    return (
+      await this.firebird.query<DashboardFinanceiroTotal>(
+        host,
+        code,
+        `SELECT 
+          COUNT(cpd.ID) AS QUANTIDADE,
+          COALESCE(CAST(SUM(
+            cpd.VALOR *
+            (((cpda.VALOR * 100) / cpd.VALOR) / 100) *
+            (cpdc.PROPORCAO / 100)
+          ) AS NUMERIC(15,2)), 0) AS TOTAL
+        FROM CARTAO_PAGAR_D_CICLO cpdc 
+        INNER JOIN CARTAO_PAGAR_D_APROPRIACAO cpda ON cpda.ID = cpdc.ID_CARTAO_PAGAR_D_APROPRIACAO 
+        INNER JOIN CARTAO_PAGAR_D cpd ON cpd.ID = cpda.ID_CARTAO_PAGAR_D 
+        WHERE cpd.SITUACAO = 0
+        AND cpdc.ID_CICLO_PRODUCAO = ${harvestId}
+        ${startDate ? `AND cpd.VENCIMENTO >= '${format(startDate, 'MM/dd/yyyy')}'` : ''}
+        ${endDate ? `AND cpd.VENCIMENTO <= '${format(endDate, 'MM/dd/yyyy')}'` : ''}`,
+        FirebirdDashboardFinanceiroMapper.toTotalDomain,
+      )
+    )[0];
+  }
+
+  async creditCardLimit(host: string, code: string) {
+    return (
+      await this.firebird.query<DashboardFinanceiroCardLimit>(
+        host,
+        code,
+        `SELECT SUM(c.LIMITE) AS TOTAL FROM CARTAO c`,
+        FirebirdDashboardFinanceiroMapper.toCardLimitDomain,
       )
     )[0];
   }

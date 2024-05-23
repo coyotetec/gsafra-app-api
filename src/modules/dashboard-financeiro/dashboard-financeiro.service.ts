@@ -9,7 +9,7 @@ import { FindTotallizersDto } from './dto/find-totalizers.dto';
 @Injectable()
 export class DashboardFinanceiroService {
   constructor(
-    private dashbaordFinanceiroRepository: DashboardFinanceiroRepository,
+    private dashboardFinanceiroRepository: DashboardFinanceiroRepository,
   ) {}
 
   async findTotalizers(
@@ -20,62 +20,114 @@ export class DashboardFinanceiroService {
     const { harvestId, startDate, endDate } = findTotallizersDto;
 
     if (harvestId) {
-      const [payables, receivables, checksIssued, checksReceived] =
-        await Promise.all([
-          this.financialHarvestTotal(host, code, {
-            type: FinancialType.PAGAR,
-            startDate,
-            endDate,
-            harvestId,
-          }),
-          this.financialHarvestTotal(host, code, {
-            type: FinancialType.RECEBER,
-            startDate,
-            endDate,
-            harvestId,
-          }),
-          this.checksHarvestTotal(host, code, {
-            type: FinancialType.PAGAR,
-            startDate,
-            endDate,
-            harvestId,
-          }),
-          this.checksHarvestTotal(host, code, {
-            type: FinancialType.RECEBER,
-            startDate,
-            endDate,
-            harvestId,
-          }),
-        ]);
-
-      return { payables, receivables, checksIssued, checksReceived };
-    }
-
-    const [payables, receivables, checksIssued, checksReceived] =
-      await Promise.all([
-        this.financialTotal(host, code, {
+      const [
+        payables,
+        receivables,
+        checksIssued,
+        checksReceived,
+        creditCardTotal,
+        creditCardRealTotal,
+        creditCardLimit,
+      ] = await Promise.all([
+        this.financialHarvestTotal(host, code, {
           type: FinancialType.PAGAR,
           startDate,
           endDate,
+          harvestId,
         }),
-        this.financialTotal(host, code, {
+        this.financialHarvestTotal(host, code, {
           type: FinancialType.RECEBER,
           startDate,
           endDate,
+          harvestId,
         }),
-        this.checksTotal(host, code, {
+        this.checksHarvestTotal(host, code, {
           type: FinancialType.PAGAR,
           startDate,
           endDate,
+          harvestId,
         }),
-        this.checksTotal(host, code, {
+        this.checksHarvestTotal(host, code, {
           type: FinancialType.RECEBER,
           startDate,
           endDate,
+          harvestId,
         }),
+        this.creditCardTotal(host, code, { startDate, endDate, harvestId }),
+        this.creditCardTotal(host, code, {}),
+        this.creditCardLimit(host, code),
       ]);
 
-    return { payables, receivables, checksIssued, checksReceived };
+      const avaiableLimit = creditCardLimit.total - creditCardRealTotal.total;
+      const usagePercent = Math.round(
+        100 - (avaiableLimit * 100) / creditCardLimit.total,
+      );
+
+      return {
+        payables,
+        receivables,
+        checksIssued,
+        checksReceived,
+        creditCard: {
+          ...creditCardTotal,
+          totalLimit: creditCardLimit.total,
+          avaiableLimit,
+          usagePercent,
+        },
+      };
+    }
+
+    const [
+      payables,
+      receivables,
+      checksIssued,
+      checksReceived,
+      creditCardTotal,
+      creditCardRealTotal,
+      creditCardLimit,
+    ] = await Promise.all([
+      this.financialTotal(host, code, {
+        type: FinancialType.PAGAR,
+        startDate,
+        endDate,
+      }),
+      this.financialTotal(host, code, {
+        type: FinancialType.RECEBER,
+        startDate,
+        endDate,
+      }),
+      this.checksTotal(host, code, {
+        type: FinancialType.PAGAR,
+        startDate,
+        endDate,
+      }),
+      this.checksTotal(host, code, {
+        type: FinancialType.RECEBER,
+        startDate,
+        endDate,
+      }),
+      this.creditCardTotal(host, code, { startDate, endDate }),
+      this.creditCardTotal(host, code, {}),
+      this.creditCardLimit(host, code),
+    ]);
+
+    const avaiableLimit = creditCardLimit.total - creditCardRealTotal.total;
+    const usagePercent = Math.round(
+      100 - (avaiableLimit * 100) / creditCardLimit.total,
+    );
+
+    return {
+      payables,
+      receivables,
+      checksIssued,
+      checksReceived,
+      creditCard: {
+        ...creditCardTotal,
+        totalLimit: creditCardLimit.total,
+        avaiableLimit,
+        usagePercent,
+      },
+    };
   }
 
   private financialTotal(
@@ -83,7 +135,7 @@ export class DashboardFinanceiroService {
     code: string,
     totalizersFiltersDto: TotallizersFiltersDto,
   ) {
-    return this.dashbaordFinanceiroRepository.financialTotal(
+    return this.dashboardFinanceiroRepository.financialTotal(
       host,
       code,
       totalizersFiltersDto,
@@ -95,7 +147,7 @@ export class DashboardFinanceiroService {
     code: string,
     totalizersFiltersDto: TotallizersFiltersDto,
   ) {
-    return this.dashbaordFinanceiroRepository.financialHarvestTotal(
+    return this.dashboardFinanceiroRepository.financialHarvestTotal(
       host,
       code,
       totalizersFiltersDto,
@@ -107,7 +159,7 @@ export class DashboardFinanceiroService {
     code: string,
     totalizersFiltersDto: TotallizersFiltersDto,
   ) {
-    return this.dashbaordFinanceiroRepository.checksTotal(
+    return this.dashboardFinanceiroRepository.checksTotal(
       host,
       code,
       totalizersFiltersDto,
@@ -119,10 +171,38 @@ export class DashboardFinanceiroService {
     code: string,
     totalizersFiltersDto: TotallizersFiltersDto,
   ) {
-    return this.dashbaordFinanceiroRepository.checksHarvestTotal(
+    return this.dashboardFinanceiroRepository.checksHarvestTotal(
       host,
       code,
       totalizersFiltersDto,
     );
+  }
+
+  private creditCardTotal(
+    host: string,
+    code: string,
+    totalizersFiltersDto: TotallizersFiltersDto,
+  ) {
+    return this.dashboardFinanceiroRepository.creditCardTotal(
+      host,
+      code,
+      totalizersFiltersDto,
+    );
+  }
+
+  private creditCardHarvestTotal(
+    host: string,
+    code: string,
+    totalizersFiltersDto: TotallizersFiltersDto,
+  ) {
+    return this.dashboardFinanceiroRepository.creditCardHarvestTotal(
+      host,
+      code,
+      totalizersFiltersDto,
+    );
+  }
+
+  private creditCardLimit(host: string, code: string) {
+    return this.dashboardFinanceiroRepository.creditCardLimit(host, code);
   }
 }

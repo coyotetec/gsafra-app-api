@@ -28,6 +28,7 @@ import { EstadiosFenologicosModule } from './modules/estadios-fenologicos/estadi
 import { DashboardFinanceiroModule } from './modules/dashboard-financeiro/dashboard-financeiro.module';
 import { DashboardIndicadoresModule } from './modules/dashboard-indicadores/dashboard-indicadores.module';
 import { DashboardCustoProducaoModule } from './modules/dashboard-custo-producao/dashboard-custo-producao.module';
+import { DispositivosModule } from './modules/dispositivos/dispositivos.module';
 
 @Module({
   imports: [
@@ -60,6 +61,7 @@ import { DashboardCustoProducaoModule } from './modules/dashboard-custo-producao
     DashboardFinanceiroModule,
     DashboardIndicadoresModule,
     DashboardCustoProducaoModule,
+    DispositivosModule,
   ],
   controllers: [],
   providers: [],

@@ -17,7 +17,7 @@ export class FirebirdSafrasRepository implements SafrasRepository {
     return this.firebirdService.query<Safra>(
       host,
       code,
-      `SELECT * FROM PLAN_ATV_INSUMO ${lastUpdatedAt ? `WHERE DATA_ATUALIZACAO >= '${format(lastUpdatedAt, 'yyyy-MM-dd HH:mm:ss')}'` : ''}`,
+      `SELECT * FROM CICLO_PRODUCAO ${lastUpdatedAt ? `WHERE DATA_ATUALIZACAO >= '${format(lastUpdatedAt, 'yyyy-MM-dd HH:mm:ss')}'` : ''}`,
       FireBirdSafrasMapper.toDomain,
     );
   }

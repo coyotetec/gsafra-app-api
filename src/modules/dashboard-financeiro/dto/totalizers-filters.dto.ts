@@ -4,7 +4,7 @@ export enum FinancialType {
 }
 
 export class TotallizersFiltersDto {
-  type: FinancialType;
+  type?: FinancialType;
   startDate?: Date;
   endDate?: Date;
   harvestId?: number;

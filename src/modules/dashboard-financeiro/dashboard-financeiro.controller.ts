@@ -22,7 +22,7 @@ export class DashboardFinanceiroController {
   async findTotalizers(
     @DBConnectionData() { host, code }: DBConnectionDataType,
     @Query('startDate') startDate: string,
-    @Query('endData') endDate: string,
+    @Query('endDate') endDate: string,
     @Query('harvestId', new ParseIntPipe({ optional: true })) harvestId: number,
   ) {
     const parsedStartDate = startDate
