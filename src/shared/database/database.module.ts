@@ -57,7 +57,7 @@ import { FirebirdDashboardFinanceiroRepository } from './firebird/repositories/f
 import { DashboardIndicadoresRepository } from 'src/modules/dashboard-indicadores/dashboard-indicadores.repository';
 import { FirebirdDashboardIndicadoresRepository } from './firebird/repositories/firebird-dashboard-indicadores.repository';
 import { DashboardEstoqueGraosRepository } from 'src/modules/dashboard-estoque-graos/dashboard-estoque-graos.repository';
-import { FirebirdDashboardEstoqueGraosRepository } from './firebird/repositories/firebird-dashboad-estoque-graos.repository';
+import { FirebirdDashboardEstoqueGraosRepository } from './firebird/repositories/firebird-dashboard-estoque-graos.repository';
 import { DashboardCustoProducaoRepository } from 'src/modules/dashboard-custo-producao/dashboard-custo-producao.repository';
 import { FirebirdDashboardCustoProducaoRepository } from './firebird/repositories/firebird-dashboard-custo-producao.repository';
 

@@ -1,4 +1,6 @@
-export class DashboardEstoqueGraosEntries {
+export class DashboardEstoqueGraosProdutorEntries {
+  producerId: number;
+  producer: string;
   weight: number;
   ratingDiscount: number;
   receivingFee: number;
@@ -7,7 +9,9 @@ export class DashboardEstoqueGraosEntries {
   technicalBreaks: number;
   netWeight: number;
 
-  constructor(props: DashboardEstoqueGraosEntries) {
+  constructor(props: DashboardEstoqueGraosProdutorEntries) {
+    this.producerId = props.producerId;
+    this.producer = props.producer;
     this.weight = props.weight;
     this.ratingDiscount = props.ratingDiscount;
     this.receivingFee = props.receivingFee;

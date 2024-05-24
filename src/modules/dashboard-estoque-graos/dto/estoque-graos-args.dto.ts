@@ -1,21 +1,12 @@
-import { DBConnectionDataType } from 'src/shared/decorators/DBConnectionData';
-
 export interface DashboardEstoqueGraosFiltersDto {
-  idCultura: number;
+  cropId: number;
   startDate?: Date;
   endDate?: Date;
-  idArmazenamento?: number;
-  idSafra?: number;
+  storageId?: number;
+  harvestId?: number;
 }
 
-type FindPreviousBalanceType = Omit<DashboardEstoqueGraosFiltersDto, 'endDate'>;
-
-export interface FindPreviousBalanceArgsDto {
-  filters: FindPreviousBalanceType;
-  dbConnection: DBConnectionDataType;
-}
-
-export interface DashboardEstoqueGraosArgsDto {
-  filters: DashboardEstoqueGraosFiltersDto;
-  dbConnection: DBConnectionDataType;
-}
+export type FindPreviousBalanceDto = Omit<
+  DashboardEstoqueGraosFiltersDto,
+  'endDate'
+>;
