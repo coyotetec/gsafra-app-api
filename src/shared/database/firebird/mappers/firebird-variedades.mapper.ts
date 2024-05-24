@@ -6,6 +6,7 @@ interface FirebirdVariedade {
   ID_CULTURA: number;
   CICLO: number;
   STATUS: number;
+  DATA_ATUALIZACAO?: Date;
 }
 
 export class FirebirdVariedadesMapper {
@@ -16,6 +17,7 @@ export class FirebirdVariedadesMapper {
       idCultura: raw.ID_CULTURA,
       ciclo: raw.CICLO,
       status: raw.STATUS,
+      dataAtualizacao: raw.DATA_ATUALIZACAO,
     });
   }
 }

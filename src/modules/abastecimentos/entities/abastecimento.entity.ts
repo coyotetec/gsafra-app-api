@@ -28,6 +28,7 @@ export class Abastecimento {
   statusProcessamento?: StatusProcessamentoType;
   totalAtual: number;
   totalMedio: number;
+  dataAtualizacao?: Date;
 
   constructor(props: Abastecimento) {
     this.id = props.id;
@@ -48,5 +49,6 @@ export class Abastecimento {
     this.statusProcessamento = props.statusProcessamento;
     this.totalAtual = props.totalAtual;
     this.totalMedio = props.totalMedio;
+    this.dataAtualizacao = props.dataAtualizacao;
   }
 }

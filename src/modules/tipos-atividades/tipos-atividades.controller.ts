@@ -1,9 +1,10 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Query } from '@nestjs/common';
 import { TiposAtividadesService } from './tipos-atividades.service';
 import {
   DBConnectionData,
   DBConnectionDataType,
 } from 'src/shared/decorators/DBConnectionData';
+import { ParseDatePipe } from 'src/shared/pipes/ParseDatePipe';
 
 @Controller('tipos-atividades')
 export class TiposAtividadesController {
@@ -12,7 +13,10 @@ export class TiposAtividadesController {
   ) {}
 
   @Get()
-  findAll(@DBConnectionData() { code, host }: DBConnectionDataType) {
-    return this.tiposAtividadesService.findAll({ code, host });
+  findAll(
+    @DBConnectionData() { code, host }: DBConnectionDataType,
+    @Query('lastUpdatedAt', ParseDatePipe) lastUpdatedAt?: Date,
+  ) {
+    return this.tiposAtividadesService.findAll({ code, host }, lastUpdatedAt);
   }
 }

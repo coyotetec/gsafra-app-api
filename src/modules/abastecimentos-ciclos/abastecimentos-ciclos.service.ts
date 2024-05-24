@@ -15,8 +15,12 @@ export class AbastecimentosCiclosService {
     private abastecimentosCiclosTalhoesSafrasService: AbastecimentosCiclosTalhoesSafrasService,
   ) {}
 
-  findAll(host: string, code: string) {
-    return this.abastecimentosCiclosRepository.findMany(host, code);
+  findAll(host: string, code: string, lastUpdatedAt?: Date) {
+    return this.abastecimentosCiclosRepository.findMany(
+      host,
+      code,
+      lastUpdatedAt,
+    );
   }
 
   async create(

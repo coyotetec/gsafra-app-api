@@ -8,7 +8,10 @@ export class TiposAtividadesService {
     private readonly tiposAtividadesRepository: TiposAtividadesRepository,
   ) {}
 
-  findAll({ code, host }: DBConnectionDataType) {
-    return this.tiposAtividadesRepository.findMany({ code, host });
+  findAll({ code, host }: DBConnectionDataType, lastUpdatedAt?: Date) {
+    return this.tiposAtividadesRepository.findMany(
+      { code, host },
+      lastUpdatedAt,
+    );
   }
 }

@@ -3,13 +3,15 @@ import { TipoAplicacao } from 'src/modules/tipos-aplicacao/entities/tipo-aplicac
 interface FirebirdTipoAplicacao {
   ID: number;
   NOME: string;
+  DATA_ATUALIZACAO?: Date;
 }
 
 export class FirebirdTiposAplicacaoMapper {
-  static toDomain(data: FirebirdTipoAplicacao): TipoAplicacao {
+  static toDomain(raw: FirebirdTipoAplicacao): TipoAplicacao {
     return new TipoAplicacao({
-      id: data.ID,
-      nome: data.NOME,
+      id: raw.ID,
+      nome: raw.NOME,
+      dataAtualizacao: raw.DATA_ATUALIZACAO,
     });
   }
 }

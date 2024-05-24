@@ -25,6 +25,7 @@ export class PlanejamentoAtividade {
   totalArea: number;
   totalAreaTrabalhada: number;
   vazaoHa: number;
+  dataAtualizacao?: Date;
 
   constructor(props: PlanejamentoAtividade) {
     this.id = props.id;
@@ -46,5 +47,6 @@ export class PlanejamentoAtividade {
     this.totalArea = props.totalArea;
     this.totalAreaTrabalhada = props.totalAreaTrabalhada;
     this.vazaoHa = props.vazaoHa;
+    this.dataAtualizacao = props.dataAtualizacao;
   }
 }

@@ -6,6 +6,7 @@ interface FirebirdPlanejamentoAtividadeTalhaoSafra {
   ID_TALHAO_SAFRA: number;
   HECTARES: number;
   PROPORCAO: number;
+  DATA_ATUALIZACAO?: Date;
 }
 
 export class FirebirdPlanejamentosAtividadesTalhoesSafrasMapper {
@@ -18,6 +19,7 @@ export class FirebirdPlanejamentosAtividadesTalhoesSafrasMapper {
       idTalhaoSafra: raw.ID_TALHAO_SAFRA,
       hectares: raw.HECTARES,
       proporcao: raw.PROPORCAO,
+      dataAtualizacao: raw.DATA_ATUALIZACAO,
     });
   }
 }

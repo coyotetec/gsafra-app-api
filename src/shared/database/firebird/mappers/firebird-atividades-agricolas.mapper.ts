@@ -23,6 +23,7 @@ interface FirebirdAtividadeAgricola {
   STATUS_PROCESSAMENTO: number;
   TOTAL_AREA: number;
   TOTAL_AREA_TRABALHADA: number;
+  DATA_ATUALIZACAO?: Date;
 }
 
 interface FirebirdCreateAtividadeAgricola {
@@ -53,6 +54,7 @@ export class FirebirdAtividadesAgricolasMapper {
       statusProcessamento: raw.STATUS_PROCESSAMENTO,
       totalArea: raw.TOTAL_AREA,
       totalAreaTrabalhada: raw.TOTAL_AREA_TRABALHADA,
+      dataAtualizacao: raw.DATA_ATUALIZACAO,
     });
   }
 

@@ -3,6 +3,7 @@ import { AlmoxarifadosRepository } from 'src/modules/almoxarifados/almoxarifados
 import { Almoxarifado } from 'src/modules/almoxarifados/entities/almoxarifado.entity';
 import { FirebirdService } from '../firebird.service';
 import { FirebirdAlmoxarifadosMapper } from '../mappers/firebird-almoxarifados.mapper';
+import { format } from 'date-fns';
 
 @Injectable()
 export class FirebirdAlmoxarifadosRepository
@@ -10,11 +11,15 @@ export class FirebirdAlmoxarifadosRepository
 {
   constructor(private readonly firebirdService: FirebirdService) {}
 
-  findMany(host: string, code: string): Promise<Almoxarifado[]> {
+  findMany(
+    host: string,
+    code: string,
+    lastUpdatedAt?: Date,
+  ): Promise<Almoxarifado[]> {
     return this.firebirdService.query<Almoxarifado>(
       host,
       code,
-      'SELECT * FROM ALMOXARIFADO',
+      `SELECT * FROM ALMOXARIFADO ${lastUpdatedAt ? `WHERE DATA_ATUALIZACAO >= '${format(lastUpdatedAt, 'yyyy-MM-dd HH:mm:ss')}'` : ''}`,
       FirebirdAlmoxarifadosMapper.toDomain,
     );
   }

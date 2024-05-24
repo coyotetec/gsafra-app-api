@@ -3,6 +3,7 @@ import { Injectable } from '@nestjs/common';
 import { AbastecimentosCiclosTalhoesSafrasRepository } from 'src/modules/abastecimentos-ciclos-talhoes-safras/abastecimentos-ciclos-talhoes-safras.repository';
 import { AbastecimentoCicloTalhaoSafra } from 'src/modules/abastecimentos-ciclos-talhoes-safras/entities/abastecimento-ciclo-talhao-safra.entity';
 import { FirebirdAbastecimentosCiclosTalhoesSafrasMapper } from '../mappers/firebird-abastecimentos-ciclos-talhoes-safras.mapper';
+import { format } from 'date-fns';
 
 @Injectable()
 export class FirebirdAbastecimentosCiclosTalhoesSafrasRepository
@@ -10,11 +11,11 @@ export class FirebirdAbastecimentosCiclosTalhoesSafrasRepository
 {
   constructor(private firebird: FirebirdService) {}
 
-  findMany(host: string, code: string) {
+  findMany(host: string, code: string, lastUpdatedAt?: Date) {
     return this.firebird.query<AbastecimentoCicloTalhaoSafra>(
       host,
       code,
-      'SELECT * FROM abastecimento_ciclo_ts',
+      `SELECT * FROM ABASTECIMENTO_CICLO_TS ${lastUpdatedAt ? `WHERE DATA_ATUALIZACAO >= '${format(lastUpdatedAt, 'yyyy-MM-dd HH:mm:ss')}'` : ''}`,
       FirebirdAbastecimentosCiclosTalhoesSafrasMapper.toDomain,
     );
   }

@@ -5,7 +5,7 @@ import { TalhoesRepository } from './talhoes.repository';
 @Injectable()
 export class TalhoesService {
   constructor(private readonly talhoesRepository: TalhoesRepository) {}
-  findAll({ code, host }: DBConnectionDataType) {
-    return this.talhoesRepository.findMany({ code, host });
+  findAll({ code, host }: DBConnectionDataType, lastUpdatedAt?: Date) {
+    return this.talhoesRepository.findMany({ code, host }, lastUpdatedAt);
   }
 }

@@ -19,8 +19,8 @@ export class AbastecimentosService {
     private abastecimentosCiclosService: AbastecimentosCiclosService,
   ) {}
 
-  findAll(host: string, code: string) {
-    return this.abastecimentosRepository.findMany(host, code);
+  findAll(host: string, code: string, lastUpdatedAt?: Date) {
+    return this.abastecimentosRepository.findMany(host, code, lastUpdatedAt);
   }
 
   async create(host: string, code: string, payload: CreateAbastecimentoDto) {

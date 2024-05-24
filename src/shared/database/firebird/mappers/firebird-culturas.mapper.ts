@@ -7,6 +7,7 @@ interface FirebirdCultura {
   ID_UNIDADE: number;
   NCM: string;
   CULTURA: number;
+  DATA_ATUALIZACAO?: Date;
 }
 
 export class FirebirdCulturasMapper {
@@ -18,6 +19,7 @@ export class FirebirdCulturasMapper {
       idUnidade: raw.ID_UNIDADE,
       ncm: raw.NCM,
       cultura: raw.CULTURA,
+      dataAtualizacao: raw.DATA_ATUALIZACAO,
     });
   }
 }

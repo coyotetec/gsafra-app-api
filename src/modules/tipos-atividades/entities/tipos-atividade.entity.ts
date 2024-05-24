@@ -12,6 +12,7 @@ export class TipoAtividade {
   fertilizacao: SmallIntType;
   aplicacao: SmallIntType;
   colheita: SmallIntType;
+  dataAtualizacao?: Date;
 
   constructor(props: TipoAtividade) {
     this.id = props.id;
@@ -22,5 +23,6 @@ export class TipoAtividade {
     this.fertilizacao = props.fertilizacao;
     this.aplicacao = props.aplicacao;
     this.colheita = props.colheita;
+    this.dataAtualizacao = props.dataAtualizacao;
   }
 }

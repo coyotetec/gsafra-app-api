@@ -1,9 +1,10 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Query } from '@nestjs/common';
 import { AbastecimentosCiclosTalhoesSafrasService } from './abastecimentos-ciclos-talhoes-safras.service';
 import {
   DBConnectionData,
   DBConnectionDataType,
 } from 'src/shared/decorators/DBConnectionData';
+import { ParseDatePipe } from 'src/shared/pipes/ParseDatePipe';
 
 @Controller('abastecimentos-ciclos-talhoes-safras')
 export class AbastecimentosCiclosTalhoesSafrasController {
@@ -12,7 +13,14 @@ export class AbastecimentosCiclosTalhoesSafrasController {
   ) {}
 
   @Get()
-  findAll(@DBConnectionData() { host, code }: DBConnectionDataType) {
-    return this.abastecimentosCiclosTalhoesSafrasService.findAll(host, code);
+  findAll(
+    @DBConnectionData() { host, code }: DBConnectionDataType,
+    @Query('lastUpdatedAt', ParseDatePipe) lastUpdatedAt?: Date,
+  ) {
+    return this.abastecimentosCiclosTalhoesSafrasService.findAll(
+      host,
+      code,
+      lastUpdatedAt,
+    );
   }
 }

@@ -12,6 +12,7 @@ interface FirebirdAtividadeAgricolaInsumo {
   CUSTO_MEDIO: number;
   ESTOQUE_MOVIMENTADO: number;
   QTDE: number;
+  DATA_ATUALIZACAO?: Date;
 }
 
 export class FirebirdAtividadesAgricolasInsumosMapper {
@@ -30,6 +31,7 @@ export class FirebirdAtividadesAgricolasInsumosMapper {
       custoMedio: raw.CUSTO_MEDIO,
       estoqueMovimentado: raw.ESTOQUE_MOVIMENTADO,
       qtde: raw.QTDE,
+      dataAtualizacao: raw.DATA_ATUALIZACAO,
     });
   }
 }

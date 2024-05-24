@@ -4,16 +4,20 @@ import { SafrasRepository } from 'src/modules/safras/safras.repository';
 import { DBConnectionDataType } from 'src/shared/decorators/DBConnectionData';
 import { FirebirdService } from '../firebird.service';
 import { FireBirdSafrasMapper } from '../mappers/firebird-safras.mapper';
+import { format } from 'date-fns';
 
 @Injectable()
 export class FirebirdSafrasRepository implements SafrasRepository {
   constructor(private readonly firebirdService: FirebirdService) {}
 
-  findMany({ host, code }: DBConnectionDataType): Promise<Safra[]> {
+  findMany(
+    { host, code }: DBConnectionDataType,
+    lastUpdatedAt?: Date,
+  ): Promise<Safra[]> {
     return this.firebirdService.query<Safra>(
       host,
       code,
-      'SELECT * FROM CICLO_PRODUCAO',
+      `SELECT * FROM CICLO_PRODUCAO ${lastUpdatedAt ? `WHERE DATA_ATUALIZACAO >= '${format(lastUpdatedAt, 'yyyy-MM-dd HH:mm:ss')}'` : ''} ORDER BY NOME`,
       FireBirdSafrasMapper.toDomain,
     );
   }

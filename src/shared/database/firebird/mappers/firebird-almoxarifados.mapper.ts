@@ -5,6 +5,7 @@ interface FirebirdAlmoxarifado {
   NOME: string;
   ID_FAZENDA: number;
   STATUS: number;
+  DATA_ATUALIZACAO?: Date;
 }
 
 export class FirebirdAlmoxarifadosMapper {
@@ -14,6 +15,7 @@ export class FirebirdAlmoxarifadosMapper {
       nome: raw.NOME,
       idFazenda: raw.ID_FAZENDA,
       status: raw.STATUS,
+      dataAtualizacao: raw.DATA_ATUALIZACAO,
     });
   }
 }

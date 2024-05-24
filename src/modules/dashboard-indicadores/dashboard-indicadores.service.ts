@@ -66,6 +66,7 @@ export class DashboardIndicadoresService {
 
       if (['Infinity', '-Infinity', 'NaN'].includes(result)) {
         viewTotalizersData.push({
+          id: viewTotalizer.id,
           name: viewTotalizer.totalizadorNome,
           error: 'Erro na fórmula.',
         });
@@ -73,6 +74,7 @@ export class DashboardIndicadoresService {
       }
 
       viewTotalizersData.push({
+        id: viewTotalizer.id,
         name: viewTotalizer.totalizadorNome,
         total: parseFloat(result),
         format: viewTotalizer.formato,

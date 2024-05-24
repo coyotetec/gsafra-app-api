@@ -29,7 +29,7 @@ export class DashboardIndicadoresController {
     @DBConnectionData() { host, code }: DBConnectionDataType,
     @Param('id', ParseIntPipe) id: number,
     @Query('startDate') startDate: string,
-    @Query('endData') endDate: string,
+    @Query('endDate') endDate: string,
   ) {
     const parsedStartDate = startDate
       ? parse(startDate, 'dd/MM/yyyy', new Date())

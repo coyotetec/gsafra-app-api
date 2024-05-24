@@ -58,6 +58,8 @@ import { DashboardIndicadoresRepository } from 'src/modules/dashboard-indicadore
 import { FirebirdDashboardIndicadoresRepository } from './firebird/repositories/firebird-dashboard-indicadores.repository';
 import { DashboardEstoqueGraosRepository } from 'src/modules/dashboard-estoque-graos/dashboard-estoque-graos.repository';
 import { FirebirdDashboardEstoqueGraosRepository } from './firebird/repositories/firebird-dashboad-estoque-graos.repository';
+import { DashboardCustoProducaoRepository } from 'src/modules/dashboard-custo-producao/dashboard-custo-producao.repository';
+import { FirebirdDashboardCustoProducaoRepository } from './firebird/repositories/firebird-dashboard-custo-producao.repository';
 
 @Global()
 @Module({
@@ -157,6 +159,10 @@ import { FirebirdDashboardEstoqueGraosRepository } from './firebird/repositories
       provide: DashboardEstoqueGraosRepository,
       useClass: FirebirdDashboardEstoqueGraosRepository,
     },
+    {
+      provide: DashboardCustoProducaoRepository,
+      useClass: FirebirdDashboardCustoProducaoRepository,
+    },
   ],
   exports: [
     UsuariosRepository,
@@ -187,6 +193,7 @@ import { FirebirdDashboardEstoqueGraosRepository } from './firebird/repositories
     DashboardFinanceiroRepository,
     DashboardIndicadoresRepository,
     DashboardEstoqueGraosRepository,
+    DashboardCustoProducaoRepository,
   ],
 })
 export class DatabaseModule {}

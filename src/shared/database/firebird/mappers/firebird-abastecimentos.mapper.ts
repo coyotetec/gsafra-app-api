@@ -20,6 +20,7 @@ interface FirebirdAbastecimento {
   STATUS_PROCESSAMENTO: number;
   TOTAL_ATUAL: number;
   TOTAL_MEDIO: number;
+  DATA_ATUALIZACAO?: Date;
 }
 
 interface FirebirdCreateAbastecimento {
@@ -47,6 +48,7 @@ export class FirebirdAbastecimentosMapper {
       statusProcessamento: raw.STATUS_PROCESSAMENTO,
       totalAtual: raw.TOTAL_ATUAL,
       totalMedio: raw.TOTAL_MEDIO,
+      dataAtualizacao: raw.DATA_ATUALIZACAO,
     });
   }
 

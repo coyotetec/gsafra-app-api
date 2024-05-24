@@ -3,6 +3,7 @@ import { FirebirdService } from '../firebird.service';
 import { FirebirdAtividadesAgricolasMaquinasMapper } from '../mappers/firebird-atividades-agricolas-maquinas.mapper';
 import { AtividadeAgricolaMaquina } from 'src/modules/atividades-agricolas-maquinas/entities/atividade-agricola-maquina.entity';
 import { AtividadesAgricolasMaquinasRepository } from 'src/modules/atividades-agricolas-maquinas/atividades-agricolas-maquinas.repository';
+import { format } from 'date-fns';
 
 @Injectable()
 export class FirebirdAtividadesAgricolasMaquinasRepository
@@ -10,11 +11,11 @@ export class FirebirdAtividadesAgricolasMaquinasRepository
 {
   constructor(private firebird: FirebirdService) {}
 
-  findMany(host: string, code: string) {
+  findMany(host: string, code: string, lastUpdatedAt?: Date) {
     return this.firebird.query<AtividadeAgricolaMaquina>(
       host,
       code,
-      'SELECT * FROM agri_atv_maquina',
+      `SELECT * FROM AGRI_ATV_MAQUINA ${lastUpdatedAt ? `WHERE DATA_ATUALIZACAO >= '${format(lastUpdatedAt, 'yyyy-MM-dd HH:mm:ss')}'` : ''}`,
       FirebirdAtividadesAgricolasMaquinasMapper.toDomain,
     );
   }

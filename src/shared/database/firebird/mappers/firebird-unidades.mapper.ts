@@ -5,6 +5,7 @@ interface FirebirdUnidade {
   NOME: string;
   SIGLA: string;
   PERMITIR_FRACIONAR: number;
+  DATA_ATUALIZACAO?: Date;
 }
 
 export class FirebirdUnidadesMapper {
@@ -14,6 +15,7 @@ export class FirebirdUnidadesMapper {
       nome: raw.NOME,
       sigla: raw.SIGLA,
       permitirFracionar: raw.PERMITIR_FRACIONAR,
+      dataAtualizacao: raw.DATA_ATUALIZACAO,
     });
   }
 }

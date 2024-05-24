@@ -8,7 +8,10 @@ export class FasesAplicacaoService {
     private readonly fasesAplicacaoRepository: FasesAplicacaoRepository,
   ) {}
 
-  findAll({ code, host }: DBConnectionDataType) {
-    return this.fasesAplicacaoRepository.findMany({ code, host });
+  findAll({ code, host }: DBConnectionDataType, lastUpdatedAt?: Date) {
+    return this.fasesAplicacaoRepository.findMany(
+      { code, host },
+      lastUpdatedAt,
+    );
   }
 }

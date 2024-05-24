@@ -11,10 +11,11 @@ export class AbastecimentosCiclosTalhoesSafrasService {
     private abastecimentosCiclosTalhoesSafrasRepository: AbastecimentosCiclosTalhoesSafrasRepository,
   ) {}
 
-  findAll(host: string, code: string) {
+  findAll(host: string, code: string, lastUpdatedAt?: Date) {
     return this.abastecimentosCiclosTalhoesSafrasRepository.findMany(
       host,
       code,
+      lastUpdatedAt,
     );
   }
 

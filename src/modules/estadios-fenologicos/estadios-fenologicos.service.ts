@@ -8,7 +8,10 @@ export class EstadiosFenologicosService {
     private readonly estadiosFenologicosRepository: EstadiosFenologicosRepository,
   ) {}
 
-  findAll({ code, host }: DBConnectionDataType) {
-    return this.estadiosFenologicosRepository.findAll({ code, host });
+  findAll({ code, host }: DBConnectionDataType, lastUpdatedAt?: Date) {
+    return this.estadiosFenologicosRepository.findAll(
+      { code, host },
+      lastUpdatedAt,
+    );
   }
 }

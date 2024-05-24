@@ -6,7 +6,7 @@ import { CulturasRepository } from './culturas.repository';
 export class CulturasService {
   constructor(private readonly culturasRepository: CulturasRepository) {}
 
-  findAll({ code, host }: DBConnectionDataType) {
-    return this.culturasRepository.findMany({ code, host });
+  findAll({ code, host }: DBConnectionDataType, lastUpdatedAt?: Date) {
+    return this.culturasRepository.findMany({ code, host }, lastUpdatedAt);
   }
 }

@@ -5,6 +5,7 @@ export class AtividadeAgricolaMaquina {
   hrInicial?: number;
   hrFinal?: number;
   horas: number;
+  dataAtualizacao?: Date;
 
   constructor(props: AtividadeAgricolaMaquina) {
     this.id = props.id;
@@ -13,5 +14,6 @@ export class AtividadeAgricolaMaquina {
     this.hrInicial = props.hrInicial;
     this.hrFinal = props.hrFinal;
     this.horas = props.horas;
+    this.dataAtualizacao = props.dataAtualizacao;
   }
 }

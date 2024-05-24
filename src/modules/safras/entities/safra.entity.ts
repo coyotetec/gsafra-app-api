@@ -13,6 +13,7 @@ export class Safra {
   producaoEstimada: number;
   producaoMinima: number;
   valorMedioVenda: number;
+  dataAtualizacao?: Date;
 
   constructor(props: Safra) {
     this.id = props.id;
@@ -24,5 +25,6 @@ export class Safra {
     this.producaoEstimada = props.producaoEstimada;
     this.producaoMinima = props.producaoMinima;
     this.valorMedioVenda = props.valorMedioVenda;
+    this.dataAtualizacao = props.dataAtualizacao;
   }
 }

@@ -75,6 +75,7 @@ interface FirebirdPatrimonios {
   POSSUI_ANEXO: number;
   ID_EMPRESA: number;
   IDENTIFICADOR: string;
+  DATA_ATUALIZACAO?: Date;
 }
 
 export class FirebirdPatrimoniosMapper {
@@ -154,6 +155,7 @@ export class FirebirdPatrimoniosMapper {
       possuiAnexo: raw.POSSUI_ANEXO,
       idEmpresa: raw.ID_EMPRESA,
       identificador: raw.IDENTIFICADOR,
+      dataAtualizacao: raw.DATA_ATUALIZACAO,
     });
   }
 }

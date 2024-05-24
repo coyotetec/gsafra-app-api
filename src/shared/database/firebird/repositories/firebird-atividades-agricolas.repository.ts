@@ -12,11 +12,11 @@ export class FirebirdAtividadesAgricolasRepository
 {
   constructor(private firebird: FirebirdService) {}
 
-  findMany(host: string, code: string) {
+  findMany(host: string, code: string, lastUpdatedAt?: Date) {
     return this.firebird.query<AtividadeAgricola>(
       host,
       code,
-      'SELECT * FROM agri_atv',
+      `SELECT * FROM AGRI_ATV ${lastUpdatedAt ? `WHERE DATA_ATUALIZACAO >= '${format(lastUpdatedAt, 'yyyy-MM-dd HH:mm:ss')}'` : ''}`,
       FirebirdAtividadesAgricolasMapper.toDomain,
     );
   }

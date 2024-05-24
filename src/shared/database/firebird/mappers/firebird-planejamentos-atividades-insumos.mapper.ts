@@ -6,6 +6,7 @@ interface FirebirdPlanejamentoAtividadeInsumo {
   ID_PRODUTO_ALMOXARIFADO: number;
   ID_UNIDADE: number;
   QTDE: number;
+  DATA_ATUALIZACAO?: Date;
 }
 
 export class FirebirdPlanejamentosAtividadesInsumosMapper {
@@ -18,6 +19,7 @@ export class FirebirdPlanejamentosAtividadesInsumosMapper {
       idProdutoAlmoxarifado: raw.ID_PRODUTO_ALMOXARIFADO,
       idUnidade: raw.ID_UNIDADE,
       qtde: raw.QTDE,
+      dataAtualizacao: raw.DATA_ATUALIZACAO,
     });
   }
 }

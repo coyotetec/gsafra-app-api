@@ -7,7 +7,7 @@ export class TiposAplicacaoService {
   constructor(
     private readonly tiposAplicacaoRepository: TiposAplicacaoRepository,
   ) {}
-  findAll({ code, host }: DBConnectionDataType) {
-    return this.tiposAplicacaoRepository.findAll({ code, host });
+  findAll({ code, host }: DBConnectionDataType, lastUpdatedAt?: Date) {
+    return this.tiposAplicacaoRepository.findAll({ code, host }, lastUpdatedAt);
   }
 }

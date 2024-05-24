@@ -8,6 +8,7 @@ interface FirebirdAbastecimentoCicloTalhaoSafra {
   TOTAL_HECTARES: number;
   VALOR: number;
   VALOR_CUSTO_ATUAL: number;
+  DATA_ATUALIZACAO?: Date;
 }
 
 export class FirebirdAbastecimentosCiclosTalhoesSafrasMapper {
@@ -22,6 +23,7 @@ export class FirebirdAbastecimentosCiclosTalhoesSafrasMapper {
       totalHectares: raw.TOTAL_HECTARES,
       valor: raw.VALOR,
       valorCustoAtual: raw.VALOR_CUSTO_ATUAL,
+      dataAtualizacao: raw.DATA_ATUALIZACAO,
     });
   }
 }

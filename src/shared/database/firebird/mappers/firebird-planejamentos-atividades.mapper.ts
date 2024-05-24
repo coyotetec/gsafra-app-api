@@ -20,6 +20,7 @@ interface FirebirdPlanejamentoAtividade {
   TOTAL_AREA: number;
   TOTAL_AREA_TRABALHADA: number;
   VAZAO_HA: number;
+  DATA_ATUALIZACAO?: Date;
 }
 
 export class FirebirdPlanejamentosAtividadesMapper {
@@ -44,6 +45,7 @@ export class FirebirdPlanejamentosAtividadesMapper {
       totalArea: raw.TOTAL_AREA,
       totalAreaTrabalhada: raw.TOTAL_AREA_TRABALHADA,
       vazaoHa: raw.VAZAO_HA,
+      dataAtualizacao: raw.DATA_ATUALIZACAO,
     });
   }
 }

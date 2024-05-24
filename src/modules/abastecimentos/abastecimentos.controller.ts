@@ -1,18 +1,22 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query } from '@nestjs/common';
 import { AbastecimentosService } from './abastecimentos.service';
 import {
   DBConnectionData,
   DBConnectionDataType,
 } from 'src/shared/decorators/DBConnectionData';
 import { CreateAbastecimentoDto } from './dto/create-abastecimento.dto';
+import { ParseDatePipe } from 'src/shared/pipes/ParseDatePipe';
 
 @Controller('abastecimentos')
 export class AbastecimentosController {
   constructor(private readonly abastecimentosService: AbastecimentosService) {}
 
   @Get()
-  findAll(@DBConnectionData() { host, code }: DBConnectionDataType) {
-    return this.abastecimentosService.findAll(host, code);
+  findAll(
+    @DBConnectionData() { host, code }: DBConnectionDataType,
+    @Query('lastUpdatedAt', ParseDatePipe) lastUpdatedAt?: Date,
+  ) {
+    return this.abastecimentosService.findAll(host, code, lastUpdatedAt);
   }
 
   @Post()

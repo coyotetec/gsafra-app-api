@@ -9,6 +9,7 @@ interface FireBirdTalhao {
   STATUS: number;
   ID_FAZENDA: number;
   COORDENADAS: string;
+  DATA_ATUALIZACAO?: Date;
 }
 
 export class FireBirdTalhoesMapper {
@@ -22,6 +23,7 @@ export class FireBirdTalhoesMapper {
       status: raw.STATUS,
       idFazenda: raw.ID_FAZENDA,
       coordenadas: raw.COORDENADAS,
+      dataAtualizacao: raw.DATA_ATUALIZACAO,
     });
   }
 }

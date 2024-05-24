@@ -8,7 +8,7 @@ export class AlmoxarifadosService {
     private readonly almoxarifadosRepository: AlmoxarifadosRepository,
   ) {}
 
-  findAll({ code, host }: DBConnectionDataType) {
-    return this.almoxarifadosRepository.findMany(host, code);
+  findAll({ code, host }: DBConnectionDataType, lastUpdatedAt?: Date) {
+    return this.almoxarifadosRepository.findMany(host, code, lastUpdatedAt);
   }
 }

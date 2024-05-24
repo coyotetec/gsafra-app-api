@@ -12,11 +12,11 @@ export class FirebirdAbastecimentosRepository
 {
   constructor(private firebird: FirebirdService) {}
 
-  findMany(host: string, code: string) {
+  findMany(host: string, code: string, lastUpdatedAt?: Date) {
     return this.firebird.query<Abastecimento>(
       host,
       code,
-      'SELECT * FROM abastecimento',
+      `SELECT * FROM ABASTECIMENTO ${lastUpdatedAt ? `WHERE DATA_ATUALIZACAO >= '${format(lastUpdatedAt, 'yyyy-MM-dd HH:mm:ss')}'` : ''}`,
       FirebirdAbastecimentosMapper.toDomain,
     );
   }
