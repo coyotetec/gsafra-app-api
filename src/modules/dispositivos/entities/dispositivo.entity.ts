@@ -4,7 +4,7 @@ export enum StatusType {
 }
 
 export class Dispositivo {
-  id: number;
+  id?: number;
   nome: string;
   informacoes: string;
   status: StatusType;

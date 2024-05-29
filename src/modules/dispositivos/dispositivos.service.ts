@@ -1,28 +1,29 @@
 import { Injectable } from '@nestjs/common';
 import { CreateDispositivoDto } from './dto/create-dispositivo.dto';
 import { Dispositivo, StatusType } from './entities/dispositivo.entity';
+import { DispositivosRepository } from './dispositivos.repository';
 
 @Injectable()
 export class DispositivosService {
+  constructor(private dispositivosRepository: DispositivosRepository) {}
+
   create(
     host: string,
     code: string,
     createDispositivoDto: CreateDispositivoDto,
   ) {
-    return new Dispositivo({
-      id: 1,
-      informacoes: createDispositivoDto.info,
-      nome: createDispositivoDto.name,
-      status: StatusType.INATIVO,
-    });
+    return this.dispositivosRepository.create(
+      host,
+      code,
+      new Dispositivo({
+        nome: createDispositivoDto.name,
+        informacoes: createDispositivoDto.info,
+        status: code === '000115' ? StatusType.ATIVO : StatusType.INATIVO,
+      }),
+    );
   }
 
   findById(host: string, code: string, id: number) {
-    return new Dispositivo({
-      id,
-      informacoes: 'Infos do dispositivo',
-      nome: 'Nome do dispositivo',
-      status: StatusType.INATIVO,
-    });
+    return this.dispositivosRepository.findById(host, code, id);
   }
 }
