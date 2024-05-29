@@ -17,7 +17,7 @@ export class FirebirdCulturasRepository implements CulturasRepository {
     return this.firebirdServices.query<Cultura>(
       host,
       code,
-      `SELECT * FROM CULTURA ${lastUpdatedAt ? `WHERE DATA_ATUALIZACAO >= '${format(lastUpdatedAt, 'yyyy-MM-dd HH:mm:ss')}'` : ''}`,
+      `SELECT * FROM CULTURA ${lastUpdatedAt ? `WHERE DATA_ATUALIZACAO >= '${format(lastUpdatedAt, 'yyyy-MM-dd HH:mm:ss')}'` : ''} ORDER BY NOME`,
       FirebirdCulturasMapper.toDomain,
     );
   }
