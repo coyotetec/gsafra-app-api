@@ -10,7 +10,7 @@ interface FirebirdUsuario {
   LOGIN_APP: string;
   SENHA_APP: string;
   SENHA_APP_2: string;
-  WHATSAPP_NOIFICACAO: string;
+  WHATSAPP_NOTIFICACAO: string;
   STATUS: number;
   DATA_CADASTRO: Date;
   DATA_ATUALIZACAO?: Date;
@@ -28,7 +28,7 @@ export class FirebirdUsuariosMapper {
       loginApp: raw.LOGIN_APP,
       senhaApp: raw.SENHA_APP,
       senhaApp2: raw.SENHA_APP_2,
-      whatsappNotificacao: raw.WHATSAPP_NOIFICACAO,
+      whatsappNotificacao: raw.WHATSAPP_NOTIFICACAO,
       status: raw.STATUS,
       dataCadastro: raw.DATA_CADASTRO,
       dataAtualizacao: raw.DATA_ATUALIZACAO,
