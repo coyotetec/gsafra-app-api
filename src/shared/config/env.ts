@@ -9,11 +9,16 @@ class Env {
   @IsString()
   @IsNotEmpty()
   firebirdPassword: string;
+
+  @IsString()
+  @IsNotEmpty()
+  jwtSecret: string;
 }
 
 export const env = plainToInstance(Env, {
   firebirdUser: process.env.FIREBIRD_USER,
   firebirdPassword: process.env.FIREBIRD_PASSWORD,
+  jwtSecret: process.env.JWT_SECRET,
 });
 
 const errors = validateSync(env);

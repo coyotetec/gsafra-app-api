@@ -4,6 +4,7 @@ import {
   createParamDecorator,
 } from '@nestjs/common';
 import { verify } from 'jsonwebtoken';
+import { env } from '../config/env';
 
 export type DBConnectionDataType = { host: string; code: string };
 
@@ -26,8 +27,7 @@ export const DBConnectionData = createParamDecorator<undefined>(
           'Não foi possível autenticar sua empresa',
         );
       }
-      const jwtSecret = process.env.JWT_SECRET as string;
-      const decoded = verify(token, jwtSecret) as {
+      const decoded = verify(token, env.jwtSecret) as {
         name: string;
         host: string;
         code: string;
