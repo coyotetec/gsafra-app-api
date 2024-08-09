@@ -4,6 +4,7 @@ import { AbastecimentosCiclosTalhoesSafrasRepository } from 'src/modules/abastec
 import { AbastecimentoCicloTalhaoSafra } from 'src/modules/abastecimentos-ciclos-talhoes-safras/entities/abastecimento-ciclo-talhao-safra.entity';
 import { FirebirdAbastecimentosCiclosTalhoesSafrasMapper } from '../mappers/firebird-abastecimentos-ciclos-talhoes-safras.mapper';
 import { format } from 'date-fns';
+import { CreatedAbastecimentoCicloTalhaoSafra } from 'src/modules/abastecimentos-ciclos-talhoes-safras/entities/created-abastecimento-ciclo-talhao-safra.entity';
 
 @Injectable()
 export class FirebirdAbastecimentosCiclosTalhoesSafrasRepository
@@ -34,10 +35,13 @@ export class FirebirdAbastecimentosCiclosTalhoesSafrasRepository
       valorCustoAtual,
     } = abastecimentoCicloTalhaoSafra;
 
-    await this.firebird.query(
-      host,
-      code,
-      `INSERT INTO ABASTECIMENTO_CICLO_TS (ID, ID_ABASTECIMENTO_CICLO, ID_TALHAO_SAFRA, PROPORCAO, TOTAL_HECTARES, VALOR, VALOR_CUSTO_ATUAL) VALUES (GEN_ID(GEN_ABASTECIMENTO_CICLO_TS, 1), ${idAbastecimentoCiclo}, ${idTalhaoSafra}, ${proporcao}, ${totalHectares}, ${valor}, ${valorCustoAtual})`,
-    );
+    return (
+      await this.firebird.query<CreatedAbastecimentoCicloTalhaoSafra>(
+        host,
+        code,
+        `INSERT INTO ABASTECIMENTO_CICLO_TS (ID, ID_ABASTECIMENTO_CICLO, ID_TALHAO_SAFRA, PROPORCAO, TOTAL_HECTARES, VALOR, VALOR_CUSTO_ATUAL) VALUES (GEN_ID(GEN_ABASTECIMENTO_CICLO_TS, 1), ${idAbastecimentoCiclo}, ${idTalhaoSafra}, ${proporcao}, ${totalHectares}, ${valor}, ${valorCustoAtual}) RETURNING ID`,
+        FirebirdAbastecimentosCiclosTalhoesSafrasMapper.toCreatedDomain,
+      )
+    )[0];
   }
 }

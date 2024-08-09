@@ -11,6 +11,9 @@ import { SafraDto } from 'src/modules/abastecimentos-ciclos/dto/create-abastecim
 
 export class CreateAbastecimentoDto {
   @IsString()
+  idMobile: string;
+
+  @IsString()
   @Length(10, 10)
   data: string;
 

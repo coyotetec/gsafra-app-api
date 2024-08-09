@@ -29,6 +29,7 @@ export class AbastecimentosCiclosService {
     payload: CreateAbastecimentoCicloDto,
   ) {
     let proporcaoSafraTotal = 0;
+    const createdAbastecimentoCiclosTalhoesSafras = [];
 
     for (let i = 0; i < payload.safras.length; i++) {
       const safra = payload.safras[i];
@@ -78,13 +79,22 @@ export class AbastecimentosCiclosService {
           }),
         );
 
-      this.abastecimentosCiclosTalhoesSafrasService.create(host, code, {
-        abastecimentoCicloId: abastecimentoCiclo.id,
-        abastecimentoCicloSafraArea: safraArea,
-        abastecimentoCicloValorSafra: valorSafra,
-        abastecimentoCicloValorAtualSafra: valorAtualSafra,
-        talhoesSafras: safra.talhoesSafras,
+      const createdAbastecimentoCicloTalhoesSafras =
+        await this.abastecimentosCiclosTalhoesSafrasService.create(host, code, {
+          abastecimentoCicloId: abastecimentoCiclo.id,
+          abastecimentoCicloSafraArea: safraArea,
+          abastecimentoCicloValorSafra: valorSafra,
+          abastecimentoCicloValorAtualSafra: valorAtualSafra,
+          talhoesSafras: safra.talhoesSafras,
+        });
+
+      createdAbastecimentoCiclosTalhoesSafras.push({
+        id: safra.idMobile,
+        idOrigem: abastecimentoCiclo.id,
+        talhoesSafras: createdAbastecimentoCicloTalhoesSafras,
       });
     }
+
+    return createdAbastecimentoCiclosTalhoesSafras;
   }
 }

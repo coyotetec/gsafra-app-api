@@ -1,8 +1,17 @@
 import { Type } from 'class-transformer';
-import { ArrayMinSize, IsInt, IsNumber, ValidateNested } from 'class-validator';
+import {
+  ArrayMinSize,
+  IsInt,
+  IsNumber,
+  IsString,
+  ValidateNested,
+} from 'class-validator';
 import { TalhaoSafraDto } from 'src/modules/abastecimentos-ciclos-talhoes-safras/dto/create-abastecimento-ciclo-talhao.dto';
 
 export class SafraDto {
+  @IsString()
+  idMobile: string;
+
   @IsInt()
   id: number;
 

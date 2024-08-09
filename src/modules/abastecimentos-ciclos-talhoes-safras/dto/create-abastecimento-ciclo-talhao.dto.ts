@@ -1,7 +1,16 @@
 import { Type } from 'class-transformer';
-import { ArrayMinSize, IsInt, IsNumber, ValidateNested } from 'class-validator';
+import {
+  ArrayMinSize,
+  IsInt,
+  IsNumber,
+  IsString,
+  ValidateNested,
+} from 'class-validator';
 
 export class TalhaoSafraDto {
+  @IsString()
+  idMobile: string;
+
   @IsInt()
   id: number;
 

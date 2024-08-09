@@ -25,6 +25,7 @@ export class AbastecimentosCiclosTalhoesSafrasService {
     payload: CreateAbastecimentoCicloTalhaoDto,
   ) {
     let proporcaoTalhaoSafraTotal = 0;
+    const createdAbastecimentoCicloTalhoesSafras = [];
 
     for (let j = 0; j < payload.talhoesSafras.length; j++) {
       const talhaoSafra = payload.talhoesSafras[j];
@@ -55,18 +56,26 @@ export class AbastecimentosCiclosTalhoesSafrasService {
         2,
       );
 
-      await this.abastecimentosCiclosTalhoesSafrasRepository.create(
-        host,
-        code,
-        new AbastecimentoCicloTalhaoSafra({
-          idAbastecimentoCiclo: payload.abastecimentoCicloId,
-          idTalhaoSafra: talhaoSafra.id,
-          proporcao: proporcaoTalhaoSafra,
-          totalHectares: talhaoSafra.hectares,
-          valor: valorTalhaoSafra,
-          valorCustoAtual: valorAtualTalhaoSafra,
-        }),
-      );
+      const abastecimentoCicloTalhaoSafra =
+        await this.abastecimentosCiclosTalhoesSafrasRepository.create(
+          host,
+          code,
+          new AbastecimentoCicloTalhaoSafra({
+            idAbastecimentoCiclo: payload.abastecimentoCicloId,
+            idTalhaoSafra: talhaoSafra.id,
+            proporcao: proporcaoTalhaoSafra,
+            totalHectares: talhaoSafra.hectares,
+            valor: valorTalhaoSafra,
+            valorCustoAtual: valorAtualTalhaoSafra,
+          }),
+        );
+
+      createdAbastecimentoCicloTalhoesSafras.push({
+        id: talhaoSafra.idMobile,
+        idOrigem: abastecimentoCicloTalhaoSafra.id,
+      });
     }
+
+    return createdAbastecimentoCicloTalhoesSafras;
   }
 }

@@ -1,4 +1,5 @@
 import { AbastecimentoCicloTalhaoSafra } from './entities/abastecimento-ciclo-talhao-safra.entity';
+import { CreatedAbastecimentoCicloTalhaoSafra } from './entities/created-abastecimento-ciclo-talhao-safra.entity';
 
 export abstract class AbastecimentosCiclosTalhoesSafrasRepository {
   abstract findMany(
@@ -11,5 +12,5 @@ export abstract class AbastecimentosCiclosTalhoesSafrasRepository {
     host: string,
     code: string,
     abastecimentoCicloTalhaoSafra: AbastecimentoCicloTalhaoSafra,
-  ): Promise<void>;
+  ): Promise<CreatedAbastecimentoCicloTalhaoSafra>;
 }

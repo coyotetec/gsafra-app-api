@@ -77,12 +77,19 @@ export class AbastecimentosService {
       0,
     );
 
-    this.abastecimentosCiclosService.create(host, code, {
-      abastecimentoId: abastecimento.id,
-      abastecimentoTotalArea: totalArea,
-      abastecimentoTotalAtual: totalAtual,
-      abastecimentoTotalMedio: totalMedio,
-      safras: payload.safras,
-    });
+    const createdAbastecimentoCiclosTalhoesSafras =
+      await this.abastecimentosCiclosService.create(host, code, {
+        abastecimentoId: abastecimento.id,
+        abastecimentoTotalArea: totalArea,
+        abastecimentoTotalAtual: totalAtual,
+        abastecimentoTotalMedio: totalMedio,
+        safras: payload.safras,
+      });
+
+    return {
+      id: payload.idMobile,
+      idOrigem: abastecimento.id,
+      safras: createdAbastecimentoCiclosTalhoesSafras,
+    };
   }
 }
