@@ -18,7 +18,7 @@ export class DispositivosService {
       new Dispositivo({
         nome: createDispositivoDto.name,
         informacoes: createDispositivoDto.info,
-        status: code === '000115' ? StatusType.ATIVO : StatusType.INATIVO,
+        status: code === '999999' ? StatusType.ATIVO : StatusType.INATIVO,
       }),
     );
   }
