@@ -28,10 +28,13 @@ export class FirebirdAtividadesAgricolasMaquinasRepository
     const { idAgriAtv, idPatrimonio, hrInicial, hrFinal, horas } =
       atividadeAgricolaMaquina;
 
-    await this.firebird.query(
-      host,
-      code,
-      `INSERT INTO AGRI_ATV_MAQUINA (ID, ID_AGRI_ATV, ID_PATRIMONIO, HR_INICIAL, HR_FINAL, HORAS) VALUES (GEN_ID(GEN_AGRI_ATV_MAQUINA, 1), ${idAgriAtv}, ${idPatrimonio}, ${hrInicial || null}, ${hrFinal || null}, ${horas})`,
-    );
+    return (
+      await this.firebird.query(
+        host,
+        code,
+        `INSERT INTO AGRI_ATV_MAQUINA (ID, ID_AGRI_ATV, ID_PATRIMONIO, HR_INICIAL, HR_FINAL, HORAS) VALUES (GEN_ID(GEN_AGRI_ATV_MAQUINA, 1), ${idAgriAtv}, ${idPatrimonio}, ${hrInicial || null}, ${hrFinal || null}, ${horas}) RETURNING ID`,
+        FirebirdAtividadesAgricolasMaquinasMapper.toCreateDomain,
+      )
+    )[0];
   }
 }

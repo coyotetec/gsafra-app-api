@@ -1,4 +1,5 @@
 import { AtividadeAgricolaMaquina } from './entities/atividade-agricola-maquina.entity';
+import { CreatedAtividadeAgricolaMaquina } from './entities/created-atividade-agricola-maquina.entity';
 
 export abstract class AtividadesAgricolasMaquinasRepository {
   abstract findMany(
@@ -11,5 +12,5 @@ export abstract class AtividadesAgricolasMaquinasRepository {
     host: string,
     code: string,
     atividadeAgricolaMaquina: AtividadeAgricolaMaquina,
-  ): Promise<void>;
+  ): Promise<CreatedAtividadeAgricolaMaquina>;
 }

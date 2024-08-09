@@ -36,7 +36,7 @@ export class AtividadesAgricolasInsumosService {
         insumo.idProdutoAlmoxarifado,
       );
 
-    await this.atividadesAgricolasInsumosRepository.create(
+    return await this.atividadesAgricolasInsumosRepository.create(
       host,
       code,
       new AtividadeAgricolaInsumo({

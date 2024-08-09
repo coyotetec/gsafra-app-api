@@ -1,4 +1,5 @@
 import { AtividadeAgricolaTalhaoSafra } from './entities/atividade-agricola-talhao-safra.entity';
+import { CreatedAtividadeAgricolaTalhaoSafra } from './entities/created-atividade-agricola-talhao-safra.entity';
 
 export abstract class AtividadesAgricolasTalhoesSafrasRepository {
   abstract findMany(
@@ -11,5 +12,5 @@ export abstract class AtividadesAgricolasTalhoesSafrasRepository {
     host: string,
     code: string,
     atividadeAgricolaTalhaoSafra: AtividadeAgricolaTalhaoSafra,
-  ): Promise<void>;
+  ): Promise<CreatedAtividadeAgricolaTalhaoSafra>;
 }

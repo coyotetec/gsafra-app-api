@@ -24,7 +24,7 @@ export class AtividadesAgricolasMaquinasService {
   ) {
     const { atividadeAgricolaId, maquina } = createAtividadeAgricolaMaquinaDto;
 
-    await this.atividadesAgricolasMaquinasRepository.create(
+    return await this.atividadesAgricolasMaquinasRepository.create(
       host,
       code,
       new AtividadeAgricolaMaquina({

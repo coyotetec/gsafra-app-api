@@ -1,4 +1,5 @@
 import { AtividadeAgricolaTalhaoSafra } from 'src/modules/atividades-agricolas-talhoes-safras/entities/atividade-agricola-talhao-safra.entity';
+import { CreatedAtividadeAgricolaTalhaoSafra } from 'src/modules/atividades-agricolas-talhoes-safras/entities/created-atividade-agricola-talhao-safra.entity';
 
 interface FirebirdAtividadeAgricolaTalhaoSafra {
   ID: number;
@@ -9,6 +10,10 @@ interface FirebirdAtividadeAgricolaTalhaoSafra {
   HECTARES_PLANEJAMENTO: number;
   PROPORCAO_PLANEJAMENTO: number;
   DATA_ATUALIZACAO?: Date;
+}
+
+interface FirebirdCreatedAtividadeAgricolaTalhaoSafra {
+  ID: number;
 }
 
 export class FirebirdAtividadesAgricolasTalhoesSafrasMapper {
@@ -24,6 +29,14 @@ export class FirebirdAtividadesAgricolasTalhoesSafrasMapper {
       hectaresPlanejamento: raw.HECTARES_PLANEJAMENTO,
       proporcaoPlanejamento: raw.PROPORCAO_PLANEJAMENTO,
       dataAtualizacao: raw.DATA_ATUALIZACAO,
+    });
+  }
+
+  static toCreateDomain(
+    raw: FirebirdCreatedAtividadeAgricolaTalhaoSafra,
+  ): CreatedAtividadeAgricolaTalhaoSafra {
+    return new CreatedAtividadeAgricolaTalhaoSafra({
+      id: raw.ID,
     });
   }
 }

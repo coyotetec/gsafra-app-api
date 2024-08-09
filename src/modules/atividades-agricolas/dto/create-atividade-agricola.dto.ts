@@ -11,6 +11,9 @@ import { MaquinaDto } from 'src/modules/atividades-agricolas-maquinas/dto/create
 import { TalhaoSafraDto } from 'src/modules/atividades-agricolas-talhoes-safras/dto/create-atividade-agricola-talhao-safra.dto';
 
 export class CreateAtividadeAgricolaDto {
+  @IsString()
+  idMobile: string;
+
   @IsNumber()
   idUsuario: number;
 

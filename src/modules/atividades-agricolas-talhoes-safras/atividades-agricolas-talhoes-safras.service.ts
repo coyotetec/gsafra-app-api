@@ -25,7 +25,7 @@ export class AtividadesAgricolasTalhoesSafrasService {
     const { atividadeAgricolaId, talhaoSafra } =
       createAtividadeAgricolaTalhaoSafraDto;
 
-    await this.atividadesAgricolasTalhoesSafrasRepository.create(
+    return await this.atividadesAgricolasTalhoesSafrasRepository.create(
       host,
       code,
       new AtividadeAgricolaTalhaoSafra({

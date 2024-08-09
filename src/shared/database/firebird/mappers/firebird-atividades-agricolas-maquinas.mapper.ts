@@ -1,4 +1,5 @@
 import { AtividadeAgricolaMaquina } from 'src/modules/atividades-agricolas-maquinas/entities/atividade-agricola-maquina.entity';
+import { CreatedAtividadeAgricolaMaquina } from 'src/modules/atividades-agricolas-maquinas/entities/created-atividade-agricola-maquina.entity';
 
 interface FirebirdAtividadeAgricolaMaquina {
   ID: number;
@@ -8,6 +9,10 @@ interface FirebirdAtividadeAgricolaMaquina {
   HR_FINAL: number;
   HORAS: number;
   DATA_ATUALIZACAO?: Date;
+}
+
+interface FirebirdCreatedAtividadeAgricolaMaquina {
+  ID: number;
 }
 
 export class FirebirdAtividadesAgricolasMaquinasMapper {
@@ -22,6 +27,14 @@ export class FirebirdAtividadesAgricolasMaquinasMapper {
       hrFinal: raw.HR_FINAL,
       horas: raw.HORAS,
       dataAtualizacao: raw.DATA_ATUALIZACAO,
+    });
+  }
+
+  static toCreateDomain(
+    raw: FirebirdCreatedAtividadeAgricolaMaquina,
+  ): CreatedAtividadeAgricolaMaquina {
+    return new CreatedAtividadeAgricolaMaquina({
+      id: raw.ID,
     });
   }
 }

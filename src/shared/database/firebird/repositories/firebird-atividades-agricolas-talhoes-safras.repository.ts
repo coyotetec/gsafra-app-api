@@ -34,10 +34,13 @@ export class FirebirdAtividadesAgricolasTalhoesSafrasRepository
       proporcaoPlanejamento,
     } = atividadeAgricolaTalhaoSafra;
 
-    await this.firebird.query(
-      host,
-      code,
-      `INSERT INTO AGRI_ATV_TALHAO_SAFRA (ID, ID_AGRI_ATV, ID_TALHAO_SAFRA, HECTARES, PROPORCAO, HECTARES_PLANEJAMENTO, PROPORCAO_PLANEJAMENTO) VALUES (GEN_ID(ID_AGRI_ATV_TALHAO_SAFRA ,1), ${idAgriAtv}, ${idTalhaoSafra}, ${hectares}, ${proporcao}, ${hectaresPlanejamento}, ${proporcaoPlanejamento})`,
-    );
+    return (
+      await this.firebird.query(
+        host,
+        code,
+        `INSERT INTO AGRI_ATV_TALHAO_SAFRA (ID, ID_AGRI_ATV, ID_TALHAO_SAFRA, HECTARES, PROPORCAO, HECTARES_PLANEJAMENTO, PROPORCAO_PLANEJAMENTO) VALUES (GEN_ID(ID_AGRI_ATV_TALHAO_SAFRA ,1), ${idAgriAtv}, ${idTalhaoSafra}, ${hectares}, ${proporcao}, ${hectaresPlanejamento}, ${proporcaoPlanejamento}) RETURNING ID`,
+        FirebirdAtividadesAgricolasTalhoesSafrasMapper.toCreateDomain,
+      )
+    )[0];
   }
 }

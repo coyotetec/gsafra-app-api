@@ -55,25 +55,57 @@ export class AtividadesAgricolasService {
       }),
     );
 
+    const createdAtividadeAgricolaInsumos = [];
+
     for (const insumo of payload.insumos) {
-      await this.atividadesAgricolasInsumosService.create(host, code, {
-        atividadeAgricolaId: atividadeAgricola.id,
-        insumo,
+      const atividadeAgricolaInsumo =
+        await this.atividadesAgricolasInsumosService.create(host, code, {
+          atividadeAgricolaId: atividadeAgricola.id,
+          insumo,
+        });
+
+      createdAtividadeAgricolaInsumos.push({
+        id: insumo.idMobile,
+        idOrigem: atividadeAgricolaInsumo.id,
       });
     }
+
+    const createdAtividadeAgricolaMaquinas = [];
 
     for (const maquina of payload.maquinas) {
-      await this.atividadesAgricolasMaquinasService.create(host, code, {
-        atividadeAgricolaId: atividadeAgricola.id,
-        maquina,
+      const atividadeAgricolaMaquina =
+        await this.atividadesAgricolasMaquinasService.create(host, code, {
+          atividadeAgricolaId: atividadeAgricola.id,
+          maquina,
+        });
+
+      createdAtividadeAgricolaMaquinas.push({
+        id: maquina.idMobile,
+        idOrigem: atividadeAgricolaMaquina.id,
       });
     }
 
+    const createdAtividadeAgricolaTalhoesSafras = [];
+
     for (const talhaoSafra of payload.talhoesSafras) {
-      await this.atividadesAgricolasTalhoesSafrasService.create(host, code, {
-        atividadeAgricolaId: atividadeAgricola.id,
-        talhaoSafra,
+      const atividadeAgricolaTalhaoSafra =
+        await this.atividadesAgricolasTalhoesSafrasService.create(host, code, {
+          atividadeAgricolaId: atividadeAgricola.id,
+          talhaoSafra,
+        });
+
+      createdAtividadeAgricolaTalhoesSafras.push({
+        id: talhaoSafra.idMobile,
+        idOrigem: atividadeAgricolaTalhaoSafra.id,
       });
     }
+
+    return {
+      id: payload.idMobile,
+      idOrigem: atividadeAgricola.id,
+      insumos: createdAtividadeAgricolaInsumos,
+      maquinas: createdAtividadeAgricolaMaquinas,
+      talhoesSafras: createdAtividadeAgricolaTalhoesSafras,
+    };
   }
 }

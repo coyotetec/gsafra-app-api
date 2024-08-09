@@ -1,4 +1,5 @@
 import { AtividadeAgricolaInsumo } from 'src/modules/atividades-agricolas-insumos/entities/atividade-agricola-insumo.entity';
+import { CreatedAtividadeAgricolaInsumo } from 'src/modules/atividades-agricolas-insumos/entities/created-atividade-agricola-insumo.entity';
 
 interface FirebirdAtividadeAgricolaInsumo {
   ID: number;
@@ -13,6 +14,10 @@ interface FirebirdAtividadeAgricolaInsumo {
   ESTOQUE_MOVIMENTADO: number;
   QTDE: number;
   DATA_ATUALIZACAO?: Date;
+}
+
+interface FirebirdCreatedAtividadeAgricolaInsumo {
+  ID: number;
 }
 
 export class FirebirdAtividadesAgricolasInsumosMapper {
@@ -32,6 +37,14 @@ export class FirebirdAtividadesAgricolasInsumosMapper {
       estoqueMovimentado: raw.ESTOQUE_MOVIMENTADO,
       qtde: raw.QTDE,
       dataAtualizacao: raw.DATA_ATUALIZACAO,
+    });
+  }
+
+  static toCreateDomain(
+    raw: FirebirdCreatedAtividadeAgricolaInsumo,
+  ): CreatedAtividadeAgricolaInsumo {
+    return new CreatedAtividadeAgricolaInsumo({
+      id: raw.ID,
     });
   }
 }
