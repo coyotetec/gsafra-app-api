@@ -62,6 +62,10 @@ import { DashboardCustoProducaoRepository } from 'src/modules/dashboard-custo-pr
 import { FirebirdDashboardCustoProducaoRepository } from './firebird/repositories/firebird-dashboard-custo-producao.repository';
 import { DispositivosRepository } from 'src/modules/dispositivos/dispositivos.repository';
 import { FirebirdDispositivosRepository } from './firebird/repositories/firebird-dispositivos.repository';
+import { RequisicaoRepository } from 'src/modules/requisicao/requisicao.repository';
+import { FirebirdRequisicaoRepository } from './firebird/repositories/firebird-requisicao.repository';
+import { RequisicaoProdutoRepository } from 'src/modules/requisicao-produto/requisicao-produto.repository';
+import { FirebirdRequisicaoProdutoRepository } from './firebird/repositories/firebird-requisicao-produto.repository';
 
 @Global()
 @Module({
@@ -169,6 +173,14 @@ import { FirebirdDispositivosRepository } from './firebird/repositories/firebird
       provide: DispositivosRepository,
       useClass: FirebirdDispositivosRepository,
     },
+    {
+      provide: RequisicaoRepository,
+      useClass: FirebirdRequisicaoRepository,
+    },
+    {
+      provide: RequisicaoProdutoRepository,
+      useClass: FirebirdRequisicaoProdutoRepository,
+    },
   ],
   exports: [
     UsuariosRepository,
@@ -201,6 +213,8 @@ import { FirebirdDispositivosRepository } from './firebird/repositories/firebird
     DashboardEstoqueGraosRepository,
     DashboardCustoProducaoRepository,
     DispositivosRepository,
+    RequisicaoRepository,
+    RequisicaoProdutoRepository,
   ],
 })
 export class DatabaseModule {}
