@@ -25,9 +25,11 @@ export class CreateProdutoRequisicaoDto {
   quantidade: number;
 
   @IsNumber()
+  @IsOptional()
   precoAtual: number;
 
   @IsNumber()
+  @IsOptional()
   custoMedioAtual: number;
 
   @IsString()
