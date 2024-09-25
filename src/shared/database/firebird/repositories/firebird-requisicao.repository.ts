@@ -18,7 +18,7 @@ export class FirebirdRequisicaoRepository implements RequisicaoRepository {
     return this.firebirdServices.query<Requisicao>(
       host,
       code,
-      `SELECT * FROM REQUISICAO_ALMOXARIFADO_M ${lastUpdatedAt ? `WHERE DATA_REQUISICAO >= '${format(lastUpdatedAt, 'yyyy-MM-dd HH:mm:ss')}'` : ''} ORDER BY DATA_REQUISICAO`,
+      `SELECT * FROM REQUISICAO_ALMOXARIFADO_M ${lastUpdatedAt ? `WHERE DATA_REQUISICAO >= '${format(lastUpdatedAt, 'yyyy-MM-dd')}' ` : ''}`,
       FirebirdRequisicaoMapper.toDomain,
     );
   }

@@ -21,7 +21,7 @@ export class FirebirdRequisicaoProdutoRepository
     return this.firebirdServices.query<RequisicaoProduto>(
       host,
       code,
-      `SELECT * FROM REQUISICAO_ALMOXARIFADO_D ${lastUpdatedAt ? `WHERE DATA_REQUISICAO >= '${format(lastUpdatedAt, 'yyyy-MM-dd HH:mm:ss')}'` : ''} ORDER BY ID`,
+      `SELECT * FROM REQUISICAO_ALMOXARIFADO_D `,
       FirebirdRequisicaoProdutoMapper.toDomain,
     );
   }
