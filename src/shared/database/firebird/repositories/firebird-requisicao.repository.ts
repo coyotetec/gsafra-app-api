@@ -38,7 +38,6 @@ export class FirebirdRequisicaoRepository implements RequisicaoRepository {
       tipo,
       requisicaoProduto,
     } = requisicao;
-
     const [date] = dataRequisicao.split('T');
     return (
       await this.firebirdServices
@@ -60,6 +59,7 @@ export class FirebirdRequisicaoRepository implements RequisicaoRepository {
             const {
               descricaoProdutoSemCadastro,
               und,
+              idProdutoAlmoxarifado,
               dataHoraAtualInclusao,
               dataHoraAtualEdicao,
               quantidade,
@@ -75,7 +75,7 @@ export class FirebirdRequisicaoRepository implements RequisicaoRepository {
              DESCRICAO_PRODUTO_SEM_CADASTRO, UND, DATA_HORA_ATUAL_INCLUSAO, DATA_HORA_ATUAL_EDICAO, QUANTIDADE,
               PRECO_ATUAL, CUSTO_MEDIO_ATUAL, ID_REQUISICAO_ALMOXARIFADO_D, OBSERVACOES)
              VALUES
-             (GEN_ID(GEN_REQUISICAO_ALMOXARIFADO_D, 1), ${id}, ${id}, '${descricaoProdutoSemCadastro}', '${und}',
+             (GEN_ID(GEN_REQUISICAO_ALMOXARIFADO_D, 1), ${id}, ${idProdutoAlmoxarifado}, '${descricaoProdutoSemCadastro}', '${und}',
              '${dataHoraAtualInclusao}', '${dataHoraAtualEdicao}', ${quantidade}, ${precoAtual}, ${custoMedioAtual}, null, '${observacoes}')`,
             );
           }
