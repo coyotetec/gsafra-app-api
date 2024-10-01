@@ -9,6 +9,8 @@ interface FirebirdAtividadeAgricolaMaquina {
   HR_FINAL: number;
   HORAS: number;
   DATA_ATUALIZACAO?: Date;
+  OPERADOR: string
+  PREPARADOR_CALDA: string
 }
 
 interface FirebirdCreatedAtividadeAgricolaMaquina {
@@ -27,6 +29,8 @@ export class FirebirdAtividadesAgricolasMaquinasMapper {
       hrFinal: raw.HR_FINAL,
       horas: raw.HORAS,
       dataAtualizacao: raw.DATA_ATUALIZACAO,
+      operador: raw.OPERADOR,
+      preparadorCalda: raw.PREPARADOR_CALDA
     });
   }
 

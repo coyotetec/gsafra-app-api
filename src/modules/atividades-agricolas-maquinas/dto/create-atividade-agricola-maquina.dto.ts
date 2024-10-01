@@ -18,6 +18,12 @@ export class MaquinaDto {
 
   @IsNumber()
   horasTrabalhadas: number;
+  
+  @IsString()
+  operador: string
+
+  @IsString()
+  preparadorCalda:string
 }
 
 export class CreateAtividadeAgricolaMaquinaDto {

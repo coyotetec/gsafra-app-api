@@ -33,7 +33,6 @@ export class FirebirdRequisicaoRepository implements RequisicaoRepository {
       dataHoraAtualEdicao,
       idUsuarioEdicao,
       observacao,
-      situacao,
       descricao,
       tipo,
       requisicaoProduto,
@@ -50,7 +49,7 @@ export class FirebirdRequisicaoRepository implements RequisicaoRepository {
          OBSERVACOES, SITUACAO, DESCRICAO, TIPO)
         VALUES
         (GEN_ID(GEN_REQUISICAO_ALMOXARIFADO_M, 1), ${numeroRequisicao}, '${date}', '${solicitante}', ${idUsuarioInclusao},'${dataHoraAtualInclusao}',
-        '${dataHoraAtualEdicao}', ${idUsuarioEdicao}, '${observacao}', ${situacao}, '${descricao}', ${tipo})  RETURNING ID`,
+        '${dataHoraAtualEdicao}', ${idUsuarioEdicao}, '${observacao}', 0, '${descricao}', ${tipo})  RETURNING ID`,
           FirebirdRequisicaoMapper.toCreatedDomain,
         )
         .then(async (response) => {

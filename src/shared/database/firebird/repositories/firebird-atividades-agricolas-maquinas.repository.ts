@@ -25,14 +25,14 @@ export class FirebirdAtividadesAgricolasMaquinasRepository
     code: string,
     atividadeAgricolaMaquina: AtividadeAgricolaMaquina,
   ) {
-    const { idAgriAtv, idPatrimonio, hrInicial, hrFinal, horas } =
+    const { idAgriAtv, idPatrimonio, hrInicial, hrFinal, horas, operador, preparadorCalda } =
       atividadeAgricolaMaquina;
 
     return (
       await this.firebird.query(
         host,
         code,
-        `INSERT INTO AGRI_ATV_MAQUINA (ID, ID_AGRI_ATV, ID_PATRIMONIO, HR_INICIAL, HR_FINAL, HORAS) VALUES (GEN_ID(GEN_AGRI_ATV_MAQUINA, 1), ${idAgriAtv}, ${idPatrimonio}, ${hrInicial || null}, ${hrFinal || null}, ${horas}) RETURNING ID`,
+        `INSERT INTO AGRI_ATV_MAQUINA (ID, ID_AGRI_ATV, ID_PATRIMONIO, HR_INICIAL, HR_FINAL, HORAS, OPERADOR, PREPARADOR_CALDA) VALUES (GEN_ID(GEN_AGRI_ATV_MAQUINA, 1), ${idAgriAtv}, ${idPatrimonio}, ${hrInicial || null}, ${hrFinal || null}, ${horas}, '${operador}', '${preparadorCalda}') RETURNING ID`,
         FirebirdAtividadesAgricolasMaquinasMapper.toCreateDomain,
       )
     )[0];

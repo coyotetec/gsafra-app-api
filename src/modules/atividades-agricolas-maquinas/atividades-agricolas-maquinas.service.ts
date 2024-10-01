@@ -33,6 +33,8 @@ export class AtividadesAgricolasMaquinasService {
         hrInicial: maquina.horimetroInicial,
         hrFinal: maquina.horimetroFinal,
         horas: maquina.horasTrabalhadas,
+        operador: maquina.operador,
+        preparadorCalda: maquina.preparadorCalda
       }),
     );
   }
