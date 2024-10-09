@@ -17,10 +17,12 @@ export class Usuario {
   status: StatusType;
   dataCadastro: Date;
   dataAtualizacao?: Date;
+  idDashboardSecao: number;
 
   constructor(props: Usuario) {
     this.id = props.id;
     this.idPapel = props.idPapel;
+    this.idDashboardSecao = props.idDashboardSecao;
     this.idFuncionario = props.idFuncionario;
     this.idPessoa = props.idPessoa;
     this.login = props.login;
@@ -32,5 +34,27 @@ export class Usuario {
     this.status = props.status;
     this.dataCadastro = props.dataCadastro;
     this.dataAtualizacao = props.dataAtualizacao;
+  }
+}
+export class DashboardSecao {
+  id: number;
+  categoria: string;
+  codigo: string;
+
+  constructor(props: DashboardSecao) {
+    this.id = props.id;
+    this.categoria = props.categoria;
+    this.codigo = props.codigo;
+  }
+}
+export class PapelDashboard {
+  id: number;
+  idPapel: number;
+  idDashboardSecao: number;
+
+  constructor(props: PapelDashboard) {
+    this.id = props.id;
+    this.idDashboardSecao = props.idDashboardSecao;
+    this.idPapel = props.idPapel;
   }
 }

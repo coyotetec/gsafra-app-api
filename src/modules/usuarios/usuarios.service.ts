@@ -5,7 +5,12 @@ import { UsuariosRepository } from './usuarios.repository';
 export class UsuariosService {
   constructor(private usuariosRepository: UsuariosRepository) {}
 
-  findAll(host: string, code: string, lastUpdatedAt?: Date) {
-    return this.usuariosRepository.findMany(host, code, lastUpdatedAt);
+  async findAll(host: string, code: string, lastUpdatedAt?: Date) {
+    const data = await this.usuariosRepository.findMany(
+      host,
+      code,
+      lastUpdatedAt,
+    );
+    return data;
   }
 }
