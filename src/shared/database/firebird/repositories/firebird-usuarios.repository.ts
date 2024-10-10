@@ -20,15 +20,11 @@ export class FirebirdUsuariosRepository implements UsuariosRepository {
       .query<Usuario>(
         host,
         code,
-        `
-        SELECT * FROM USUARIO     ;
-        
-        ${lastUpdatedAt ? `WHERE DATA_ATUALIZACAO >= '${format(lastUpdatedAt, 'yyyy-MM-dd HH:mm:ss')}'` : ''}`,
+        `SELECT * FROM USUARIO;`,
         FirebirdUsuariosMapper.toDomain,
       )
       .then(async (response) => {
         let dataInfo = [];
-
         for (const dashboardPapel of response) {
           const data = await this.firebird.query<DashboardSecao>(
             host,
