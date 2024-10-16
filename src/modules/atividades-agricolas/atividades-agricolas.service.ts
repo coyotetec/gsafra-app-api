@@ -45,7 +45,7 @@ export class AtividadesAgricolasService {
         idTipoAtividade: payload.idTipoAtividade,
         idUsuario: payload.idUsuario,
         dataInicio: parse(payload.dataInicio, 'dd/MM/yyyy', new Date()),
-        dataTermino: parse(payload.dataInicio, 'dd/MM/yyyy', new Date()),
+        dataTermino: parse(payload.dataTermino, 'dd/MM/yyyy', new Date()),
         descricao: payload.descricao,
         obs: payload.obs,
         situacao: payload.situacao,
