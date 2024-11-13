@@ -39,11 +39,11 @@ export class FirebirdService {
 
   private generateConfig(host: string, code: string): Firebird.Options {
     return {
-      host,
+      host: 'localhost',
       port: 3050,
-      database: `C:\\Cyot\\BD\\${code}\\AGRO.FDB`,
-      user: env.firebirdUser,
-      password: env.firebirdPassword,
+      database: `//Library//Frameworks//Firebird.framework//Versions//A//Resources//examples//empbuild//AGRO.FDB`,
+      user: 'SYSDBA',
+      password: 'masterkey',
       lowercase_keys: false,
       pageSize: 4096,
       blobAsText: true,

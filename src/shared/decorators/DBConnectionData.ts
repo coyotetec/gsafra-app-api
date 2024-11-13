@@ -35,7 +35,6 @@ export const DBConnectionData = createParamDecorator<undefined>(
 
       return { host: decoded.host, code: decoded.code };
     } catch (err) {
-      console.log(err);
       throw new UnauthorizedException(
         'Não foi possível autenticar sua empresa',
       );
