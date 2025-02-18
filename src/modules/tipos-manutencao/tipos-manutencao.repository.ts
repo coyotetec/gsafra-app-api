@@ -1,7 +1,7 @@
 import { DBConnectionDataType } from 'src/shared/decorators/DBConnectionData';
-import { TipoManutencao } from '../tipos-manutencao/entities/tipos-manutencao.entity';
+import { TipoManutencao } from './entities/tipos-manutencao.entity';
 
-export abstract class TiposAtividadesRepository {
+export abstract class TiposManutencaoRepository {
   abstract findMany(
     { code, host }: DBConnectionDataType,
     lastUpdatedAt?: Date,
