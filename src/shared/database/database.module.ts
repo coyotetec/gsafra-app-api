@@ -72,6 +72,10 @@ import { FirebirdTiposManutencaoRepository } from './firebird/repositories/fireb
 import { FirebirdUnidadesRepository } from './firebird/repositories/firebird-unidades.repository';
 import { FirebirdUsuariosRepository } from './firebird/repositories/firebird-usuarios.repository';
 import { FirebirdVariedadesRepository } from './firebird/repositories/firebird-variedades.repository';
+import { ManutencaoCicloRepository } from 'src/modules/manutencao-ciclo/manutencao-ciclo.repository';
+import { FirebirdManutencaoCicloRepositoryData } from './firebird/repositories/firebird-manutencao-ciclo.repository';
+import { ManutencaoServicoProduto } from 'src/modules/manutencao-servico-produto/entities/manutencao.entity';
+import { FirebirdManutencaoServicoProdutoRepositoryData } from './firebird/repositories/firebird-manutencao-servico-produto.repository';
 
 @Global()
 @Module({
@@ -196,6 +200,14 @@ import { FirebirdVariedadesRepository } from './firebird/repositories/firebird-v
       provide: ManutencaoServicoRepository,
       useClass: FirebirdManutencaoServicoRepositoryData,
     },
+    {
+      provide: ManutencaoCicloRepository,
+      useClass: FirebirdManutencaoCicloRepositoryData,
+    },
+    {
+      provide: ManutencaoServicoProduto,
+      useClass: FirebirdManutencaoServicoProdutoRepositoryData,
+    },
   ],
   exports: [
     ManutencaoRepository,
@@ -232,7 +244,9 @@ import { FirebirdVariedadesRepository } from './firebird/repositories/firebird-v
     DispositivosRepository,
     RequisicaoRepository,
     RequisicaoProdutoRepository,
-    TiposManutencaoRepository
+    TiposManutencaoRepository, 
+    ManutencaoCicloRepository,
+    ManutencaoServicoRepository
   ],
 })
 export class DatabaseModule { }

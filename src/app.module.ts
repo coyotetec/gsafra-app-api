@@ -35,6 +35,7 @@ import { VariedadesModule } from './modules/variedades/variedades.module';
 import { DatabaseModule } from './shared/database/database.module';
 import { ManutencaoServicoModule } from './modules/manutencao-servico/manutencao-servico.module';
 import { TiposManutencaoModule } from './modules/tipos-manutencao/tipos-manutencao.module';
+import { ManutencaoCicloModule } from './modules/manutencao-ciclo/manutencao-ciclo.module';
 
 @Module({
   imports: [
@@ -73,7 +74,8 @@ import { TiposManutencaoModule } from './modules/tipos-manutencao/tipos-manutenc
     RequisicaoProdutoModule,
     RequisicaoModule,
     ManutencaoServicoModule,
-    TiposManutencaoModule
+    TiposManutencaoModule,
+    ManutencaoCicloModule
   ],
   controllers: [],
   providers: [],
