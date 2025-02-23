@@ -4,12 +4,12 @@ import {
   DBConnectionDataType,
 } from 'src/shared/decorators/DBConnectionData';
 import { ParseDatePipe } from 'src/shared/pipes/ParseDatePipe';
-import { TiposManutencaoService } from './tipos-manutencao.service';
+import { FornecedorService } from './fornecedor.service';
 
-@Controller('tipos-manutencao')
-export class TiposManutencaoController {
+@Controller('fornecedor')
+export class FornecedorController {
   constructor(
-    private readonly tiposManutencaoService: TiposManutencaoService,
+    private readonly service: FornecedorService,
   ) {}
 
   @Get()
@@ -17,6 +17,6 @@ export class TiposManutencaoController {
     @DBConnectionData() { code, host }: DBConnectionDataType,
     @Query('lastUpdatedAt', ParseDatePipe) lastUpdatedAt?: Date,
   ) {
-    return this.tiposManutencaoService.findAll({ code, host }, lastUpdatedAt);
+    return this.service.findAll({ code, host }, lastUpdatedAt);
   }
 }

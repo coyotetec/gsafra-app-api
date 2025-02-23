@@ -36,6 +36,8 @@ import { DatabaseModule } from './shared/database/database.module';
 import { ManutencaoServicoModule } from './modules/manutencao-servico/manutencao-servico.module';
 import { TiposManutencaoModule } from './modules/tipos-manutencao/tipos-manutencao.module';
 import { ManutencaoCicloModule } from './modules/manutencao-ciclo/manutencao-ciclo.module';
+import { ManutencaoServicoProdutoModule } from './modules/manutencao-servico-produto/manutencao-servico-produto.module';
+import { FornecedorModule } from './modules/fornecedor/fornecedor.module';
 
 @Module({
   imports: [
@@ -75,7 +77,9 @@ import { ManutencaoCicloModule } from './modules/manutencao-ciclo/manutencao-cic
     RequisicaoModule,
     ManutencaoServicoModule,
     TiposManutencaoModule,
-    ManutencaoCicloModule
+    ManutencaoServicoProdutoModule,
+    ManutencaoCicloModule,
+    FornecedorModule
   ],
   controllers: [],
   providers: [],
