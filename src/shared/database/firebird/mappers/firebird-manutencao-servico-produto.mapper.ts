@@ -15,7 +15,6 @@ export class FirebirdServiceProdutoMapper {
   static toDomain(
     raw: FirebirdManutencaoServicoProduto,
   ): ManutencaoServicoProduto {
-    console.log(raw, 'raw')
     return new ManutencaoServicoProduto({
       id: raw.ID,
       custoAnual: raw.CUSTO_ANUAL,

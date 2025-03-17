@@ -4,6 +4,7 @@ import { Manutencao } from 'src/modules/manutencao/entities/manutencao.entity';
 import { ManutencaoRepository } from 'src/modules/manutencao/manutencao.repository';
 import { FirebirdService } from '../firebird.service';
 import { FirebirdManutencaoMapper } from '../mappers/firebird-manutencao.mapper';
+import { CreateManutencaoDto } from 'src/modules/manutencao/dto/create-manutencao.dto';
 
 @Injectable()
 export class FirebirdManutencaoRepositoryData
@@ -20,27 +21,29 @@ export class FirebirdManutencaoRepositoryData
     );
   }
 
-  // async create(
-  //   host: string,
-  //   code: string,
-  //   abastecimentoCicloTalhaoSafra: AbastecimentoCicloTalhaoSafra,
-  // ) {
-  //   const {
-  //     idAbastecimentoCiclo,
-  //     idTalhaoSafra,
-  //     proporcao,
-  //     totalHectares,
-  //     valor,
-  //     valorCustoAtual,
-  //   } = abastecimentoCicloTalhaoSafra;
-
-  //   return (
-  //     await this.firebird.query<CreatedAbastecimentoCicloTalhaoSafra>(
-  //       host,
-  //       code,
-  //       `INSERT INTO ABASTECIMENTO_CICLO_TS (ID, ID_ABASTECIMENTO_CICLO, ID_TALHAO_SAFRA, PROPORCAO, TOTAL_HECTARES, VALOR, VALOR_CUSTO_ATUAL) VALUES (GEN_ID(GEN_ABASTECIMENTO_CICLO_TS, 1), ${idAbastecimentoCiclo}, ${idTalhaoSafra}, ${proporcao}, ${totalHectares}, ${valor}, ${valorCustoAtual}) RETURNING ID`,
-  //       FirebirdAbastecimentosCiclosTalhoesSafrasMapper.toCreatedDomain,
-  //     )
-  //   )[0];
-  // }
+  async create(
+    host: string,
+    code: string,
+    manutencao: CreateManutencaoDto,
+  ) {
+    const {
+      idFornecedor,
+      idPatrimonio,
+      tipoManutencao,
+      date,
+      situacao,
+      totalPecas,
+      totalGeral,
+      totalServico,
+      descricao,
+      horimetro,
+      idPessoa,
+    } = manutencao
+    return this.firebird.query(
+      host,
+      code,
+      `INSERT INTO MANUTENCAO_M (ID, ID_PATRIMONIO, ID_FORNECEDOR, ID_PESSOA, TIPO_MANUTENCAO, DATA, SITUACAO, TOTAL_PECAS, TOTAL_GERAL, TOTAL_SERVICO, OBS, HORIMETRO) VALUES (GEN_ID(GEN_MANUTENCAO_M, 1), ${idPatrimonio}, ${idFornecedor}, ${idPessoa}, ${tipoManutencao}, '${format(date, 'yyyy-MM-dd')}', ${situacao}, ${totalPecas}, ${totalGeral}, ${totalServico}, '${descricao}', ${horimetro}) RETURNING ID`,
+      FirebirdManutencaoMapper.toCreatedDomain,
+    );
+  }
 }

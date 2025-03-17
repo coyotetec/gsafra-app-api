@@ -1,3 +1,4 @@
+import { CreateManutencaoDto } from './dto/create-manutencao.dto';
 import { Manutencao } from './entities/manutencao.entity';
 
 export abstract class ManutencaoRepository {
@@ -7,9 +8,9 @@ export abstract class ManutencaoRepository {
     lastUpdatedAt?: Date,
   ): Promise<Manutencao[]>;
 
-  // abstract create(
-  //   host: string,
-  //   code: string,
-  //   abastecimento: Manutencao,
-  // ): Promise<CreatedAbastecimento>;
+  abstract create(
+    host: string,
+    code: string,
+    manutencao: CreateManutencaoDto,
+  );
 }

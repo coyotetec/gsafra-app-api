@@ -13,10 +13,6 @@ interface FirebirdManutencao {
   TOTAL_PECAS?: number;
 }
 
-interface FirebirdCreatedAbastecimentoCicloTalhaoSafra {
-  ID: number;
-}
-
 export class FirebirdManutencaoMapper {
   static toDomain(
     raw: FirebirdManutencao,
@@ -34,11 +30,9 @@ export class FirebirdManutencaoMapper {
     });
   }
 
-  // static toCreatedDomain(
-  //   raw: FirebirdCreatedAbastecimentoCicloTalhaoSafra,
-  // ): CreatedAbastecimentoCicloTalhaoSafra {
-  //   return new CreatedAbastecimentoCicloTalhaoSafra({
-  //     id: raw.ID,
-  //   });
-  // }
+  static toCreatedDomain(
+    raw: FirebirdManutencao,
+  ): { id: string } {
+    return { id: raw.ID.toString() };
+  }
 }

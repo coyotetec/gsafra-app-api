@@ -1,9 +1,10 @@
-import { Controller, Get, Query } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query } from '@nestjs/common';
 import {
   DBConnectionData,
   DBConnectionDataType,
 } from 'src/shared/decorators/DBConnectionData';
 import { ParseDatePipe } from 'src/shared/pipes/ParseDatePipe';
+import { CreateManutencaoCicloDto } from './dto/create-manutencao-ciclo.dto';
 import { ManutencaoCicloService } from './manutencao-ciclo.service';
 
 @Controller('manutencao-ciclo')
@@ -18,15 +19,15 @@ export class ManutencaoCicloController {
     return this.service.findAll(host, code, lastUpdatedAt);
   }
 
-  // @Post()
-  // create(
-  //   @DBConnectionData() { host, code }: DBConnectionDataType,
-  //   @Body() createAbastecimentoDto: CreateAbastecimentoDto,
-  // ) {
-  //   return this.abastecimentosService.create(
-  //     host,
-  //     code,
-  //     createAbastecimentoDto,
-  //   );
-  // }
+   @Post()
+   create(
+     @DBConnectionData() { host, code }: DBConnectionDataType,
+     @Body() create: CreateManutencaoCicloDto,
+   ) {
+     return this.service.create(
+       host,
+       code,
+       create,
+     );
+   }
 }
