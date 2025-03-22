@@ -8,6 +8,20 @@ export abstract class ManutencaoRepository {
     lastUpdatedAt?: Date,
   ): Promise<Manutencao[]>;
 
+  abstract findById(
+    host: string,
+    code: string,
+    lastUpdatedAt?: Date,
+    id?: number
+  ): Promise<Manutencao[]>;
+
+  abstract findBySafraId(
+    host: string,
+    code: string,
+    lastUpdatedAt?: Date,
+    safraId?: number
+  ): Promise<Manutencao[]>;
+
   abstract create(
     host: string,
     code: string,

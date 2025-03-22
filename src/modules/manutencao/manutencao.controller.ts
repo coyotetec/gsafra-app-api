@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Query } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
 import {
   DBConnectionData,
   DBConnectionDataType,
@@ -18,16 +18,30 @@ export class ManutencaoController {
   ) {
     return this.manutencaoServcie.findAll(host, code, lastUpdatedAt);
   }
-
-   @Post()
-   async create(
-     @DBConnectionData() { host, code }: DBConnectionDataType,
-     @Body() createManutencaoDto: CreateManutencaoDto,
-   ) {
-     return await this.manutencaoServcie.create(
-       host,
-       code,
-       createManutencaoDto,
-     );
-   }
+  @Get('bySafra')
+  findBySafra(
+    @DBConnectionData() { host, code }: DBConnectionDataType,
+    @Query('lastUpdatedAt', ParseDatePipe) lastUpdatedAt?: Date,
+    @Query('safraId') safraId?: number,
+  ) {
+   return this.manutencaoServcie.findBySafraId(host, code, lastUpdatedAt, safraId)
+  }
+  @Get('detail/:id')
+  findDetail(
+    @DBConnectionData() { host, code }: DBConnectionDataType,
+    @Query('lastUpdatedAt', ParseDatePipe) lastUpdatedAt?: Date,
+    @Param('id') id?: string  ) {
+   return this.manutencaoServcie.findById(host, code, lastUpdatedAt, Number(id))
+  }
+  @Post()
+  async create(
+    @DBConnectionData() { host, code }: DBConnectionDataType,
+    @Body() createManutencaoDto: CreateManutencaoDto,
+  ) {
+    return await this.manutencaoServcie.create(
+      host,
+      code,
+      createManutencaoDto,
+    );
+  }
 }

@@ -8,6 +8,12 @@ export class ManutencaoService {
     private manutencaoRepository: ManutencaoRepository,
   ) { }
 
+  findById(host: string, code: string, lastUpdatedAt?: Date, id?: number) {
+    return this.manutencaoRepository.findById(host, code, lastUpdatedAt, id);
+  }
+  findBySafraId(host: string, code: string, lastUpdatedAt?: Date, safraId?: number) {
+    return this.manutencaoRepository.findBySafraId(host, code, lastUpdatedAt, safraId);
+  }
   findAll(host: string, code: string, lastUpdatedAt?: Date) {
     return this.manutencaoRepository.findMany(host, code, lastUpdatedAt);
   }

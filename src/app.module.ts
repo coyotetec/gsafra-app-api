@@ -38,6 +38,7 @@ import { TiposManutencaoModule } from './modules/tipos-manutencao/tipos-manutenc
 import { ManutencaoCicloModule } from './modules/manutencao-ciclo/manutencao-ciclo.module';
 import { ManutencaoServicoProdutoModule } from './modules/manutencao-servico-produto/manutencao-servico-produto.module';
 import { FornecedorModule } from './modules/fornecedor/fornecedor.module';
+import { EstoqueModule } from './modules/estoque/estoque.module';
 
 @Module({
   imports: [
@@ -79,7 +80,8 @@ import { FornecedorModule } from './modules/fornecedor/fornecedor.module';
     TiposManutencaoModule,
     ManutencaoServicoProdutoModule,
     ManutencaoCicloModule,
-    FornecedorModule
+    FornecedorModule,
+    EstoqueModule
   ],
   controllers: [],
   providers: [],

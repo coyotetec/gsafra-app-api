@@ -5,6 +5,7 @@ import { ManutencaoRepository } from 'src/modules/manutencao/manutencao.reposito
 import { FirebirdService } from '../firebird.service';
 import { FirebirdManutencaoMapper } from '../mappers/firebird-manutencao.mapper';
 import { CreateManutencaoDto } from 'src/modules/manutencao/dto/create-manutencao.dto';
+import { ManutencaoCicloEntity } from 'src/modules/manutencao/entities/manutencao-ciclo.entity';
 
 @Injectable()
 export class FirebirdManutencaoRepositoryData
@@ -20,7 +21,9 @@ export class FirebirdManutencaoRepositoryData
       FirebirdManutencaoMapper.toDomain,
     );
   }
-
+  findById(host: string, code: string, lastUpdatedAt?: Date, id?: number): Promise<Manutencao[]> {
+   return null
+  }
   async create(
     host: string,
     code: string,
@@ -44,6 +47,17 @@ export class FirebirdManutencaoRepositoryData
       code,
       `INSERT INTO MANUTENCAO_M (ID, ID_PATRIMONIO, ID_FORNECEDOR, ID_PESSOA, TIPO_MANUTENCAO, DATA, SITUACAO, TOTAL_PECAS, TOTAL_GERAL, TOTAL_SERVICO, OBS, HORIMETRO) VALUES (GEN_ID(GEN_MANUTENCAO_M, 1), ${idPatrimonio}, ${idFornecedor}, ${idPessoa}, ${tipoManutencao}, '${format(date, 'yyyy-MM-dd')}', ${situacao}, ${totalPecas}, ${totalGeral}, ${totalServico}, '${descricao}', ${horimetro}) RETURNING ID`,
       FirebirdManutencaoMapper.toCreatedDomain,
+    );
+  }
+  findBySafraId(host: string, code: string, lastUpdatedAt?: Date, safraId?: number): Promise<Manutencao[]> {
+    return this.firebird.query<ManutencaoCicloEntity>(
+      host,
+      code,
+      `SELECT * FROM MANUTENCAO_M_CICLO 
+      INNER JOIN MANUTENCAO_M ON MANUTENCAO_M_CICLO.ID_MANUTENCAO_M = MANUTENCAO_M.ID
+      WHERE MANUTENCAO_M_CICLO.ID_CICLO_PRODUCAO = ${safraId};
+`,
+      FirebirdManutencaoMapper.toDomainFrontend,
     );
   }
 }
