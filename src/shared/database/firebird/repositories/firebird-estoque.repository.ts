@@ -15,12 +15,15 @@ export class FirebirdEstoqueRepositoryData implements EstoqueRepository {
       `SELECT 
       e.ID id, 
       e.ESTOQUE_ATUAL estoqueAtual, 
+      e.ID_ALMOXARIFADO id_Almoxarifado, 
       al.PRECO_VENDA precoVenda, 
       al.NOME nome, 
       al.CUSTO_ATUAL custoAtual, 
       al.CUSTO_MEDIO custoMedio, 
       u.NOME unidade, 
-      u.SIGLA sigla
+      u.SIGLA sigla,
+      al.ID id_Produto_Almoxarifado,
+      u.ID id_Unidade
    FROM ESTOQUE e
    INNER JOIN PRODUTO_ALMOXARIFADO al ON e.ID_PRODUTO_ALMOXARIFADO = al.ID
    INNER JOIN UNIDADE u ON al.ID_UNIDADE = u.ID

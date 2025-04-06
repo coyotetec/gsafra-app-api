@@ -1,30 +1,35 @@
 import { Estoque } from 'src/modules/estoque/entities/estoque.entity';
 
 interface FirebirdManutencao {
-  id: number;
-  estoqueAtual: number;
-  precoVenda: number;
-  nome: string;
-  custoAtual: number
-  custoMedio: number
-  unidade: string
-  sigla: string
+  ID: number;
+  ESTOQUEATUAL: number;
+  PRECOVENDA: number;
+  NOME: string;
+  CUSTOMEDIO: number
+  CUSTOATUAL: number
+  UNIDADE: string
+  SIGLE: string
+  ID_PRODUTO_ALMOXARIFADO: number
+  ID_ALMOXARIFADO: number
+  ID_UNIDADE: number
 }
 
 export class FirebirdEstoqueMapper {
   static toDomain(
     raw: FirebirdManutencao,
   ): Estoque {
-    console.log(raw)
     return new Estoque({
-      id: raw.id,
-      estoqueAtual: raw.estoqueAtual,
-      precoVenda: raw.precoVenda,
-      nome: raw.nome,
-      custoAtual: raw.custoAtual,
-      custoMedio: raw.custoMedio,
-      unidade: raw.unidade,
-      sigla: raw.sigla,
+      id: raw.ID,
+      estoqueAtual: raw.ESTOQUEATUAL,
+      precoVenda: raw.PRECOVENDA,
+      nome: raw.NOME,
+      custoAtual: raw.CUSTOATUAL,
+      custoMedio: raw.CUSTOMEDIO,
+      unidade: raw.UNIDADE,
+      sigla: raw.SIGLE,
+      idProdutoAlmoxarifado: raw.ID_PRODUTO_ALMOXARIFADO,
+      idUnidade: raw.ID_UNIDADE,
+      idAlmoxarifado: raw.ID_ALMOXARIFADO,
     });
   }
 }

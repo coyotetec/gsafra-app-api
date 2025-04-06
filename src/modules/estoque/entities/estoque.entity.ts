@@ -7,6 +7,9 @@ export class Estoque {
   custoMedio: number
   unidade: string
   sigla: string
+  idProdutoAlmoxarifado: number
+  idUnidade: number
+  idAlmoxarifado:number
 
   constructor(props: Estoque) {
     this.id = props.id;
@@ -17,5 +20,8 @@ export class Estoque {
     this.custoMedio = props.custoMedio;
     this.unidade = props.unidade;
     this.sigla = props.sigla;
+    this.idProdutoAlmoxarifado = props.idProdutoAlmoxarifado;
+    this.idUnidade = props.idUnidade;
+    this.idAlmoxarifado = props.idAlmoxarifado;
   }
 }

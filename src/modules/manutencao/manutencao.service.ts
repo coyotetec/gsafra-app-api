@@ -22,7 +22,20 @@ export class ManutencaoService {
     return this.manutencaoRepository.create(
       host,
       code,
-      payload,
+      {
+        date: payload.date,
+        horimetro: payload.horimetro,
+        descricao: payload.descricao,
+        situacao: payload.situacao,
+        totalServico: payload.totalServico,
+        totalPecas: payload.totalPecas,
+        totalGeral: payload.totalGeral,
+        idPessoa: payload.idPessoa,
+        idPatrimonio: payload.idPatrimonio,
+        idFornecedor: payload.idFornecedor,
+        tipoManutencao: payload.tipoManutencao,
+        ...payload
+      },
     );
   }
 }
