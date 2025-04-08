@@ -15,6 +15,7 @@ import { DashboardIndicadoresModule } from './modules/dashboard-indicadores/dash
 import { DispositivosModule } from './modules/dispositivos/dispositivos.module';
 import { EstadiosFenologicosModule } from './modules/estadios-fenologicos/estadios-fenologicos.module';
 import { FasesAplicacaoModule } from './modules/fases-aplicacao/fases-aplicacao.module';
+import { ManutencaoModule } from './modules/manutencao/manutencao.module';
 import { PatrimoniosModule } from './modules/patrimonios/patrimonios.module';
 import { PlanejamentosAtividadesInsumosModule } from './modules/planejamentos-atividades-insumos/planejamentos-atividades-insumos.module';
 import { PlanejamentosAtividadesMaquinasModule } from './modules/planejamentos-atividades-maquinas/planejamentos-atividades-maquinas.module';
@@ -32,12 +33,19 @@ import { UnidadesModule } from './modules/unidades/unidades.module';
 import { UsuariosModule } from './modules/usuarios/usuarios.module';
 import { VariedadesModule } from './modules/variedades/variedades.module';
 import { DatabaseModule } from './shared/database/database.module';
+import { ManutencaoServicoModule } from './modules/manutencao-servico/manutencao-servico.module';
+import { TiposManutencaoModule } from './modules/tipos-manutencao/tipos-manutencao.module';
+import { ManutencaoCicloModule } from './modules/manutencao-ciclo/manutencao-ciclo.module';
+import { ManutencaoServicoProdutoModule } from './modules/manutencao-servico-produto/manutencao-servico-produto.module';
+import { FornecedorModule } from './modules/fornecedor/fornecedor.module';
+import { EstoqueModule } from './modules/estoque/estoque.module';
 
 @Module({
   imports: [
     DatabaseModule,
     UsuariosModule,
     PatrimoniosModule,
+    ManutencaoModule,
     AlmoxarifadosModule,
     ProdutosAlmoxarifadoModule,
     UnidadesModule,
@@ -68,8 +76,14 @@ import { DatabaseModule } from './shared/database/database.module';
     DispositivosModule,
     RequisicaoProdutoModule,
     RequisicaoModule,
+    ManutencaoServicoModule,
+    TiposManutencaoModule,
+    ManutencaoServicoProdutoModule,
+    ManutencaoCicloModule,
+    FornecedorModule,
+    EstoqueModule
   ],
   controllers: [],
   providers: [],
 })
-export class AppModule {}
+export class AppModule { }
