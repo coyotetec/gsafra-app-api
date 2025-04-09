@@ -32,7 +32,6 @@ export class ManutencaoService {
         totalGeral: payload.totalGeral,
         idPessoa: payload.idPessoa,
         idPatrimonio: payload.idPatrimonio,
-        idFornecedor: payload.idFornecedor,
         tipoManutencao: payload.tipoManutencao,
         ...payload
       },

@@ -10,8 +10,7 @@ export class CreateManutencaoDto {
   idPessoa: number;
   @IsNumber()
   idPatrimonio: number;
-  @IsNumber()
-  idFornecedor: number;
+
   @IsNumber()
   tipoManutencao: number;
   @IsString()

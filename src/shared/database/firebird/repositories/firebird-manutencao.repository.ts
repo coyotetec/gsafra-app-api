@@ -30,7 +30,6 @@ export class FirebirdManutencaoRepositoryData
     manutencao: CreateManutencaoDto,
   ) {
     const {
-      idFornecedor,
       idPatrimonio,
       tipoManutencao,
       date,
@@ -45,7 +44,7 @@ export class FirebirdManutencaoRepositoryData
     const manutencaoResponse = await this.firebird.query(
       host,
       code,
-      `INSERT INTO MANUTENCAO_M (ID, ID_PATRIMONIO, ID_FORNECEDOR, ID_PESSOA, TIPO_MANUTENCAO, DATA, SITUACAO, TOTAL_PECAS, TOTAL_GERAL, TOTAL_SERVICO, OBS, HORIMETRO) VALUES (GEN_ID(GEN_MANUTENCAO_M, 1), ${idPatrimonio}, ${idFornecedor}, ${idPessoa}, ${tipoManutencao}, '${format(date, 'yyyy-MM-dd')}', ${situacao}, ${totalPecas}, ${totalGeral}, ${totalServico}, '${descricao}', ${horimetro}) RETURNING ID`,
+      `INSERT INTO MANUTENCAO_M (ID, ID_PATRIMONIO, ID_PESSOA, TIPO_MANUTENCAO, DATA, SITUACAO, TOTAL_PECAS, TOTAL_GERAL, TOTAL_SERVICO, OBS, HORIMETRO) VALUES (GEN_ID(GEN_MANUTENCAO_M, 1), ${idPatrimonio}, ${idPessoa}, ${tipoManutencao}, '${format(date, 'yyyy-MM-dd')}', ${situacao}, ${totalPecas}, ${totalGeral}, ${totalServico}, '${descricao}', ${horimetro}) RETURNING ID`,
       FirebirdManutencaoMapper.toCreatedDomain,
     );
     const allData = manutencao as any
