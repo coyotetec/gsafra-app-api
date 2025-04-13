@@ -33,6 +33,7 @@ interface ManutencaoCiclo {
   TOTAL_GERAL: number;
   ID_PESSOA: number;
   OBS: string;
+  DESC_PATRIMONIO: string;
 }
 
 
@@ -64,6 +65,7 @@ export class FirebirdManutencaoMapper {
       proporcao: raw.PROPORCAO,
       qtdeTalhoes: raw.QTDE_TALHOES,
       idPatrimonio: raw.ID_PATRIMONIO,
+      patrimonio: raw.DESC_PATRIMONIO,
       idFornecedor: raw.ID_FORNECEDOR,
       tipoManutencao: raw.TIPO_MANUTENCAO,
       data: raw.DATA,

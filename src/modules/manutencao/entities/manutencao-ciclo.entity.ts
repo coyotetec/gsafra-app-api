@@ -18,6 +18,7 @@ export class ManutencaoCicloEntity {
   totalGeral: number;
   idPessoa: number;
   obs: string;
+  patrimonio: string;
 
   constructor(props: ManutencaoCicloEntity) {
     this.id = props.id;
@@ -31,6 +32,7 @@ export class ManutencaoCicloEntity {
     this.idFornecedor = props.idFornecedor;
     this.tipoManutencao = props.tipoManutencao;
     this.data = props.data;
+    this.patrimonio = props.patrimonio
     this.horimetro = props.horimetro;
     this.descricao = props.descricao;
     this.situacao = props.situacao;

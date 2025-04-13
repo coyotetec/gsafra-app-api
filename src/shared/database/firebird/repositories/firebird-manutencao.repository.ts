@@ -103,8 +103,14 @@ export class FirebirdManutencaoRepositoryData
     return this.firebird.query<ManutencaoCicloEntity>(
       host,
       code,
-      `SELECT * FROM MANUTENCAO_M_CICLO 
+      `
+      SELECT 
+  MANUTENCAO_M_CICLO.*, 
+  MANUTENCAO_M.*, 
+  PATRIMONIO.DESCRICAO AS desc_patrimonio
+FROM MANUTENCAO_M_CICLO
       INNER JOIN MANUTENCAO_M ON MANUTENCAO_M_CICLO.ID_MANUTENCAO_M = MANUTENCAO_M.ID
+      INNER JOIN PATRIMONIO ON MANUTENCAO_M.ID_PATRIMONIO = PATRIMONIO.ID
       WHERE MANUTENCAO_M_CICLO.ID_CICLO_PRODUCAO = ${safraId};
 `,
       FirebirdManutencaoMapper.toDomainFrontend,
