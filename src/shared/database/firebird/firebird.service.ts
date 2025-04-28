@@ -39,7 +39,7 @@ export class FirebirdService {
 
   private generateConfig(host: string, code: string): Firebird.Options {
     return {
-      host,
+      host: '10.0.0.12',
       port: 3050,
       database: `C:\\Cyot\\BD\\${code}\\AGRO.FDB`,
       user: env.firebirdUser,
