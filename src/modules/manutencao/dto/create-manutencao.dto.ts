@@ -1,6 +1,4 @@
-import { Transform } from 'class-transformer';
 import {
-  IsDate,
   IsNumber,
   IsString
 } from 'class-validator';
@@ -10,9 +8,11 @@ export class CreateManutencaoDto {
   idPessoa: number;
   @IsNumber()
   idPatrimonio: number;
-
+  
   @IsNumber()
   tipoManutencao: number;
+  @IsNumber()
+  manutencao: number;
   @IsString()
   date: Date;
   @IsNumber()
