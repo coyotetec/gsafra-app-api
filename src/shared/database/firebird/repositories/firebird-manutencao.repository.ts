@@ -130,14 +130,26 @@ export class FirebirdManutencaoRepositoryData
         const totalHectares = item.talhoes_safras.reduce((acc, curr) => {
           return acc + curr.hectares
         }, 0)
-        await this.firebird.query(
+        const manutencaoMCiclo = await this.firebird.query(
           host,
           code,
           `INSERT INTO MANUTENCAO_M_CICLO (ID, ID_CICLO_PRODUCAO, ID_MANUTENCAO_M, PROPORCAO, QTDE_TALHOES, TOTAL_HECTARES, VALOR) VALUES (GEN_ID(GEN_MANUTENCAO_M_CICLO, 1),
             ${item.id}, ${manutencaoResponse[0].id}, ${0}, ${item.talhoes_safras.length}, ${totalHectares}, ${manutencoes.totalGeral}) RETURNING ID`,
           FirebirdManutencaoMapper.toCreatedDomain,
         );
-
+        const { id } = manutencaoMCiclo[0]
+        item.talhoes_safras.map(async (talhao) => {
+          const proporcao = totalHectares > 0 ? talhao.hectares / totalHectares : 0;
+          const valor = proporcao * manutencoes.totalGeral;
+          const hectaresDoTalhao = (proporcao / 100) * totalHectares;
+          await this.firebird.query(
+            host,
+            code,
+            `INSERT INTO MANUTENCAO_M_CICLO_TS (ID, ID_MANUTENCAO_M_CICLO, ID_TALHAO_SAFRA, TOTAL_HECTARES, VALOR, PROPORCAO) 
+            VALUES (GEN_ID(GEN_MANUTENCAO_M_CICLO_TS, 1), ${id}, ${talhao.id}, ${hectaresDoTalhao * 100}, ${valor}, ${proporcao * 100}) RETURNING ID`,
+            FirebirdManutencaoMapper.toCreatedDomain,
+          );
+        })
       })
 
     } catch (error) {
