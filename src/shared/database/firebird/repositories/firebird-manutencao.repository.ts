@@ -46,7 +46,8 @@ export class FirebirdManutencaoRepositoryData
       const manutencaoResponse = await this.firebird.query(
         host,
         code,
-        `INSERT INTO MANUTENCAO_M (ID, ID_PATRIMONIO, ID_PESSOA, TIPO_MANUTENCAO, DATA, SITUACAO, TOTAL_PECAS, TOTAL_GERAL, TOTAL_SERVICO, OBS, HORIMETRO) VALUES (GEN_ID(GEN_MANUTENCAO_M, 1), ${idPatrimonio}, ${idPessoa}, ${tipoManutencao}, '${format(date, 'yyyy-MM-dd')}', ${situacao}, ${totalPecas}, ${totalGeral}, ${totalServico}, '${descricao}', ${horimetro}) RETURNING ID`,
+        `INSERT INTO MANUTENCAO_M (ID, ID_PATRIMONIO, ID_PESSOA, TIPO_MANUTENCAO, DATA, SITUACAO, TOTAL_PECAS, TOTAL_GERAL, TOTAL_SERVICO, OBS, HORIMETRO) 
+        VALUES (GEN_ID(GEN_MANUTENCAO_M, 1), ${idPatrimonio}, ${idPessoa}, ${idManutencaoServico}, '${format(date, 'yyyy-MM-dd')}', ${4}, ${totalPecas}, ${totalGeral}, ${totalServico}, '${descricao}', ${horimetro}) RETURNING ID`,
         FirebirdManutencaoMapper.toCreatedDomain,
       );
       const { id } = manutencaoResponse[0]
@@ -55,7 +56,7 @@ export class FirebirdManutencaoRepositoryData
         host,
         code,
         `INSERT INTO MANUTENCAO_SERVICO (ID, ID_MANUTENCAO_M, ID_TIPO_MANUTENCAO, VALOR, TOTAL_PECAS, TOTAL) 
-        VALUES (GEN_ID(GEN_MANUTENCAO_M, 1), ${id}, ${idManutencaoServico}, ${totalGeral}, ${totalPecas}, ${totalGeral}) RETURNING ID`,
+        VALUES (GEN_ID(GEN_MANUTENCAO_M, 1), ${id}, ${tipoManutencao}, ${totalGeral}, ${totalPecas}, ${totalGeral}) RETURNING ID`,
         FirebirdManutencaoMapper.toCreatedDomain,
       );
       const allData = manutencoes as any
