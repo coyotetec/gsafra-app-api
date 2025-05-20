@@ -13,7 +13,7 @@ export const DBConnectionData = createParamDecorator<undefined>(
     try {
       const request = context.switchToHttp().getRequest();
       const authorization = request.headers.authorization;
-
+      const companyCode = request.query.companyCode;
       if (!authorization) {
         throw new UnauthorizedException(
           'Não foi possível autenticar sua empresa',
@@ -33,7 +33,7 @@ export const DBConnectionData = createParamDecorator<undefined>(
         code: string;
       };
 
-      return { host: decoded.host, code: decoded.code };
+      return { host: decoded.host, code: companyCode };
     } catch (err) {
       throw new UnauthorizedException(
         'Não foi possível autenticar sua empresa',
